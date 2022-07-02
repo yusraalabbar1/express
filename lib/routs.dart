@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
       locale: Locale(lang),
       translations: Translation(),
       // locale: isStart == true ? Locale('ar') : Locale('ar'),
-      fallbackLocale: Locale('en'),
+      // fallbackLocale: Locale('en'),
     );
   }
 

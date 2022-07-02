@@ -256,6 +256,15 @@ class _signupState extends State<signup> {
                       obscureText: _isObscure,
                       decoration: InputDecoration(
                         hintText: "Confirme PassWord".tr,
+                        suffixIcon: IconButton(
+                            icon: Icon(_isObscure
+                                ? Icons.visibility_off
+                                : Icons.visibility),
+                            onPressed: () {
+                              setState(() {
+                                _isObscure = !_isObscure;
+                              });
+                            }),
                         labelStyle: TextStyle(
                             color: myFocusNode.hasFocus
                                 ? Color(0xffFAB10C)

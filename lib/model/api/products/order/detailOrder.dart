@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:express/control/controller.dart';
 import 'package:express/control/controllerProduct.dart';
+import 'package:express/main.dart';
 import 'package:express/model/model_json/products/allProductModel.dart';
 import 'package:express/model/model_json/products/favorite/myFavModel.dart';
 import 'package:express/model/model_json/products/order/detailOrderModel.dart';
@@ -20,7 +21,7 @@ orderDetail(id) async {
   var request = http.Request(
       'GET',
       Uri.parse(
-          'https://myexpress.aqdeveloper.tech/api/v1/order-details/${id}?lang=ar'));
+          'https://myexpress.aqdeveloper.tech/api/v1/order-details/${id}?lang=$lang'));
   request.headers.addAll(headers);
 
   http.StreamedResponse response = await request.send();

@@ -25,7 +25,7 @@ class _allHomeState extends State<allHome> {
             SizedBox(
               height: 10,
             ),
-            // Carousel(),
+            Carousel(),
             newProduct(),
             mostPopular(),
           ],

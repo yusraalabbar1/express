@@ -14,7 +14,9 @@ var lang = "ar";
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences preferences = await SharedPreferences.getInstance();
-  // lang = preferences.getString("lang")!;
+  lang = (preferences.getString("lang") != null
+      ? preferences.getString("lang")
+      : "ar")!;
   isLogin = preferences.getBool('islogin');
   print("==============================");
 

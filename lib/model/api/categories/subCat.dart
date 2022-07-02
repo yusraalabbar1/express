@@ -16,8 +16,8 @@ SubCategories(sub) async {
     'Accept': 'application/json',
     'Authorization': 'Bearer ${controller.saveProfileaccessToken}'
   };
-  var request = http.Request(
-      'GET', Uri.parse(Base + '/categories/$sub/sub/?lang=${controllerPro.i}'));
+  var request =
+      http.Request('GET', Uri.parse(Base + '/categories/$sub/sub/?lang=$lang'));
 
   request.headers.addAll(headers);
 

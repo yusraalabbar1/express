@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:express/control/controller.dart';
 import 'package:express/control/controllerProduct.dart';
+import 'package:express/main.dart';
 import 'package:express/model/api/products/cart/myCart.dart';
 import 'package:express/model/model_json/products/order/myOrderModel.dart';
 import 'package:express/model/model_json/products/order/placeOrderModel.dart';
@@ -19,7 +20,7 @@ PlaceOrder(context, city) async {
   var request = http.MultipartRequest(
       'POST',
       Uri.parse(
-          'https://myexpress.aqdeveloper.tech/api/v1/place-order?lang=ar'));
+          'https://myexpress.aqdeveloper.tech/api/v1/place-order?lang=$lang'));
   request.fields.addAll({'drop_address': city});
   request.headers.addAll(headers);
 

@@ -32,7 +32,6 @@ class _welcomHomeState extends State<welcomHome>
     with AutomaticKeepAliveClientMixin {
   getInfo() async {
     homecontroller controller = Get.put(homecontroller());
-
     SharedPreferences preferences = await SharedPreferences.getInstance();
     lang = preferences.getString("lang")!;
     controller.SaveProfileaccessToken(preferences.getString('accessToken'));
