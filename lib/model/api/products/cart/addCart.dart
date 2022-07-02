@@ -50,6 +50,7 @@ AddCart(id, q, context) async {
       AwesomeDialog(
               context: context,
               animType: AnimType.RIGHSLIDE,
+              dialogType: DialogType.ERROR,
               headerAnimationLoop: true,
               btnOkOnPress: () {},
               body: Text(c.message.toString(),

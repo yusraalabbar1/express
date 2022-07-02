@@ -21,6 +21,12 @@ class controllerProduct extends GetxController {
   Map<String, dynamic> saveDetailsOrder = {};
   var listValue, listKey;
   var i;
+  var saveProCatId;
+  SaveProCatId(string) {
+    saveProCatId = string;
+    update();
+  }
+
   void SaveLanguage(string) {
     i = string;
     update();

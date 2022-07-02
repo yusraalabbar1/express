@@ -8,7 +8,7 @@ import 'package:express/utilits/url.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
-AllProduct() async {
+AllProduct(page) async {
   List<Map<dynamic, dynamic>> allProduct = [];
   controllerProduct controllerPro = Get.put(controllerProduct());
   homecontroller controller = Get.put(homecontroller());
@@ -17,7 +17,8 @@ AllProduct() async {
     'Accept': 'application/json',
     'Authorization': 'Bearer ${controller.saveProfileaccessToken}'
   };
-  var request = http.Request('GET', Uri.parse(Base + '/products/?lang=$lang'));
+  var request =
+      http.Request('GET', Uri.parse(Base + '/products/?lang=$lang&page=$page'));
 
   request.headers.addAll(headers);
 

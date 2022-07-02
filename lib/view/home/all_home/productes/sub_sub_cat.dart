@@ -57,6 +57,8 @@ class _subSubCatState extends State<subSubCat> {
                         //   }
                         // }
                         await CategoryProduct(
+                            controllerPro.saveSubSubCateg[index]["id"], 1);
+                        controllerPro.SaveProCatId(
                             controllerPro.saveSubSubCateg[index]["id"]);
                         Navigator.of(context).pushNamed("sub3cat");
                       },

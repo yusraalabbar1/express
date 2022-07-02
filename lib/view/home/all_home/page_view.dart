@@ -27,12 +27,11 @@ class _CarouselState extends State<Carousel> {
   void initState() {
     super.initState();
     _timer = Timer.periodic(Duration(seconds: 3), (Timer timer) {
-      if (_currentPage < controller.bannerImg.length) {
+      if (_currentPage < controller.bannerImg.length - 1) {
         _currentPage++;
       } else {
         _currentPage = 0;
       }
-
       _pageController!.animateToPage(
         _currentPage,
         duration: Duration(milliseconds: 350),

@@ -1,5 +1,7 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:express/control/controllerProduct.dart';
+import 'package:express/model/api/products/all_product.dart';
 import 'package:express/model/api/products/cart/addCart.dart';
 import 'package:express/model/api/products/cart/delCart.dart';
 import 'package:express/model/api/products/cart/myCart.dart';
@@ -27,6 +29,7 @@ class allProducts extends StatefulWidget {
 class _allProductsState extends State<allProducts> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   String t = "asc";
+  int page = 1;
   controllerProduct controllerPro = Get.put(controllerProduct());
   var cc, c;
   @override
@@ -247,6 +250,59 @@ class _allProductsState extends State<allProducts> {
                                       ],
                                     )));
                           }),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child:
+                          GetBuilder<controllerProduct>(builder: (controller) {
+                        return (Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            controller.saveAllProduct.length > 9
+                                ? InkWell(
+                                    child: Text("عرض المزيد"),
+                                    onTap: () async {
+                                      page = page + 1;
+                                      await AllProduct(page);
+                                      setState(() {
+                                        allProducts();
+                                      });
+
+                                      // Navigator.of(context).pushNamed("sub3cat");
+                                    },
+                                  )
+                                : Container(),
+                            InkWell(
+                              child: Text("عرض اقل"),
+                              onTap: () async {
+                                if (page == 1) {
+                                  AwesomeDialog(
+                                          context: context,
+                                          animType: AnimType.RIGHSLIDE,
+                                          dialogType: DialogType.ERROR,
+                                          headerAnimationLoop: true,
+                                          btnOkOnPress: () {},
+                                          body: Text("لا يمكن عرض صفحات أقل",
+                                              style: TextStyle(
+                                                  color: MyColors.color2,
+                                                  fontSize: 14,
+                                                  fontFamily: 'Almarai')),
+                                          dialogBackgroundColor:
+                                              MyColors.color3,
+                                          btnOkColor: MyColors.color1)
+                                      .show();
+                                } else {
+                                  page = page - 1;
+                                  await AllProduct(page);
+                                  setState(() {
+                                    allProducts();
+                                  });
+                                }
+                              },
+                            )
+                          ],
+                        ));
+                      }),
                     )
                   ],
                 )),

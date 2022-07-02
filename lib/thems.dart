@@ -19,6 +19,7 @@ abstract class CustomTheme {
           iconTheme: IconThemeData(color: Colors.black),
           titleTextStyle: TextStyle(
               color: MyColors.color4,
+              fontFamily: 'Almarai',
               fontSize: 20,
               fontWeight: FontWeight.bold),
         ),

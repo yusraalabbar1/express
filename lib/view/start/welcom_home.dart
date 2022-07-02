@@ -44,7 +44,7 @@ class _welcomHomeState extends State<welcomHome>
     latestProduct();
     sitting();
     banner();
-    AllProduct();
+    AllProduct(1);
     populer();
     AllCategories(lang);
     // SubCategories(30);

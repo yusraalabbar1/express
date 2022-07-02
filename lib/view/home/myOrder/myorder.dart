@@ -79,65 +79,74 @@ class _myOrderState extends State<myOrder> {
                               flex: 4,
                               child: ListTile(
                                   trailing: controllerPro.saveMyOrder[index]
-                                              ["status"] !=
+                                              ["status"] ==
                                           "pending"
                                       ? CircleAvatar(
                                           radius: 50,
                                           backgroundImage:
                                               CachedNetworkImageProvider(
-                                                  "https://static5.depositphotos.com/1033654/455/i/950/depositphotos_4555579-stock-photo-3d-human-arrow-success-green.jpg"),
+                                                  "https://cdn.pecsaustralia.com/wp-content/uploads/2019/11/27165821/US_prod_Wait-Card_01.jpg"),
                                         )
-                                      : CircleAvatar(
-                                          radius: 50,
-                                          backgroundImage:
-                                              CachedNetworkImageProvider(
-                                                  "https://thumbs.dreamstime.com/b/red-cross-icon-isolated-sign-wrong-error-button-white-background-eps-164583269.jpg"),
-                                        ),
+                                      : controllerPro.saveMyOrder[index]
+                                                  ["status"] ==
+                                              "completed"
+                                          ? CircleAvatar(
+                                              radius: 50,
+                                              backgroundImage:
+                                                  CachedNetworkImageProvider(
+                                                      "https://thumbs.dreamstime.com/b/red-cross-icon-isolated-sign-wrong-error-button-white-background-eps-164583269.jpg"),
+                                            )
+                                          : CircleAvatar(
+                                              radius: 50,
+                                              backgroundImage:
+                                                  CachedNetworkImageProvider(
+                                                      "https://static5.depositphotos.com/1033654/455/i/950/depositphotos_4555579-stock-photo-3d-human-arrow-success-green.jpg"),
+                                            ),
                                   title: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Container(
-                                          alignment: Alignment.topLeft,
+                                          // alignment: Alignment.topLeft,
                                           child: Text(
-                                            controllerPro.saveMyOrder[index]
-                                                ["items"][0]["product"]["name"],
-                                            style: TextStyle(
-                                                color: MyColors.new2,
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold),
-                                          )),
+                                        controllerPro.saveMyOrder[index]
+                                            ["items"][0]["product"]["name"],
+                                        style: TextStyle(
+                                            color: MyColors.new2,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold),
+                                      )),
                                       Container(
-                                          alignment: Alignment.topLeft,
+                                          // alignment: Alignment.topLeft,
                                           child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text("Total Price: ".tr,
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontFamily: "Almarai")),
-                                              Text(
-                                                  "${controllerPro.saveMyOrder[index]["total"]}",
-                                                  style: TextStyle(
-                                                      color: Colors.white)),
-                                            ],
-                                          )),
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text("Total Price: ".tr,
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontFamily: "Almarai")),
+                                          Text(
+                                              "${controllerPro.saveMyOrder[index]["total"]}",
+                                              style: TextStyle(
+                                                  color: Colors.white)),
+                                        ],
+                                      )),
                                       Container(
-                                          alignment: Alignment.topLeft,
+                                          // alignment: Alignment.topLeft,
                                           child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text("status: ".tr,
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontFamily: "Almarai")),
-                                              Text(
-                                                  "${controllerPro.saveMyOrder[index]["status"]}",
-                                                  style: TextStyle(
-                                                      color: Colors.white)),
-                                            ],
-                                          )),
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text("status: ".tr,
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontFamily: "Almarai")),
+                                          Text(
+                                              "${controllerPro.saveMyOrder[index]["status"]}",
+                                              style: TextStyle(
+                                                  color: Colors.white)),
+                                        ],
+                                      )),
                                     ],
                                   )),
                             ),

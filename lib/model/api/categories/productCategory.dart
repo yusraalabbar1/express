@@ -9,7 +9,7 @@ import 'package:express/utilits/url.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
-CategoryProduct(id) async {
+CategoryProduct(id, page) async {
   List<Map<dynamic, dynamic>> allProduct = [];
   controllerProduct controllerPro = Get.put(controllerProduct());
   homecontroller controller = Get.put(homecontroller());
@@ -17,8 +17,8 @@ CategoryProduct(id) async {
     'Accept': 'application/json',
     'Authorization': 'Bearer ${controller.saveProfileaccessToken}'
   };
-  var request = http.Request(
-      'GET', Uri.parse(Base + '/categories/$id/products/?lang=$lang&page=1'));
+  var request = http.Request('GET',
+      Uri.parse(Base + '/categories/$id/products/?lang=$lang&page=$page'));
   request.headers.addAll(headers);
 
   http.StreamedResponse response = await request.send();
@@ -39,4 +39,6 @@ CategoryProduct(id) async {
   } else {
     print("not response");
   }
+
+  return jsonDecode(res.body);
 }

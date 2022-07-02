@@ -111,7 +111,7 @@ class _homePageState extends State<homePage> {
           await MyCart();
           await latestProduct();
           await banner();
-          await AllProduct();
+          await AllProduct(1);
           await populer();
         },
         child: Center(

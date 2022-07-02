@@ -8,7 +8,6 @@ import 'package:express/view/auth/otp_forget.dart';
 import 'package:express/view/auth/signup.dart';
 import 'package:express/view/home/all_home/all_home.dart';
 import 'package:express/view/home/all_home/productes/all_products.dart';
-import 'package:express/view/home/all_home/productes/my_productes.dart';
 import 'package:express/view/home/all_home/productes/particular_producte.dart';
 import 'package:express/view/home/all_home/productes/search_product.dart';
 import 'package:express/view/home/all_home/productes/sub_sub_cat.dart';
