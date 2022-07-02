@@ -1,8 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:express/view/home/all_home/page_view.dart';
+import 'package:express/view/home/all_home/productes/pageview_images.dart';
 import 'package:flutter/material.dart';
 
-void showCustomDialog(context, urlImage, lengt) {
+void showCustomDialog(context, listImage, lengt) {
   print(lengt);
+  print(listImage);
   showGeneralDialog(
     context: context,
     barrierLabel: "Barrier",
@@ -10,27 +13,7 @@ void showCustomDialog(context, urlImage, lengt) {
     barrierColor: Colors.black.withOpacity(0.5),
     transitionDuration: Duration(milliseconds: 700),
     pageBuilder: (_, __, ___) {
-      return Center(
-        child: Container(
-          height: 240,
-          child: SizedBox.expand(
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(20)),
-              margin: EdgeInsets.all(10),
-              child: CachedNetworkImage(
-                imageUrl: urlImage,
-                placeholder: (context, url) => CircularProgressIndicator(),
-                errorWidget: (context, url, error) => Icon(Icons.error),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          margin: EdgeInsets.symmetric(horizontal: 20),
-          decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(20)),
-        ),
-      );
+      return Center(child: pageViewImages());
     },
     transitionBuilder: (_, anim, __, child) {
       Tween<Offset> tween;

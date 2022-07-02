@@ -22,12 +22,15 @@ class particularProducte extends StatefulWidget {
   State<particularProducte> createState() => _particularProducteState();
 }
 
+List images = [];
+
 class _particularProducteState extends State<particularProducte> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   controllerProduct controllerPro = Get.put(controllerProduct());
 
   List sized = ["m", "L", "XL"];
   List colored = [Colors.red, Colors.blue];
+
   var c;
   var cc;
   @override
@@ -128,11 +131,19 @@ class _particularProducteState extends State<particularProducte> {
                   actions: [
                     IconButton(
                       onPressed: () {
-                        showCustomDialog(
-                            context,
-                            controllerPro.saveDetailsProduct["images"][0]
-                                ["image"],
-                            "");
+                        images = [];
+                        print(
+                            controllerPro.saveDetailsProduct["images"].length);
+                        for (var i = 0;
+                            i <
+                                controllerPro
+                                    .saveDetailsProduct["images"].length;
+                            i++) {
+                          images.add(controllerPro.saveDetailsProduct["images"]
+                              [i]["image"]);
+                        }
+                        showCustomDialog(context, images,
+                            controllerPro.saveDetailsProduct["images"].length);
                       },
                       icon: Icon(Icons.camera),
                     )
