@@ -23,20 +23,21 @@ class _contactusState extends State<contactus> {
       body: Stack(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height / 2,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: CachedNetworkImageProvider(
-                      "https://media.istockphoto.com/illustrations/contact-us-special-blue-banner-background-illustration-id1147152588?k=20&m=1147152588&s=612x612&w=0&h=njzV_aSc-wz3LxoJpIfXcq-Yg4nJttrVUMBMMnnstCo="),
-                  fit: BoxFit.cover),
-            ),
-          ),
+              height: MediaQuery.of(context).size.height / 2,
+              width: MediaQuery.of(context).size.width,
+              color: MyColors.color1
+              // decoration: BoxDecoration(
+              //   image: DecorationImage(
+              //       image: CachedNetworkImageProvider(
+              //           "https://media.istockphoto.com/illustrations/contact-us-special-blue-banner-background-illustration-id1147152588?k=20&m=1147152588&s=612x612&w=0&h=njzV_aSc-wz3LxoJpIfXcq-Yg4nJttrVUMBMMnnstCo="),
+              //       fit: BoxFit.cover),
+              // ),
+              ),
           Container(
             child: CustomScrollView(
               slivers: [
                 SliverAppBar(
-                  expandedHeight: 300,
+                  expandedHeight: 150,
                   elevation: 0.0,
                   backgroundColor: Colors.transparent,
                 ),

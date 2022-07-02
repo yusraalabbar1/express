@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:express/control/controllerProduct.dart';
+import 'package:express/utilits/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:html/parser.dart';
@@ -19,20 +20,21 @@ class _privecyState extends State<privecy> {
       body: Stack(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height / 2,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: CachedNetworkImageProvider(
-                      "https://i0.wp.com/s24egypt.com/wp-content/uploads/2021/04/privacy.jpg?fit=1080%2C608&ssl=1"),
-                  fit: BoxFit.cover),
-            ),
-          ),
+              height: MediaQuery.of(context).size.height / 2,
+              width: MediaQuery.of(context).size.width,
+              color: MyColors.color1
+              // decoration: BoxDecoration(
+              //   image: DecorationImage(
+              //       image: CachedNetworkImageProvider(
+              //           "https://i0.wp.com/s24egypt.com/wp-content/uploads/2021/04/privacy.jpg?fit=1080%2C608&ssl=1"),
+              //       fit: BoxFit.cover),
+              // ),
+              ),
           Container(
             child: CustomScrollView(
               slivers: [
                 SliverAppBar(
-                  expandedHeight: 300,
+                  expandedHeight: 150,
                   elevation: 0.0,
                   backgroundColor: Colors.transparent,
                 ),

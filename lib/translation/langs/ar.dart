@@ -16,7 +16,7 @@ const Map<String, String> ar = {
   "Next": "التالي",
   "Password": "كلمة المرور",
   "Forget Your Password?": "نسيت كلمة المرور ؟",
-  "Don't have an account?": "هل تملك حساب؟",
+  "Don't have an account?": "أنت لا تملك حساب؟",
   "SignUp": "انشاء حساب",
   "Name": "الاسم",
   "City": "المدينة",

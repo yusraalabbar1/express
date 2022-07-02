@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:express/control/controllerProduct.dart';
+import 'package:express/utilits/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,20 +21,21 @@ class _termState extends State<term> {
       body: Stack(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height / 2,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: CachedNetworkImageProvider(
-                      "https://medicliq.health/wp-content/uploads/2022/04/Terms-and-Conditions-.jpeg"),
-                  fit: BoxFit.cover),
-            ),
-          ),
+              height: MediaQuery.of(context).size.height / 2,
+              width: MediaQuery.of(context).size.width,
+              color: MyColors.color1
+              // decoration: BoxDecoration(
+              //   image: DecorationImage(
+              //       image: CachedNetworkImageProvider(
+              //           "https://medicliq.health/wp-content/uploads/2022/04/Terms-and-Conditions-.jpeg"),
+              //       fit: BoxFit.cover),
+              // ),
+              ),
           Container(
             child: CustomScrollView(
               slivers: [
                 SliverAppBar(
-                  expandedHeight: 300,
+                  expandedHeight: 150,
                   elevation: 0.0,
                   backgroundColor: Colors.transparent,
                 ),

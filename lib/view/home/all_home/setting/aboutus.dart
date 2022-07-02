@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:express/control/controllerProduct.dart';
+import 'package:express/utilits/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:html/parser.dart';
@@ -21,18 +22,19 @@ class _aboutusState extends State<aboutus> {
           Container(
             height: MediaQuery.of(context).size.height / 2,
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: CachedNetworkImageProvider(
-                      "https://img.freepik.com/free-vector/about-us-website-banner-concept-with-thin-line-flat-design_56103-96.jpg?w=2000"),
-                  fit: BoxFit.cover),
-            ),
+            color: MyColors.color1,
+            // decoration: BoxDecoration(
+            //   image: DecorationImage(
+            //       image: CachedNetworkImageProvider(
+            //           "https://img.freepik.com/free-vector/about-us-website-banner-concept-with-thin-line-flat-design_56103-96.jpg?w=2000"),
+            //       fit: BoxFit.cover),
+            // ),
           ),
           Container(
             child: CustomScrollView(
               slivers: [
                 SliverAppBar(
-                  expandedHeight: 300,
+                  expandedHeight: 150,
                   elevation: 0.0,
                   backgroundColor: Colors.transparent,
                 ),
