@@ -74,21 +74,15 @@ class _signupState extends State<signup> {
                               icon: Icon(Icons.person), onPressed: () {}),
                         ),
                         validator: (text) {
-                          String pattern = r'^[a-zA-Z]';
-                          RegExp regex = RegExp(pattern);
+                          String pattern =
+                              r'^[\u0600-\u065F\u066A-\u06EF\u06FA-\u06FFa-zA-Z]';
+                          RegExp regex = RegExp(pattern, unicode: true);
                           if (text == null ||
                               text.isEmpty ||
                               !regex.hasMatch(text))
                             return 'Enter a valid Name';
                           else
                             return null;
-                          // if (text!.length > 30) {
-                          //   return "can not enter bigest than 30";
-                          // }
-                          // if (text.length < 2) {
-                          //   return "can not enter less than 2";
-                          // }
-                          // return null;
                         },
                         onSaved: (string) {
                           name = string;
@@ -144,8 +138,9 @@ class _signupState extends State<signup> {
                               onPressed: () {}),
                         ),
                         validator: (text) {
-                          String pattern = r'^[a-zA-Z]';
-                          RegExp regex = RegExp(pattern);
+                          String pattern =
+                              r'^[\u0600-\u065F\u066A-\u06EF\u06FA-\u06FFa-zA-Z]';
+                          RegExp regex = RegExp(pattern, unicode: true);
                           if (text == null ||
                               text.isEmpty ||
                               !regex.hasMatch(text))
@@ -175,8 +170,10 @@ class _signupState extends State<signup> {
                               icon: Icon(Icons.home), onPressed: () {}),
                         ),
                         validator: (text) {
-                          String pattern = r'^[a-zA-Z]';
-                          RegExp regex = RegExp(pattern);
+                          //^[a-zA-Z\u0621-\u064a-\]
+                          String pattern =
+                              r'^[\u0600-\u065F\u066A-\u06EF\u06FA-\u06FFa-zA-Z]';
+                          RegExp regex = RegExp(pattern, unicode: true);
                           if (text == null ||
                               text.isEmpty ||
                               !regex.hasMatch(text))

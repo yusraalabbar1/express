@@ -34,17 +34,17 @@ showLoading(context) {
                           fontSize: 10),
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
-                        hintText: " Name".tr,
+                        hintText: controller.saveProfileName,
                       ),
-                      validator: (text) {
-                        if (text!.length > 15) {
-                          return "can not enter bigest than 15";
-                        }
-                        if (text.length < 2) {
-                          return "can not enter less than 2";
-                        }
-                        return null;
-                      },
+                      // validator: (text) {
+                      //   if (text!.length > 15) {
+                      //     return "can not enter bigest than 15";
+                      //   }
+                      //   if (text.length < 2) {
+                      //     return "can not enter less than 2";
+                      //   }
+                      //   return null;
+                      // },
                       onSaved: (string) {
                         print("on saved");
                         name = string;
@@ -64,17 +64,17 @@ showLoading(context) {
                       textInputAction: TextInputAction.next,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
-                        hintText: "Mobile".tr,
+                        hintText: controller.saveProfilemobile,
                       ),
-                      validator: (text) {
-                        if (text!.length > 15) {
-                          return "can not enter bigest than 15";
-                        }
-                        if (text.length < 9) {
-                          return "can not enter less than 9";
-                        }
-                        return null;
-                      },
+                      // validator: (text) {
+                      //   if (text!.length > 15) {
+                      //     return "can not enter bigest than 15";
+                      //   }
+                      //   if (text.length < 9) {
+                      //     return "can not enter less than 9";
+                      //   }
+                      //   return null;
+                      // },
                       onChanged: (value) {
                         // do something
                       },
@@ -96,17 +96,17 @@ showLoading(context) {
                           fontSize: 10),
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
-                        hintText: "City".tr,
+                        hintText: controller.saveProfiledefaultAddress,
                       ),
-                      validator: (text) {
-                        if (text!.length > 15) {
-                          return "can not enter bigest than 15";
-                        }
-                        if (text.length < 2) {
-                          return "can not enter less than 2";
-                        }
-                        return null;
-                      },
+                      // validator: (text) {
+                      //   if (text!.length > 15) {
+                      //     return "can not enter bigest than 15";
+                      //   }
+                      //   if (text.length < 2) {
+                      //     return "can not enter less than 2";
+                      //   }
+                      //   return null;
+                      // },
                       onChanged: (value) {
                         // do something
                       },
@@ -128,17 +128,17 @@ showLoading(context) {
                           fontSize: 10),
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
-                        hintText: "Area".tr,
+                        hintText: controller.saveProfiledefaultAddressarea,
                       ),
-                      validator: (text) {
-                        if (text!.length > 15) {
-                          return "can not enter bigest than 15";
-                        }
-                        if (text.length < 2) {
-                          return "can not enter less than 2";
-                        }
-                        return null;
-                      },
+                      // validator: (text) {
+                      //   if (text!.length > 15) {
+                      //     return "can not enter bigest than 15";
+                      //   }
+                      //   if (text.length < 2) {
+                      //     return "can not enter less than 2";
+                      //   }
+                      //   return null;
+                      // },
                       onChanged: (value) {
                         // do something
                       },

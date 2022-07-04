@@ -272,50 +272,6 @@ class _myProfileState extends State<myProfile> {
                             children: [
                               Expanded(
                                   child: Container(
-                                child: Text("Name".tr,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontFamily: 'Almarai')),
-                              )),
-                              Expanded(
-                                  child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.all(30),
-                                    alignment: Alignment.topLeft,
-                                    child: Text(
-                                        controller.saveProfileName != null
-                                            ? controller.saveProfileName
-                                            : "",
-                                        style: TextStyle(
-                                            color: MyColors.color1,
-                                            fontSize: 13,
-                                            fontFamily: 'Almarai')),
-                                  ),
-                                ],
-                              ))
-                            ],
-                          ),
-                          Container(
-                            height: 2,
-                            decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                    begin: Alignment.centerLeft,
-                                    end: Alignment.centerRight,
-                                    colors: [
-                                      Color.fromARGB(255, 32, 53, 104),
-                                      Color(0xff414D72)
-                                    ]),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Expanded(
-                                  child: Container(
                                 child: Text("Mobile Number".tr,
                                     style: TextStyle(
                                         color: Colors.white,
@@ -450,6 +406,37 @@ class _myProfileState extends State<myProfile> {
                                       BorderRadius.all(Radius.circular(25.0))),
                               label: Text(
                                 "Edit information".tr,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 11,
+                                    fontFamily: 'Almarai'),
+                              ),
+                              icon: Icon(
+                                Icons.edit,
+                                color: Colors.white,
+                              ),
+                              textColor: Colors.white,
+                              splashColor: Colors.white,
+                              color: MyColors.new4,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          Container(
+                            width: 150,
+                            height: 37,
+                            child: RaisedButton.icon(
+                              onPressed: () {
+                                print('Button Clicked.');
+                                // showLoading(context);
+                                Navigator.of(context).pushNamed("editPassword");
+                              },
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(25.0))),
+                              label: Text(
+                                "Edit password".tr,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 11,

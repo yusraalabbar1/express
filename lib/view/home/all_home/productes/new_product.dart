@@ -26,7 +26,9 @@ class _newProductState extends State<newProduct> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("New In".tr, style: TextStyle(fontFamily: 'Almarai')),
+            Text("New In".tr,
+                style: TextStyle(
+                    fontFamily: 'Almarai', fontWeight: FontWeight.bold)),
             InkWell(
                 onTap: () {
                   Navigator.of(context).pushNamed("allProducts");
@@ -40,6 +42,7 @@ class _newProductState extends State<newProduct> {
           child: ListView.builder(
             itemCount: controllerPro.saveNewProduct.length,
             scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
             itemBuilder: (BuildContext context, int index) {
               return InkWell(
                   onTap: () async {

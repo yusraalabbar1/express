@@ -17,6 +17,7 @@ import 'package:express/view/home/all_home/setting/contactus.dart';
 import 'package:express/view/home/all_home/setting/privecy.dart';
 import 'package:express/view/home/all_home/setting/term.dart';
 import 'package:express/view/home/home_page.dart';
+import 'package:express/view/home/mprofile/edit_password.dart';
 import 'package:express/view/home/myCar/complete_cart.dart';
 import 'package:express/view/home/myCar/deliver.dart';
 import 'package:express/view/home/notification/notification.dart';
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
         "forget": ((context) => forget()),
         "otpForget": ((context) => otpForget()),
         "langPage": ((context) => langPage()),
+        "editPassword": ((context) => editPassword()),
       },
       locale: Locale(lang),
       translations: Translation(),

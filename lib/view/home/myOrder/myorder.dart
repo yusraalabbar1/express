@@ -12,7 +12,7 @@ class myOrder extends StatefulWidget {
 }
 
 class _myOrderState extends State<myOrder> {
-  controllerProduct controllerPro = Get.put(controllerProduct());
+  // controllerProduct controllerPro = Get.put(controllerProduct());
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -28,7 +28,8 @@ class _myOrderState extends State<myOrder> {
         return Future.value(false);
       },
       child: Container(
-        child: ListView.builder(
+          child: GetBuilder<controllerProduct>(builder: (controllerPro) {
+        return (ListView.builder(
             itemCount: controllerPro.saveMyOrder.length,
             itemBuilder: (BuildContext context, int index) {
               return Column(
@@ -158,8 +159,8 @@ class _myOrderState extends State<myOrder> {
                   )
                 ],
               );
-            }),
-      ),
+            }));
+      })),
     );
   }
 }

@@ -19,10 +19,8 @@ class _allHomeState extends State<allHome> {
       child: Padding(
         padding: EdgeInsets.all(5),
         child: ListView(
-          shrinkWrap: true,
           children: [
-            // searchWidget(),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Carousel(),

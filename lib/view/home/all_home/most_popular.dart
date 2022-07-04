@@ -26,7 +26,9 @@ class _mostPopularState extends State<mostPopular> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Most Popular".tr, style: TextStyle(fontFamily: 'Almarai')),
+            Text("Most Popular".tr,
+                style: TextStyle(
+                    fontFamily: 'Almarai', fontWeight: FontWeight.bold)),
             InkWell(
                 onTap: () {
                   Navigator.of(context).pushNamed("allProducts");
@@ -42,6 +44,7 @@ class _mostPopularState extends State<mostPopular> {
           child: ListView.builder(
             itemCount: controllerPro.savepopulerProduct.length,
             scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
             itemBuilder: (BuildContext context, int index) {
               return InkWell(
                   onTap: () async {

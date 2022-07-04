@@ -2,6 +2,7 @@ import 'package:express/model/api/auth/logout.dart';
 import 'package:express/utilits/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 showLoadingLogout(context) {
   return showDialog(
@@ -37,6 +38,10 @@ showLoadingLogout(context) {
                             fontSize: 13,
                             fontFamily: 'Almarai')),
                     onPressed: () async {
+                      SharedPreferences preferences =
+                          await SharedPreferences.getInstance();
+                      preferences.setBool("islogin", false);
+                      Navigator.of(context).pushReplacementNamed("welcom");
                       logout(context);
                     },
                   ),

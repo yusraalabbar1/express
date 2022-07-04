@@ -1,5 +1,6 @@
 import 'package:express/control/controller.dart';
 import 'package:express/control/controllerProduct.dart';
+import 'package:express/model/api/products/order/myOrder.dart';
 import 'package:express/model/api/products/order/placeOrder.dart';
 import 'package:express/utilits/colors.dart';
 import 'package:express/view/widget_style/style_main.dart';
@@ -151,7 +152,7 @@ class _completeCartState extends State<completeCart> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25),
                             side: BorderSide(color: MyColors.color1, width: 2)),
-                        onPressed: () {
+                        onPressed: () async {
                           var formdata = formstate.currentState;
 
                           formdata!.save();
@@ -162,10 +163,12 @@ class _completeCartState extends State<completeCart> {
                           print("========================");
                           print("not validddddddddddddddd");
                           if (address == "") {
-                            PlaceOrder(
+                            await PlaceOrder(
                                 context, controller.saveProfiledefaultAddress);
+                            await MyOrder();
                           } else {
-                            PlaceOrder(context, address);
+                            await PlaceOrder(context, address);
+                            await MyOrder();
                           }
                         },
                         child: Text(
