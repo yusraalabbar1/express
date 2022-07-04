@@ -70,7 +70,7 @@ const Map<String, String> en = {
   "Language": "Language",
   "Log out": "Log out",
   "Exit the app": "Exit the app",
-  "Are you sure to get out??": "Are you sure to get out??",
+  "Are you sure want to log out??": "Are you sure want to log out??",
   "Yes": "Yes",
   "No": "No",
   "status: ": "status : ",

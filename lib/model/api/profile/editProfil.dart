@@ -1,19 +1,34 @@
 import 'dart:convert';
 
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:express/control/controller.dart';
 import 'package:express/control/controllerProduct.dart';
 import 'package:express/main.dart';
 import 'package:express/model/model_json/products/allProductModel.dart';
 import 'package:express/model/model_json/profile/profilModel.dart';
+import 'package:express/utilits/colors.dart';
 import 'package:express/utilits/url.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-EditProfil(name, mobile, city, area) async {
+EditProfil(context, name, mobile, city, area) async {
+  print(name);
+  print(mobile);
+  print(city);
+  print(area);
+
+  homecontroller controller = Get.find();
+
+  print("enter");
+  print(name);
+  print(mobile);
+  print(city);
+  print(area);
   List<Map<dynamic, dynamic>> allProduct = [];
   controllerProduct controllerPro = Get.put(controllerProduct());
-  homecontroller controller = Get.put(homecontroller());
+  // homecontroller controller = Get.put(homecontroller());
   SharedPreferences preferences = await SharedPreferences.getInstance();
 
   var headers = {

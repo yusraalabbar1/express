@@ -8,7 +8,7 @@ GlobalKey<FormState> formstate = new GlobalKey<FormState>();
 homecontroller controller = Get.find();
 
 showLoading(context) {
-  var name, mobile, city, area;
+  String name = "", mobile = "", city = "", area = "";
   return showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -47,8 +47,10 @@ showLoading(context) {
                       // },
                       onSaved: (string) {
                         print("on saved");
-                        name = string;
-                        controller.SaveProfileName(string);
+                        name = string!;
+                        if (name != "") {
+                          controller.SaveProfileName(string);
+                        }
                       },
                     ));
                   }),
@@ -80,8 +82,10 @@ showLoading(context) {
                       },
                       onSaved: (string) {
                         print("on saved");
-                        mobile = string;
-                        controller.SaveProfilemobile(string);
+                        mobile = string!;
+                        if (mobile != "") {
+                          controller.SaveProfilemobile(string);
+                        }
                       },
                     ));
                   }),
@@ -112,8 +116,10 @@ showLoading(context) {
                       },
                       onSaved: (string) {
                         print("on saved");
-                        city = string;
-                        controller.SaveProfiledefaultAddress(string);
+                        city = string!;
+                        if (city != "") {
+                          controller.SaveProfiledefaultAddress(string);
+                        }
                       },
                     ));
                   }),
@@ -144,8 +150,10 @@ showLoading(context) {
                       },
                       onSaved: (string) {
                         print("on saved");
-                        area = string;
-                        controller.SaveProfiledefaultAddressarea(string);
+                        area = string!;
+                        if (area != "") {
+                          controller.SaveProfiledefaultAddressarea(string);
+                        }
                       },
                     ));
                   }),
@@ -165,12 +173,32 @@ showLoading(context) {
                                 color: Colors.white,
                                 fontSize: 13,
                                 fontFamily: 'Almarai')),
-                        onPressed: () {
+                        onPressed: () async {
                           var formdata = formstate.currentState;
                           if (formdata!.validate()) {
                             formdata.save();
                             print("valid");
-                            EditProfil(name, mobile, city, area);
+                            if (name == "" || name == null) {
+                              name = controller.saveProfileName;
+                              print("1");
+                              print(name);
+                            }
+                            if (mobile == "" || mobile == null) {
+                              mobile = controller.saveProfilemobile;
+                              print("2");
+                              print(controller.saveProfilemobile);
+                            }
+                            if (city == "" || city == null) {
+                              city = controller.saveProfiledefaultAddress;
+                              print("3");
+                              print(city);
+                            }
+                            if (area == "" || area == null) {
+                              area = controller.saveProfiledefaultAddressarea;
+                              print("4");
+                              print(area);
+                            }
+                            await EditProfil(context, name, mobile, city, area);
                           }
                           Navigator.of(context).pop();
                         },

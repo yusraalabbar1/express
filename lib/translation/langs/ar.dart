@@ -79,7 +79,7 @@ const Map<String, String> ar = {
   "Profile": "البروفايل",
   "My Orders": "الطلبات",
   "Likes": "المفضلة",
-  "Are you sure to Log out???": "هل أنت متأكد من تسجيل الخروج؟؟",
+  "Are you sure want to log out??": "هل أنت متأكد من تسجيل الخروج؟؟",
   "Change password": "تغيير كلمة المرور",
   "current password": "كلمة المرور الحالية",
   "new password": "كلمة المرور الجديدة",

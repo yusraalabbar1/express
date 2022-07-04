@@ -12,7 +12,7 @@ showLoadingLogout(context) {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text("Are you sure to Log out???".tr,
+              Text("Are you sure want to log out??".tr,
                   style: TextStyle(
                       color: MyColors.color2,
                       fontSize: 13,

@@ -31,6 +31,7 @@ banner() async {
         bannerImage.add(c.data![i].image.toString());
       }
       controller.SaveContrilerBannerImage(bannerImage);
+      print(jsonDecode(res.body));
     } else {
       print("not access banner");
     }

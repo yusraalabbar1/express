@@ -76,20 +76,25 @@ class _CarouselState extends State<Carousel> {
   }
 }
 
-AnimatedContainer slider(images, pagePosition, active) {
+Widget slider(images, pagePosition, active) {
   double margin = active ? 5 : 10;
 
-  return AnimatedContainer(
-    duration: Duration(milliseconds: 500),
-    curve: Curves.easeInOutCubic,
-    margin: EdgeInsets.all(margin),
-    decoration: BoxDecoration(
-        color: MyColors.new4,
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-        image: DecorationImage(
-          image: CachedNetworkImageProvider(images[pagePosition]),
-          fit: BoxFit.cover,
-        )),
+  return InkWell(
+    onTap: () {
+      print(pagePosition);
+    },
+    child: AnimatedContainer(
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeInOutCubic,
+      margin: EdgeInsets.all(margin),
+      decoration: BoxDecoration(
+          color: MyColors.new4,
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+          image: DecorationImage(
+            image: CachedNetworkImageProvider(images[pagePosition]),
+            fit: BoxFit.cover,
+          )),
+    ),
   );
 }
 
