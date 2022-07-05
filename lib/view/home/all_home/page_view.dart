@@ -1,10 +1,13 @@
 import 'dart:async';
 
 import 'package:express/control/controller.dart';
+import 'package:express/model/api/categories/subCat.dart';
+import 'package:express/model/api/products/productDetails.dart';
 import 'package:express/utilits/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Carousel extends StatefulWidget {
   const Carousel({
@@ -27,7 +30,7 @@ class _CarouselState extends State<Carousel> {
   void initState() {
     super.initState();
     _timer = Timer.periodic(Duration(seconds: 3), (Timer timer) {
-      if (_currentPage < controller.bannerImg.length - 1) {
+      if (_currentPage < controller.saveContrilerBannerMap.length - 1) {
         _currentPage++;
       } else {
         _currentPage = 0;
@@ -55,7 +58,7 @@ class _CarouselState extends State<Carousel> {
           width: MediaQuery.of(context).size.width,
           height: 200,
           child: PageView.builder(
-              itemCount: controller.bannerImg.length,
+              itemCount: controller.saveContrilerBannerMap.length,
               pageSnapping: true,
               controller: _pageController,
               onPageChanged: (page) {
@@ -65,23 +68,35 @@ class _CarouselState extends State<Carousel> {
               },
               itemBuilder: (context, pagePosition) {
                 bool active = pagePosition == activePage;
-                return slider(controller.bannerImg, pagePosition, active);
+                return slider(context, controller.saveContrilerBannerMap,
+                    pagePosition, active);
               }),
         ),
         Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: indicators(controller.bannerImg.length, activePage))
+            children: indicators(
+                controller.saveContrilerBannerMap.length, activePage))
       ],
     );
   }
 }
 
-Widget slider(images, pagePosition, active) {
+Widget slider(context, images, pagePosition, active) {
   double margin = active ? 5 : 10;
 
   return InkWell(
-    onTap: () {
-      print(pagePosition);
+    onTap: () async {
+      print("===================================");
+      print(images[pagePosition]["type"]);
+      if (images[pagePosition]["type"] == 'external_url') {
+        launch(images[pagePosition]["target"]);
+      } else if (images[pagePosition]["type"] == 'category') {
+      } else if (images[pagePosition]["type"] == 'product') {
+        await detailsProducts(images[pagePosition]["target"]["id"]);
+        Navigator.of(context).pushNamed("particularProducte");
+      } else if (images[pagePosition]["type"] == 'sub_category') {
+        await SubCategories(32);
+      }
     },
     child: AnimatedContainer(
       duration: Duration(milliseconds: 500),
@@ -91,7 +106,7 @@ Widget slider(images, pagePosition, active) {
           color: MyColors.new4,
           borderRadius: BorderRadius.all(Radius.circular(20)),
           image: DecorationImage(
-            image: CachedNetworkImageProvider(images[pagePosition]),
+            image: CachedNetworkImageProvider(images[pagePosition]["image"]),
             fit: BoxFit.cover,
           )),
     ),

@@ -46,7 +46,6 @@ class Datum {
     this.items,
     this.createdAt,
   });
-
   int? id;
   int? total;
   int? deliveryCost;

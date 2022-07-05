@@ -24,10 +24,16 @@ class homecontroller extends GetxController {
       saveNumberMobileForget;
 
   var i;
+
+  List<Map<dynamic, dynamic>> saveContrilerBannerMap = [];
   // void SaveLanguage(string) {
   //   i = string;
   //   update();
   // }
+  SaveContrilerBannerMap(v) {
+    saveContrilerBannerMap = v;
+    update();
+  }
 
   SaveNumberMobileForget(v) {
     saveNumberMobileForget = v;

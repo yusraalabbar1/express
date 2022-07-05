@@ -85,4 +85,6 @@ const Map<String, String> en = {
   "password confirmation": "password confirmation",
   "Ok": "Ok",
   "Edit password": "Edit password",
+  "Show All Items": "Show All Items",
+  "Show All Orders": "Show All Orders"
 };

@@ -86,4 +86,6 @@ const Map<String, String> ar = {
   "password confirmation": "تأكيد كلمة المرور",
   "Ok": "موافق",
   "Edit password": "تعديل كلمة المرور",
+  "Show All Items": "رؤية كل المشتريات",
+  "Show All Orders": "رؤية كل الطلبات"
 };

@@ -165,10 +165,10 @@ class _completeCartState extends State<completeCart> {
                           if (address == "") {
                             await PlaceOrder(
                                 context, controller.saveProfiledefaultAddress);
-                            await MyOrder();
+                            await MyOrder(1);
                           } else {
                             await PlaceOrder(context, address);
-                            await MyOrder();
+                            await MyOrder(1);
                           }
                         },
                         child: Text(

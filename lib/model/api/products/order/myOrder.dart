@@ -7,7 +7,7 @@ import 'package:express/model/model_json/products/order/myOrderModel.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
-MyOrder() async {
+MyOrder(page) async {
   List<Map<dynamic, dynamic>> Myorder = [];
   controllerProduct controllerPro = Get.put(controllerProduct());
   homecontroller controller = Get.put(homecontroller());
@@ -18,7 +18,7 @@ MyOrder() async {
   var request = http.Request(
       'GET',
       Uri.parse(
-          'https://myexpress.aqdeveloper.tech/api/v1/my-orders?lang=$lang'));
+          'https://myexpress.aqdeveloper.tech/api/v1/my-orders?lang=$lang&page=$page'));
 
   request.headers.addAll(headers);
 

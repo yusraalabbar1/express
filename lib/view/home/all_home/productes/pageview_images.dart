@@ -37,6 +37,7 @@ class _pageViewImagesState extends State<pageViewImages> {
     //     curve: Curves.easeIn,
     //   );
     // });
+    print("this is _pageViewImagesState");
     _pageController = PageController(viewportFraction: 0.8, initialPage: 1);
   }
 

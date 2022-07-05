@@ -25,18 +25,18 @@ checkItem(id, ch) async {
   http.StreamedResponse response = await request.send();
   var res = await http.Response.fromStream(response);
   CheckItemModel c = CheckItemModel.fromJson(jsonDecode(res.body));
-
+  print(response.statusCode);
   if (response.statusCode == 200) {
-    await MyCart();
     // print(await response.stream.bytesToString());
     if (c.status == true) {
       print(c.message);
+      await MyCart();
     } else {
       print(c.message);
     }
   } else {
     // print(response.reasonPhrase);
-    print("errrrror");
+    print(c.message);
     await MyCart();
   }
 }

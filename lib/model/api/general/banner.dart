@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 banner() async {
   homecontroller controller = Get.put(homecontroller());
   List<String> bannerImage = [];
+  List<Map<dynamic, dynamic>> bannerMap = [];
   var headers = {
     'Accept': 'application/json',
     'Authorization': 'Bearer ${controller.saveProfileaccessToken}'
@@ -29,8 +30,10 @@ banner() async {
       for (var i = 0; i < c.data!.length; i++) {
         print(c.data![i].image);
         bannerImage.add(c.data![i].image.toString());
+        bannerMap.add(c.data![i].toJson());
       }
       controller.SaveContrilerBannerImage(bannerImage);
+      controller.SaveContrilerBannerMap(bannerMap);
       print(jsonDecode(res.body));
     } else {
       print("not access banner");
