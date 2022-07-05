@@ -13,6 +13,7 @@ class homecontroller extends GetxController {
   var userNameControl;
   var profImg;
   List<String> bannerImg = [];
+  List<Map<dynamic, dynamic>> saveNotificationMap = [];
   var saveProfileName,
       saveProfilemobile,
       savePassWord,
@@ -30,6 +31,12 @@ class homecontroller extends GetxController {
   //   i = string;
   //   update();
   // }
+
+  SaveNotificationMap(v) {
+    saveNotificationMap = v;
+    update();
+  }
+
   SaveContrilerBannerMap(v) {
     saveContrilerBannerMap = v;
     update();

@@ -32,7 +32,7 @@ const Map<String, String> ar = {
   "Name : ": "الاسم:",
   "price : ": "السعر:",
   "Desctiption : ": "الوصف:",
-  "Sub Category": "المنتحات الفرعية",
+  "Sub Category": "المنتجات الفرعية",
   "Product": "المنتجات",
   "Most Popular": "الأكثر شعبية",
   "Edit": "تعديل",
@@ -79,7 +79,7 @@ const Map<String, String> ar = {
   "Profile": "البروفايل",
   "My Orders": "الطلبات",
   "Likes": "المفضلة",
-  "Are you sure want to log out??": "هل أنت متأكد من تسجيل الخروج؟؟",
+  "Are you sure you want to log out?": "هل أنت متأكد من تسجيل الخروج؟",
   "Change password": "تغيير كلمة المرور",
   "current password": "كلمة المرور الحالية",
   "new password": "كلمة المرور الجديدة",
@@ -87,5 +87,8 @@ const Map<String, String> ar = {
   "Ok": "موافق",
   "Edit password": "تعديل كلمة المرور",
   "Show All Items": "رؤية كل المشتريات",
-  "Show All Orders": "رؤية كل الطلبات"
+  "Show All Orders": "رؤية كل الطلبات",
+  "Show more": "عرض المزيد",
+  "Show less": "عرض اقل",
+  "All Orders": "كل الطلبات"
 };

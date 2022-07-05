@@ -260,7 +260,7 @@ class _allProductsState extends State<allProducts> {
                           children: [
                             controller.saveAllProduct.length > 9
                                 ? InkWell(
-                                    child: Text("عرض المزيد"),
+                                    child: Text("Show more".tr),
                                     onTap: () async {
                                       page = page + 1;
                                       await AllProduct(page);
@@ -273,7 +273,7 @@ class _allProductsState extends State<allProducts> {
                                   )
                                 : Container(),
                             InkWell(
-                              child: Text("عرض اقل"),
+                              child: Text("Show less".tr),
                               onTap: () async {
                                 if (page == 1) {
                                   AwesomeDialog(

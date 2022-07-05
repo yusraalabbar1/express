@@ -35,7 +35,8 @@ class _mostPopularState extends State<mostPopular> {
                 },
                 child: Text(
                   "view all".tr,
-                  style: TextStyle(fontFamily: 'Almarai'),
+                  style: TextStyle(
+                      fontFamily: 'Almarai', fontWeight: FontWeight.bold),
                 )),
           ],
         ),

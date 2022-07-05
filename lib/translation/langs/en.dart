@@ -78,7 +78,7 @@ const Map<String, String> en = {
   "Arabic": "Arabic",
   "Change Language": "Change Language",
   "all": "all",
-  "Are you sure to Log out???": "Are you sure to Log out???",
+  "Are you sure you want to log out?": "Are you sure you want to log out?",
   "Change password": "Change password",
   "current password": "current password",
   "new password": "new password",
@@ -86,5 +86,8 @@ const Map<String, String> en = {
   "Ok": "Ok",
   "Edit password": "Edit password",
   "Show All Items": "Show All Items",
-  "Show All Orders": "Show All Orders"
+  "Show All Orders": "Show All Orders",
+  "Show more": "Show more",
+  "Show less": "Show less",
+  "All Orders": "All Orders",
 };

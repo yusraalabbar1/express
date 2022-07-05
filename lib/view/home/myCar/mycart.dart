@@ -40,7 +40,7 @@ class _myCartState extends State<myCart> {
 
   @override
   Widget build(BuildContext context) {
-    return i == 0
+    return controllerPro.saveMyMyCart.length != 0
         ? WillPopScope(onWillPop: () {
             print(
                 'Backbutton pressed (device or appbar button), do whatever you want.');
@@ -288,7 +288,10 @@ class _myCartState extends State<myCart> {
                           Text("Delivary Fees: ".tr,
                               style: TextStyle(
                                   color: Colors.white, fontFamily: "Almarai")),
-                          Text(controllerPro.savedeliveryFees.toString(),
+                          Text(
+                              controllerPro.savecartTotal != 0
+                                  ? controllerPro.savedeliveryFees.toString()
+                                  : "0",
                               style:
                                   TextStyle(color: MyColors.new3, fontSize: 16))
                         ],
@@ -299,9 +302,11 @@ class _myCartState extends State<myCart> {
                               style: TextStyle(
                                   color: Colors.white, fontFamily: "Almarai")),
                           Text(
-                              (controllerPro.savedeliveryFees +
-                                      controllerPro.savecartTotal)
-                                  .toString(),
+                              controllerPro.savecartTotal != 0
+                                  ? (controllerPro.savedeliveryFees +
+                                          controllerPro.savecartTotal)
+                                      .toString()
+                                  : "0",
                               style:
                                   TextStyle(color: MyColors.new3, fontSize: 16))
                         ],
@@ -348,7 +353,10 @@ class _myCartState extends State<myCart> {
               return Future.value(false);
             },
             child: Container(
-              child: Text("empty".tr),
+              color: Colors.white,
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: Image.asset("assets/images/emptycart.jpg"),
             ),
           );
   }

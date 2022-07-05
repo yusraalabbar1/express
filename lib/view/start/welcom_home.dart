@@ -6,6 +6,7 @@ import 'package:express/model/api/categories/categories.dart';
 import 'package:express/model/api/categories/productCategory.dart';
 import 'package:express/model/api/categories/subCat.dart';
 import 'package:express/model/api/general/banner.dart';
+import 'package:express/model/api/general/notificationApi.dart';
 import 'package:express/model/api/products/all_product.dart';
 import 'package:express/model/api/products/cart/myCart.dart';
 import 'package:express/model/api/products/favorite/add_fav.dart';
@@ -49,6 +50,7 @@ class _welcomHomeState extends State<welcomHome>
     // SubCategories(30);
     MyFavorite();
     MyCart();
+    notificationApi(1);
     MyOrder(1);
   }
 

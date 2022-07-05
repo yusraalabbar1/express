@@ -24,7 +24,7 @@ class RegisterModel {
 
   factory RegisterModel.fromJson(Map<String, dynamic> json) => RegisterModel(
         status: json["status"],
-        code: json["code"],
+        code: json["code"].toString(),
         message: json["message"],
         data: json["data"] != null ? json["data"] : null,
       );

@@ -20,6 +20,7 @@ import 'package:express/view/home/home_page.dart';
 import 'package:express/view/home/mprofile/edit_password.dart';
 import 'package:express/view/home/myCar/complete_cart.dart';
 import 'package:express/view/home/myCar/deliver.dart';
+import 'package:express/view/home/myOrder/all_order.dart';
 import 'package:express/view/home/notification/notification.dart';
 import 'package:express/view/start/lang.dart';
 import 'package:express/view/start/welcom.dart';
@@ -62,6 +63,7 @@ class MyApp extends StatelessWidget {
         "otpForget": ((context) => otpForget()),
         "langPage": ((context) => langPage()),
         "editPassword": ((context) => editPassword()),
+        "allOrder": ((context) => allOrder()),
       },
       locale: Locale(lang),
       translations: Translation(),

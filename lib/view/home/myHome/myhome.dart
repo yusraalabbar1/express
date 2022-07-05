@@ -142,106 +142,91 @@ class _myHomeState extends State<myHome> with SingleTickerProviderStateMixin {
                         return snapshot.hasData
                             ? GetBuilder<controllerProduct>(
                                 builder: (controllerPro) {
-                                return (controllerPro.saveSubCateg != []
-                                    ? Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: GridView.builder(
-                                            shrinkWrap: true,
-                                            gridDelegate:
-                                                const SliverGridDelegateWithMaxCrossAxisExtent(
-                                                    maxCrossAxisExtent: 200,
-                                                    childAspectRatio: 3 / 2,
-                                                    crossAxisSpacing: 20,
-                                                    mainAxisSpacing: 20),
-                                            itemCount: controllerPro
-                                                .saveSubCateg.length,
-                                            itemBuilder:
-                                                (BuildContext ctx, index) {
-                                              return InkWell(
-                                                onTap: () async {
-                                                  print("object");
-                                                  await SubSubCategories(
-                                                      controllerPro
-                                                              .saveSubCateg[
-                                                          index]["id"]);
-                                                  Navigator.of(context)
-                                                      .pushNamed("subSubCat");
-                                                },
-                                                child: Container(
-                                                  alignment: Alignment.center,
-                                                  child: Column(
-                                                    children: [
-                                                      Expanded(
-                                                          flex: 4,
-                                                          child: Container(
-                                                            color: Colors
-                                                                .transparent,
+                                return (Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: GridView.builder(
+                                      shrinkWrap: true,
+                                      gridDelegate:
+                                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                                              maxCrossAxisExtent: 200,
+                                              childAspectRatio: 3 / 2,
+                                              crossAxisSpacing: 20,
+                                              mainAxisSpacing: 20),
+                                      itemCount:
+                                          controllerPro.saveSubCateg.length,
+                                      itemBuilder: (BuildContext ctx, index) {
+                                        return InkWell(
+                                          onTap: () async {
+                                            print("object");
+                                            await SubSubCategories(controllerPro
+                                                .saveSubCateg[index]["id"]);
+                                            Navigator.of(context)
+                                                .pushNamed("subSubCat");
+                                          },
+                                          child: Container(
+                                            alignment: Alignment.center,
+                                            child: Column(
+                                              children: [
+                                                Expanded(
+                                                    flex: 4,
+                                                    child: Container(
+                                                      color: Colors.transparent,
+                                                    )),
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: Center(
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                          color: Colors
+                                                              .transparent
+                                                              .withOpacity(0.6),
+                                                          borderRadius:
+                                                              BorderRadius.only(
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    15),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    15),
                                                           )),
-                                                      Expanded(
-                                                        flex: 1,
-                                                        child: Center(
-                                                          child: Container(
-                                                            decoration:
-                                                                BoxDecoration(
-                                                                    color: Colors
-                                                                        .transparent
-                                                                        .withOpacity(
-                                                                            0.6),
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .only(
-                                                                      bottomLeft:
-                                                                          Radius.circular(
-                                                                              15),
-                                                                      bottomRight:
-                                                                          Radius.circular(
-                                                                              15),
-                                                                    )),
-                                                            alignment: Alignment
-                                                                .center,
-                                                            width:
-                                                                MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .width,
-                                                            child: Text(
-                                                              controllerPro
-                                                                      .saveSubCateg[
-                                                                  index]["name"],
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontFamily:
-                                                                      'Almarai'),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  decoration: BoxDecoration(
-                                                      color: MyColors.color2,
-                                                      image: DecorationImage(
-                                                        image: CachedNetworkImageProvider(
-                                                            controllerPro
+                                                      alignment:
+                                                          Alignment.center,
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                              .size
+                                                              .width,
+                                                      child: Text(
+                                                        controllerPro
                                                                 .saveSubCateg[
-                                                                    index]
-                                                                    ["image"]
-                                                                .toString()),
-                                                        fit: BoxFit.cover,
+                                                            index]["name"],
+                                                        style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontFamily:
+                                                                'Almarai'),
                                                       ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              15)),
+                                                    ),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            decoration: BoxDecoration(
+                                                color: MyColors.color2,
+                                                image: DecorationImage(
+                                                  image:
+                                                      CachedNetworkImageProvider(
+                                                          controllerPro
+                                                              .saveSubCateg[
+                                                                  index]
+                                                                  ["image"]
+                                                              .toString()),
+                                                  fit: BoxFit.cover,
                                                 ),
-                                              );
-                                            }),
-                                      )
-                                    : Center(
-                                        child: Text(
-                                        "Laoding",
-                                        style: TextStyle(color: Colors.black),
-                                      )));
+                                                borderRadius:
+                                                    BorderRadius.circular(15)),
+                                          ),
+                                        );
+                                      }),
+                                ));
                               })
                             : CircularProgressIndicator(
                                 color: MyColors.color2,

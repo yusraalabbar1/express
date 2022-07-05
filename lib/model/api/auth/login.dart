@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:express/control/controller.dart';
 import 'package:express/main.dart';
@@ -6,11 +7,39 @@ import 'package:express/model/model_json/auth/loginModel.dart';
 import 'package:express/utilits/colors.dart';
 import 'package:express/utilits/url.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
+import 'package:device_info/device_info.dart';
 
 loginApi(context, mobile, pass) async {
+  var identifier;
+  final DeviceInfoPlugin deviceInfoPlugin = new DeviceInfoPlugin();
+  try {
+    if (Platform.isAndroid) {
+      var build = await deviceInfoPlugin.androidInfo;
+      identifier = build.androidId; //UUID for Android
+
+      print("*********androidId********");
+      print(identifier);
+      print("*********identifier********");
+    } else if (Platform.isIOS) {
+      var data = await deviceInfoPlugin.iosInfo;
+      identifier = data.identifierForVendor; //UUID for iOS
+
+      print("*********isIOS********");
+      print(identifier);
+      print("*********identifier********");
+    }
+  } on PlatformException {
+    print('Failed to get platform version');
+  }
+
+  String? fcm_token = await FirebaseMessaging.instance.getToken();
   SharedPreferences preferences = await SharedPreferences.getInstance();
   homecontroller controller = Get.put(homecontroller());
   var headers = {'Accept': 'application/json'};
@@ -19,9 +48,8 @@ loginApi(context, mobile, pass) async {
   request.fields.addAll({
     'mobile': mobile,
     'password': pass,
-    'fcm_token':
-        'ecK0peukQAWaCTUv1k0NGe:APA91bEo5mfq9Vdrj5-PA5KPabn0cEhHQh0-SyVq-rU4fPR_NYwhWFfxrVdKUMEadJGkmVH-a9LVvhlkfkaEdRmJuFT_-5cCK4A96Wx6-p-PZWyhJPxkBfftCDYbqLbJNKUGjjjXrXAr',
-    'device_type': 'android'
+    'fcm_token': fcm_token.toString(),
+    'device_type': identifier
   });
 
   request.headers.addAll(headers);

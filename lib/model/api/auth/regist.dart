@@ -31,6 +31,20 @@ registrition(
   if (response.statusCode == 200) {
     if (c.code == "200") {
       print(c.message);
+      print(c.message);
+      AwesomeDialog(
+              context: context,
+              animType: AnimType.RIGHSLIDE,
+              headerAnimationLoop: true,
+              btnOkOnPress: () {},
+              body: Text(c.message.toString(),
+                  style: TextStyle(
+                      color: MyColors.color2,
+                      fontSize: 14,
+                      fontFamily: 'Almarai')),
+              dialogBackgroundColor: MyColors.color3,
+              btnOkColor: MyColors.color1)
+          .show();
       Navigator.of(context).pushReplacementNamed("PinCodeVerificationScreen");
     } else {
       print(c.message);

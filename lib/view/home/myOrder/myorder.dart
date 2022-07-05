@@ -159,9 +159,13 @@ class _myOrderState extends State<myOrder> {
                                                 child: Text("Show All Items".tr,
                                                     style: TextStyle(
                                                         color: Colors.orange,
+                                                        fontSize: 14,
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         fontFamily: "Almarai")),
+                                              ),
+                                              SizedBox(
+                                                height: 10,
                                               ),
                                               Container(
                                                   // alignment: Alignment.topLeft,
@@ -211,9 +215,14 @@ class _myOrderState extends State<myOrder> {
                     }));
               }),
             ),
-            Container(
-              margin: EdgeInsets.all(10),
-              child: Text("Show All Orders".tr),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).pushNamed("allOrder");
+              },
+              child: Container(
+                margin: EdgeInsets.all(10),
+                child: Text("Show All Orders".tr),
+              ),
             )
           ],
         ));
