@@ -1,17 +1,17 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:express/control/controller.dart';
-import 'package:express/main.dart';
-import 'package:express/model/model_json/auth/loginModel.dart';
+import 'package:express/control/controllerDirver.dart';
+import 'package:express/model/model_json/driver/d_loginModel.dart';
 import 'package:express/utilits/colors.dart';
-import 'package:express/utilits/url.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+
+import 'package:flutter/services.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 import 'package:device_info/device_info.dart';
@@ -41,10 +41,12 @@ loginApi(context, mobile, pass) async {
 
   String? fcm_token = await FirebaseMessaging.instance.getToken();
   SharedPreferences preferences = await SharedPreferences.getInstance();
-  homecontroller controller = Get.put(homecontroller());
+  controllerDriver controller = Get.put(controllerDriver());
   var headers = {'Accept': 'application/json'};
-  var request =
-      http.MultipartRequest('POST', Uri.parse(Base + '/login?lang=$lang'));
+  var request = http.MultipartRequest(
+      'POST',
+      Uri.parse(
+          'https://myexpress.aqdeveloper.tech/api/v1/delivery/login?lang=ar'));
   request.fields.addAll({
     'mobile': mobile,
     'password': pass,
@@ -63,24 +65,15 @@ loginApi(context, mobile, pass) async {
     if (c.code == "200") {
       print(c.message);
       ///////////////////////////////////////////////
-      preferences.setString("name", c.data!.user!.name.toString());
-      controller.SaveProfileName(preferences.getString('name'));
-      preferences.setString("mobile", c.data!.user!.mobile.toString());
-      controller.SaveProfilemobile(preferences.getString('mobile'));
       preferences.setString(
-          "photoProfile", c.data!.user!.photoProfile.toString());
-      controller.SaveProfilephotoProfile(preferences.getString('photoProfile'));
-      preferences.setString("city", c.data!.user!.city.toString());
-      controller.SaveProfiledefaultAddress(preferences.getString('city'));
-      preferences.setString("area", c.data!.user!.area.toString());
-      controller.SaveProfiledefaultAddressarea(preferences.getString('area'));
-      preferences.setString(
-          "accessToken", c.data!.user!.accessToken.toString());
-      controller.SaveProfileaccessToken(preferences.getString('accessToken'));
+          "accessTokenDriver", c.data!.user!.accessToken.toString());
+      controller.SaveProfileaccessToken(
+          preferences.getString('accessTokenDriver'));
 
-      preferences.setInt("islogin", 1);
+      preferences.setInt("islogin", 2);
+      controller.SaveDriverLogin(2);
       ////////////////////////////////////////////////
-      Navigator.of(context).pushReplacementNamed("welcomHome");
+      Navigator.of(context).pushReplacementNamed("welcomHomeVD");
       ////////////////////////////////////////////////
     } else {
       print(c.message);

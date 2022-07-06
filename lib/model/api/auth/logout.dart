@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:express/control/controller.dart';
-import 'package:express/view/auth/logoutModel.dart';
+import 'package:express/view/user/auth/logoutModel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;

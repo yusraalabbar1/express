@@ -81,7 +81,7 @@ veryfy(context, mobile, pass, otp) async {
       preferences.setString(
           "accessToken", c.data!.user!.accessToken.toString());
       controller.SaveProfileaccessToken(preferences.getString('accessToken'));
-      preferences.setBool("islogin", true);
+      preferences.setInt("islogin", 1);
       ////////////////////////////////////////////////
       ////////////////////////////////////////////////
       ////////////////////////////////////////////////

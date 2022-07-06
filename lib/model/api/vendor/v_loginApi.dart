@@ -1,22 +1,20 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:express/control/controller.dart';
-import 'package:express/main.dart';
-import 'package:express/model/model_json/auth/loginModel.dart';
+import 'package:device_info/device_info.dart';
+import 'package:express/control/controllerDirver.dart';
+import 'package:express/model/model_json/vendor/v_loginModel.dart';
 import 'package:express/utilits/colors.dart';
-import 'package:express/utilits/url.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 
-import 'package:device_info/device_info.dart';
-
-loginApi(context, mobile, pass) async {
+VendorloginApi(context, mobile, pass) async {
   var identifier;
   final DeviceInfoPlugin deviceInfoPlugin = new DeviceInfoPlugin();
   try {
@@ -41,10 +39,12 @@ loginApi(context, mobile, pass) async {
 
   String? fcm_token = await FirebaseMessaging.instance.getToken();
   SharedPreferences preferences = await SharedPreferences.getInstance();
-  homecontroller controller = Get.put(homecontroller());
+  controllerDriver controller = Get.put(controllerDriver());
   var headers = {'Accept': 'application/json'};
-  var request =
-      http.MultipartRequest('POST', Uri.parse(Base + '/login?lang=$lang'));
+  var request = http.MultipartRequest(
+      'POST',
+      Uri.parse(
+          'https://myexpress.aqdeveloper.tech/api/v1/vendor/login?lang=ar'));
   request.fields.addAll({
     'mobile': mobile,
     'password': pass,
@@ -57,30 +57,21 @@ loginApi(context, mobile, pass) async {
   http.StreamedResponse response = await request.send();
 
   var res = await http.Response.fromStream(response);
-  LoginModel c = LoginModel.fromJson(jsonDecode(res.body));
+  VendLoginModel c = VendLoginModel.fromJson(jsonDecode(res.body));
 
   if (response.statusCode == 200) {
     if (c.code == "200") {
       print(c.message);
       ///////////////////////////////////////////////
-      preferences.setString("name", c.data!.user!.name.toString());
-      controller.SaveProfileName(preferences.getString('name'));
-      preferences.setString("mobile", c.data!.user!.mobile.toString());
-      controller.SaveProfilemobile(preferences.getString('mobile'));
       preferences.setString(
-          "photoProfile", c.data!.user!.photoProfile.toString());
-      controller.SaveProfilephotoProfile(preferences.getString('photoProfile'));
-      preferences.setString("city", c.data!.user!.city.toString());
-      controller.SaveProfiledefaultAddress(preferences.getString('city'));
-      preferences.setString("area", c.data!.user!.area.toString());
-      controller.SaveProfiledefaultAddressarea(preferences.getString('area'));
-      preferences.setString(
-          "accessToken", c.data!.user!.accessToken.toString());
-      controller.SaveProfileaccessToken(preferences.getString('accessToken'));
+          "accessTokenVendor", c.data!.user!.accessToken.toString());
+      controller.SaveProfileaccessToken(
+          preferences.getString('accessTokenVendor'));
 
-      preferences.setInt("islogin", 1);
+      preferences.setInt("islogin", 3);
+      controller.SaveVendorLogin(3);
       ////////////////////////////////////////////////
-      Navigator.of(context).pushReplacementNamed("welcomHome");
+      Navigator.of(context).pushReplacementNamed("welcomHomeVD");
       ////////////////////////////////////////////////
     } else {
       print(c.message);
