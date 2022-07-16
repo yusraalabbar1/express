@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:express/control/controllerProduct.dart';
 import 'package:express/utilits/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,7 +15,8 @@ class orderDeliver extends StatefulWidget {
 }
 
 class _orderDeliverState extends State<orderDeliver> {
-  String phone = "+201000376267";
+  controllerProduct controllerPro = Get.put(controllerProduct());
+  // String phone = controllerPro.listKey.toString();
   String message = "Hi";
   @override
   Widget build(BuildContext context) {
@@ -67,7 +69,8 @@ class _orderDeliverState extends State<orderDeliver> {
                     borderRadius: BorderRadius.circular(25),
                     side: BorderSide(color: MyColors.color1, width: 2)),
                 onPressed: () {
-                  launch('whatsapp://send?phone=+201000376267');
+                  launch(
+                      'whatsapp://send?phone=${controllerPro.listValue[1].toString()}');
                 },
                 child: Text(
                   "Whats app".tr,

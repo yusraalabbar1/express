@@ -168,7 +168,7 @@ showLoading(context) {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25),
                             side: BorderSide(color: MyColors.color1, width: 2)),
-                        child: Text("ok".tr,
+                        child: Text("Ok".tr,
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 13,
@@ -213,7 +213,7 @@ showLoading(context) {
                             side: BorderSide(
                                 color: Color.fromARGB(255, 231, 38, 64),
                                 width: 2)),
-                        child: Text("cancle".tr,
+                        child: Text("Cancle".tr,
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 13,

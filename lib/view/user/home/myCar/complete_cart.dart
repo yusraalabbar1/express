@@ -44,7 +44,7 @@ class _completeCartState extends State<completeCart> {
                     padding:
                         const EdgeInsets.only(left: 50, right: 50, bottom: 10),
                     child: Text(
-                      "address".tr,
+                      "Address".tr,
                       style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
