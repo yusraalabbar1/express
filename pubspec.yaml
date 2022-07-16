@@ -36,6 +36,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_countdown_timer: ^4.1.0
+  flutter_launcher_icons: ^0.9.3
   get: ^4.6.5
   get_storage: ^2.0.3
   html: ^0.15.0
@@ -57,7 +58,10 @@ dev_dependencies:
   flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter
-
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logolunch.png"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter.
