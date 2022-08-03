@@ -70,7 +70,8 @@ class _loginState extends State<login> {
                       style: TextStyle(color: MyColors.color2),
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
-                        suffixIcon: IconButton(
+                        suffix: Text("+962"),
+                        prefixIcon: IconButton(
                             icon: Icon(Icons.mobile_friendly_outlined),
                             onPressed: () {}),
                       ),
@@ -122,7 +123,7 @@ class _loginState extends State<login> {
                       },
                       obscureText: _isObscure,
                       decoration: InputDecoration(
-                        suffixIcon: IconButton(
+                        prefixIcon: IconButton(
                             icon: Icon(_isObscure
                                 ? Icons.visibility_off
                                 : Icons.visibility),

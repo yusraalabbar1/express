@@ -13,7 +13,7 @@ class controllerProduct extends GetxController {
   List<Map<dynamic, dynamic>> savepopulerProduct = [];
   List<Map<dynamic, dynamic>> saveNewProduct = [];
   Map<String, dynamic> saveAllSetting = {};
-  Map<String, dynamic> saveDetailsProduct = {};
+  Map<dynamic, dynamic> saveDetailsProduct = {};
   Map<String, dynamic> saveImageDetails = {};
   var savedeliveryFees;
   var savecartTotal;

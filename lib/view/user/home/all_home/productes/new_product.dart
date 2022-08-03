@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:express/control/controllerProduct.dart';
 import 'package:express/model/api/products/favorite/add_fav.dart';
@@ -8,6 +9,7 @@ import 'package:express/utilits/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class newProduct extends StatefulWidget {
   newProduct({Key? key}) : super(key: key);
@@ -92,31 +94,54 @@ class _newProductState extends State<newProduct> {
                                     size: 20,
                                   ),
                                   onPressed: () async {
-                                    if (controllerPro.saveNewProduct[index]
-                                            ["added_to_favourites"] ==
-                                        0) {
-                                      //add and change color
-                                      setState(() {
-                                        c = 1;
-                                        controllerPro.saveNewProduct[index]
-                                            ["added_to_favourites"] = 1;
-                                      });
-                                      await addFavorite(controllerPro
-                                          .saveNewProduct[index]["id"]);
-                                      MyFavorite();
-                                    } else if (controllerPro
-                                                .saveNewProduct[index]
-                                            ["added_to_favourites"] ==
-                                        1) {
-                                      //delete
-                                      setState(() {
-                                        c = 0;
-                                        controllerPro.saveNewProduct[index]
-                                            ["added_to_favourites"] = 0;
-                                      });
-                                      await deletFavorite(controllerPro
-                                          .saveNewProduct[index]["id"]);
-                                      MyFavorite();
+                                    SharedPreferences preferences =
+                                        await SharedPreferences.getInstance();
+                                    if (preferences.getString("sendMen") ==
+                                        "guest") {
+                                      AwesomeDialog(
+                                              context: context,
+                                              animType: AnimType.RIGHSLIDE,
+                                              dialogType: DialogType.INFO,
+                                              headerAnimationLoop: true,
+                                              btnOkOnPress: () {},
+                                              body: Text("لم تقم بتسجيل الدخول",
+                                                  style: TextStyle(
+                                                      color: MyColors.color2,
+                                                      fontSize: 14,
+                                                      fontFamily: 'Almarai')),
+                                              dialogBackgroundColor:
+                                                  MyColors.color3,
+                                              btnOkColor: MyColors.color1)
+                                          .show();
+                                    } else {
+                                      if (controllerPro.saveNewProduct[index]
+                                              ["added_to_favourites"] ==
+                                          0) {
+                                        //add and change color
+                                        setState(() {
+                                          c = 1;
+                                          controllerPro.saveNewProduct[index]
+                                              ["added_to_favourites"] = 1;
+                                        });
+                                        await addFavorite(
+                                            context,
+                                            controllerPro.saveNewProduct[index]
+                                                ["id"]);
+                                        MyFavorite();
+                                      } else if (controllerPro
+                                                  .saveNewProduct[index]
+                                              ["added_to_favourites"] ==
+                                          1) {
+                                        //delete
+                                        setState(() {
+                                          c = 0;
+                                          controllerPro.saveNewProduct[index]
+                                              ["added_to_favourites"] = 0;
+                                        });
+                                        await deletFavorite(controllerPro
+                                            .saveNewProduct[index]["id"]);
+                                        MyFavorite();
+                                      }
                                     }
                                   }))
                         ],

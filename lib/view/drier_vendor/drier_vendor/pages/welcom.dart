@@ -186,6 +186,28 @@ class _welcom2State extends State<welcom2> with AutomaticKeepAliveClientMixin {
                       )
                     ],
                   ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 30),
+                  child: Center(
+                    child: InkWell(
+                      onTap: () async {
+                        SharedPreferences preferences =
+                            await SharedPreferences.getInstance();
+                        preferences.setString("sendMen", "guest");
+                        setState(() {
+                          sendMen = "guest";
+                        });
+                        Navigator.of(context)
+                            .pushReplacementNamed("welcomHome");
+                      },
+                      child: Text("الدخول كضيف",
+                          style: TextStyle(
+                              fontSize: 15,
+                              color: Color.fromARGB(255, 67, 67, 69),
+                              fontFamily: 'Almarai')),
+                    ),
+                  ),
                 )
               ],
             ) /* add child content here */,

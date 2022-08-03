@@ -187,6 +187,7 @@ class _allProductsState extends State<allProducts> {
                                                                           "added_to_favourites"] = 1;
                                                                     });
                                                                     await addFavorite(
+                                                                        context,
                                                                         controllerPro.saveAllProduct[index]
                                                                             [
                                                                             "id"]);
@@ -234,9 +235,9 @@ class _allProductsState extends State<allProducts> {
                                             Expanded(
                                               child: Container(
                                                 child: Text(
-                                                  controllerPro
-                                                          .saveAllProduct[index]
-                                                      ["price"],
+                                                  controllerPro.saveAllProduct[
+                                                          index]["price"] +
+                                                      " JOD \t ",
                                                   style: TextStyle(
                                                       color: Colors.black),
                                                 ),

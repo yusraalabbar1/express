@@ -68,9 +68,14 @@ class Datum {
         price: json["price"],
         discount: json["discount"] == null ? null : json["discount"],
         images: List<Image>.from(json["images"].map((x) => Image.fromJson(x))),
-        addedToCart: json["added_to_cart"],
-        quantityCart: int.parse(json["quantity_cart"].toString()),
-        addedToFavourites: json["added_to_favourites"],
+        addedToCart: json["added_to_cart"] == ""
+            ? 0
+            : int.parse(json["added_to_cart"].toString()),
+        quantityCart: json["quantity_cart"] == ""
+            ? 0
+            : int.parse(json["quantity_cart"].toString()),
+        addedToFavourites:
+            json["added_to_favourites"] == "" ? 0 : json["added_to_favourites"],
       );
 
   Map<String, dynamic> toJson() => {

@@ -214,6 +214,7 @@ class _searchProductState extends State<searchProduct> {
                                                                           "added_to_favourites"] = 1;
                                                                     });
                                                                     await addFavorite(
+                                                                        context,
                                                                         controllerPro.saveSearchCateg[index]
                                                                             [
                                                                             "id"]);

@@ -14,7 +14,7 @@ detailsProducts(id) async {
   homecontroller controller = Get.put(homecontroller());
   controllerProduct controllerPro = Get.put(controllerProduct());
 
-  Map<String, dynamic> details = {};
+  Map<dynamic, dynamic> details = {};
   // var ImageDetails;
   var headers = {
     'Accept': 'application/json',

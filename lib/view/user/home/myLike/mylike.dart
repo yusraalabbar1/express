@@ -5,6 +5,7 @@ import 'package:express/model/api/products/cart/delCart.dart';
 import 'package:express/model/api/products/cart/myCart.dart';
 import 'package:express/model/api/products/favorite/del_fav.dart';
 import 'package:express/model/api/products/favorite/my_fav.dart';
+import 'package:express/model/api/products/productDetails.dart';
 import 'package:express/utilits/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -82,7 +83,7 @@ class _myLikeState extends State<myLike> {
                                     Container(
                                         child: Row(
                                       children: [
-                                        Text("price : ".tr,
+                                        Text("price : ".tr + " JOD \t ",
                                             style: const TextStyle(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.bold,
@@ -150,13 +151,25 @@ class _myLikeState extends State<myLike> {
                                                             index]["product"]
                                                         ["added_to_cart"] = 1;
                                                   });
-                                                  await AddCart(
+                                                  await detailsProducts(
                                                       controllerPro
-                                                              .saveMyFavprite[
-                                                          index]["product"]["id"],
-                                                      1,
-                                                      context);
-                                                  MyCart();
+                                                                  .saveMyFavprite[
+                                                              index]["product"]
+                                                          ["id"]);
+
+                                                  Navigator.of(context)
+                                                      .pushNamed(
+                                                          "particularProducte");
+
+                                                  // await AddCart(
+                                                  //     controllerPro
+                                                  //             .saveMyFavprite[
+                                                  //         index]["product"]["id"],
+                                                  //     1,
+                                                  //     context,
+                                                  //     "",
+                                                  //     "");
+                                                  // MyCart();
                                                 } else if (controllerPro
                                                                 .saveMyFavprite[
                                                             index]["product"]

@@ -9,10 +9,12 @@ import 'package:express/model/api/products/favorite/del_fav.dart';
 import 'package:express/model/api/products/favorite/my_fav.dart';
 import 'package:express/utilits/colors.dart';
 import 'package:express/view/user/home/all_home/productes/dialogImage.dart';
+import 'package:express/view/user/home/all_home/productes/pageview_images.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:html/parser.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class particularProducte extends StatefulWidget {
   particularProducte({Key? key}) : super(key: key);
@@ -32,6 +34,8 @@ class _particularProducteState extends State<particularProducte> {
 
   var c;
   var cc;
+  String color = "";
+  String size = "";
   @override
   Widget build(BuildContext context) {
     var nameFake;
@@ -48,23 +52,42 @@ class _particularProducteState extends State<particularProducte> {
               size: 25,
             ),
             onPressed: () async {
-              if (controllerPro.saveDetailsProduct["added_to_cart"] == 0) {
-                setState(() {
-                  cc = 1;
-                  controllerPro.saveDetailsProduct["added_to_cart"] = 1;
-                });
-                await AddCart(
-                    controllerPro.saveDetailsProduct["id"], 1, context);
-                MyCart();
-              } else if (controllerPro.saveDetailsProduct["added_to_cart"] ==
-                  1) {
-                setState(() {
-                  cc = 0;
-                  controllerPro.saveDetailsProduct["added_to_cart"] = 0;
-                });
-                await DeletFromCart(
-                    controllerPro.saveDetailsProduct["id"], context);
-                MyCart();
+              SharedPreferences preferences =
+                  await SharedPreferences.getInstance();
+              if (preferences.getString("sendMen") == "guest") {
+                AwesomeDialog(
+                        context: context,
+                        animType: AnimType.RIGHSLIDE,
+                        dialogType: DialogType.INFO,
+                        headerAnimationLoop: true,
+                        btnOkOnPress: () {},
+                        body: Text("لم تقم بتسجيل الدخول",
+                            style: TextStyle(
+                                color: MyColors.color2,
+                                fontSize: 14,
+                                fontFamily: 'Almarai')),
+                        dialogBackgroundColor: MyColors.color3,
+                        btnOkColor: MyColors.color1)
+                    .show();
+              } else {
+                if (controllerPro.saveDetailsProduct["added_to_cart"] == 0) {
+                  setState(() {
+                    cc = 1;
+                    controllerPro.saveDetailsProduct["added_to_cart"] = 1;
+                  });
+                  await AddCart(controllerPro.saveDetailsProduct["id"], 1,
+                      context, color, size);
+                  MyCart();
+                } else if (controllerPro.saveDetailsProduct["added_to_cart"] ==
+                    1) {
+                  setState(() {
+                    cc = 0;
+                    controllerPro.saveDetailsProduct["added_to_cart"] = 0;
+                  });
+                  await DeletFromCart(
+                      controllerPro.saveDetailsProduct["id"], context);
+                  MyCart();
+                }
               }
             }
             // heroTag: null,
@@ -84,24 +107,45 @@ class _particularProducteState extends State<particularProducte> {
           onPressed: () async {
             //notification
             // Navigator.of(context).pushNamed("notification");
-            if (controllerPro.saveDetailsProduct["added_to_favourites"] == 0) {
-              //add and change color
-              setState(() {
-                c = 1;
-                controllerPro.saveDetailsProduct["added_to_favourites"] = 1;
-              });
-              await addFavorite(controllerPro.saveDetailsProduct["id"]);
-              MyFavorite();
-            } else if (controllerPro
-                    .saveDetailsProduct["added_to_favourites"] ==
-                1) {
-              //delete
-              setState(() {
-                c = 0;
-                controllerPro.saveDetailsProduct["added_to_favourites"] = 0;
-              });
-              await deletFavorite(controllerPro.saveDetailsProduct["id"]);
-              MyFavorite();
+            SharedPreferences preferences =
+                await SharedPreferences.getInstance();
+            if (preferences.getString("sendMen") == "guest") {
+              AwesomeDialog(
+                      context: context,
+                      animType: AnimType.RIGHSLIDE,
+                      dialogType: DialogType.INFO,
+                      headerAnimationLoop: true,
+                      btnOkOnPress: () {},
+                      body: Text("لم تقم بتسجيل الدخول",
+                          style: TextStyle(
+                              color: MyColors.color2,
+                              fontSize: 14,
+                              fontFamily: 'Almarai')),
+                      dialogBackgroundColor: MyColors.color3,
+                      btnOkColor: MyColors.color1)
+                  .show();
+            } else {
+              if (controllerPro.saveDetailsProduct["added_to_favourites"] ==
+                  0) {
+                //add and change color
+                setState(() {
+                  c = 1;
+                  controllerPro.saveDetailsProduct["added_to_favourites"] = 1;
+                });
+                await addFavorite(
+                    context, controllerPro.saveDetailsProduct["id"]);
+                MyFavorite();
+              } else if (controllerPro
+                      .saveDetailsProduct["added_to_favourites"] ==
+                  1) {
+                //delete
+                setState(() {
+                  c = 0;
+                  controllerPro.saveDetailsProduct["added_to_favourites"] = 0;
+                });
+                await deletFavorite(controllerPro.saveDetailsProduct["id"]);
+                MyFavorite();
+              }
             }
           },
           heroTag: null,
@@ -119,6 +163,7 @@ class _particularProducteState extends State<particularProducte> {
                       .toString()),
                   fit: BoxFit.cover),
             ),
+            // child: pageViewImages(),
           ),
           Container(
             child: CustomScrollView(
@@ -128,23 +173,31 @@ class _particularProducteState extends State<particularProducte> {
                   elevation: 0.0,
                   backgroundColor: Colors.transparent,
                   actions: [
-                    IconButton(
-                      onPressed: () {
-                        images = [];
-                        print(
-                            controllerPro.saveDetailsProduct["images"].length);
-                        for (var i = 0;
-                            i <
+                    Row(
+                      children: [
+                        Text("All images".tr),
+                        IconButton(
+                          onPressed: () {
+                            images = [];
+                            print(controllerPro
+                                .saveDetailsProduct["images"].length);
+                            for (var i = 0;
+                                i <
+                                    controllerPro
+                                        .saveDetailsProduct["images"].length;
+                                i++) {
+                              images.add(controllerPro
+                                  .saveDetailsProduct["images"][i]["image"]);
+                            }
+                            showCustomDialog(
+                                context,
+                                images,
                                 controllerPro
-                                    .saveDetailsProduct["images"].length;
-                            i++) {
-                          images.add(controllerPro.saveDetailsProduct["images"]
-                              [i]["image"]);
-                        }
-                        showCustomDialog(context, images,
-                            controllerPro.saveDetailsProduct["images"].length);
-                      },
-                      icon: Icon(Icons.camera),
+                                    .saveDetailsProduct["images"].length);
+                          },
+                          icon: Icon(Icons.camera),
+                        )
+                      ],
                     )
                   ],
                 ),
@@ -166,7 +219,7 @@ class _particularProducteState extends State<particularProducte> {
                                 color: Colors.transparent,
                               ),
                               Container(
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.only(
                                     topRight: Radius.circular(40.0),
@@ -181,7 +234,7 @@ class _particularProducteState extends State<particularProducte> {
                                       height:
                                           MediaQuery.of(context).size.height,
                                       width: MediaQuery.of(context).size.width,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         borderRadius: BorderRadius.only(
                                           topRight: Radius.circular(40),
                                           topLeft: Radius.circular(40),
@@ -194,7 +247,7 @@ class _particularProducteState extends State<particularProducte> {
                                       ),
                                       child: Column(
                                         children: [
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 60,
                                           ),
                                           Padding(
@@ -202,8 +255,8 @@ class _particularProducteState extends State<particularProducte> {
                                             child: Row(
                                               children: [
                                                 Text(
-                                                  "Soled by : ".tr,
-                                                  style: TextStyle(
+                                                  "Solde by : ".tr,
+                                                  style: const TextStyle(
                                                       backgroundColor:
                                                           Color.fromARGB(255,
                                                               192, 230, 233),
@@ -213,8 +266,11 @@ class _particularProducteState extends State<particularProducte> {
                                                       fontFamily:
                                                           'BAHNSCHRIFT'),
                                                 ),
-                                                Text("Mohamad alqam",
-                                                    style: TextStyle(
+                                                Text(
+                                                    controllerPro.saveDetailsProduct[
+                                                            "vendor_2"]
+                                                        .toString(),
+                                                    style: const TextStyle(
                                                         backgroundColor:
                                                             Color.fromARGB(255,
                                                                 192, 230, 233),
@@ -232,7 +288,7 @@ class _particularProducteState extends State<particularProducte> {
                                               children: [
                                                 Text(
                                                   "Name : ".tr,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                       fontWeight:
                                                           FontWeight.bold,
                                                       fontSize: 20,
@@ -243,7 +299,7 @@ class _particularProducteState extends State<particularProducte> {
                                                     controllerPro
                                                             .saveDetailsProduct[
                                                         "name"],
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         fontSize: 18,
@@ -258,7 +314,7 @@ class _particularProducteState extends State<particularProducte> {
                                               children: [
                                                 Text(
                                                   "price : ".tr,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                       color: Color.fromARGB(
                                                           255, 177, 14, 90),
                                                       fontWeight:
@@ -271,8 +327,8 @@ class _particularProducteState extends State<particularProducte> {
                                                     controllerPro
                                                                 .saveDetailsProduct[
                                                             "price"] +
-                                                        " \$",
-                                                    style: TextStyle(
+                                                        " JOD \t ",
+                                                    style: const TextStyle(
                                                         color: Color.fromARGB(
                                                             255, 177, 14, 90),
                                                         fontWeight:
@@ -283,6 +339,172 @@ class _particularProducteState extends State<particularProducte> {
                                               ],
                                             ),
                                           ),
+                                          controllerPro.saveDetailsProduct[
+                                                          "sizes"]
+                                                      .toString() !=
+                                                  "[]"
+                                              ? Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 15, right: 15),
+                                                  child: Container(
+                                                    child: Text(
+                                                      "Sizes : ".tr,
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 14,
+                                                          fontFamily:
+                                                              'Almarai'),
+                                                    ),
+                                                  ),
+                                                )
+                                              : Container(),
+                                          controllerPro.saveDetailsProduct[
+                                                          "sizes"]
+                                                      .toString() !=
+                                                  "[]"
+                                              ? SizedBox(
+                                                  height: 100,
+                                                  width: MediaQuery.of(context)
+                                                      .size
+                                                      .width,
+                                                  child: ListView.builder(
+                                                      itemCount: controllerPro
+                                                          .saveDetailsProduct[
+                                                              "sizes"]
+                                                          .length,
+                                                      scrollDirection:
+                                                          Axis.horizontal,
+                                                      itemBuilder:
+                                                          (BuildContext context,
+                                                              int i) {
+                                                        return Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  left: 10,
+                                                                  right: 10),
+                                                          child: InkWell(
+                                                            onTap: () {
+                                                              setState(() {
+                                                                size = controllerPro
+                                                                            .saveDetailsProduct[
+                                                                        "sizes"]
+                                                                    [i]["size"];
+                                                              });
+                                                              ScaffoldMessenger
+                                                                      .of(
+                                                                          context)
+                                                                  .showSnackBar(
+                                                                      SnackBar(
+                                                                content: Text(controllerPro
+                                                                            .saveDetailsProduct[
+                                                                        "sizes"]
+                                                                    [
+                                                                    i]["size"]),
+                                                              ));
+                                                            },
+                                                            child: CircleAvatar(
+                                                              radius: 20,
+                                                              backgroundColor:
+                                                                  MyColors
+                                                                      .color2,
+                                                              child: Text(controllerPro
+                                                                          .saveDetailsProduct[
+                                                                      "sizes"]
+                                                                  [i]["size"]),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }),
+                                                )
+                                              : Container(),
+                                          controllerPro.saveDetailsProduct[
+                                                          "colors"]
+                                                      .toString() !=
+                                                  "[]"
+                                              ? Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 15, right: 15),
+                                                  child: Container(
+                                                    child: Text(
+                                                      "Colors : ".tr,
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 14,
+                                                          fontFamily:
+                                                              'Almarai'),
+                                                    ),
+                                                  ),
+                                                )
+                                              : Container(),
+                                          controllerPro.saveDetailsProduct[
+                                                          "colors"]
+                                                      .toString() !=
+                                                  "[]"
+                                              ? SizedBox(
+                                                  height: 100,
+                                                  width: MediaQuery.of(context)
+                                                      .size
+                                                      .width,
+                                                  child: ListView.builder(
+                                                      itemCount: controllerPro
+                                                          .saveDetailsProduct[
+                                                              "colors"]
+                                                          .length,
+                                                      scrollDirection:
+                                                          Axis.horizontal,
+                                                      itemBuilder:
+                                                          (BuildContext context,
+                                                              int i) {
+                                                        return Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  left: 10,
+                                                                  right: 10),
+                                                          child: InkWell(
+                                                            onTap: () {
+                                                              setState(() {
+                                                                color = controllerPro
+                                                                            .saveDetailsProduct[
+                                                                        "colors"]
+                                                                    [
+                                                                    i]["color"];
+                                                              });
+                                                              ScaffoldMessenger
+                                                                      .of(
+                                                                          context)
+                                                                  .showSnackBar(
+                                                                      SnackBar(
+                                                                content: CircleAvatar(
+                                                                    radius: 20,
+                                                                    backgroundColor: Color(int.parse(controllerPro
+                                                                        .saveDetailsProduct[
+                                                                            "colors"]
+                                                                            [i][
+                                                                            "color"]
+                                                                        .replaceAll(
+                                                                            "#",
+                                                                            "0xff")))),
+                                                              ));
+                                                            },
+                                                            child: CircleAvatar(
+                                                                radius: 20,
+                                                                backgroundColor: Color(int.parse(controllerPro
+                                                                    .saveDetailsProduct[
+                                                                        "colors"]
+                                                                        [i][
+                                                                        "color"]
+                                                                    .replaceAll(
+                                                                        "#",
+                                                                        "0xff")))),
+                                                          ),
+                                                        );
+                                                      }),
+                                                )
+                                              : Container(),
                                           Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 15, right: 15),

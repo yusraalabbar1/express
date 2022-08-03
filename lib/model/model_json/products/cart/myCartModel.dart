@@ -48,6 +48,8 @@ class Datum {
     this.id,
     this.product,
     this.quantity,
+    this.size,
+    this.color,
     this.isChecked,
     this.extras,
   });
@@ -55,6 +57,8 @@ class Datum {
   int? id;
   Product? product;
   String? quantity;
+  String? size;
+  String? color;
   int? isChecked;
   List<dynamic>? extras;
 
@@ -62,6 +66,8 @@ class Datum {
         id: json["id"],
         product: Product.fromJson(json["product"]),
         quantity: json["quantity"],
+        size: json["size"],
+        color: json["color"],
         isChecked: json["is_checked"],
         extras: List<dynamic>.from(json["extras"].map((x) => x)),
       );
@@ -70,6 +76,8 @@ class Datum {
         "id": id,
         "product": product!.toJson(),
         "quantity": quantity,
+        "size": size,
+        "color": color,
         "is_checked": isChecked,
         "extras": List<dynamic>.from(extras!.map((x) => x)),
       };

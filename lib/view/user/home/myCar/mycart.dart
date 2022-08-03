@@ -114,138 +114,181 @@ class _myCartState extends State<myCart> {
                                         Container(
                                           width:
                                               MediaQuery.of(context).size.width,
-                                          height: 100,
+                                          // height: 170,
                                           color: Colors.cyan[50],
-                                          child: Center(
-                                              child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
+                                          child: Column(
                                             children: [
-                                              CircleAvatar(
-                                                radius: 20,
-                                                backgroundColor: Colors.red,
-                                                child: IconButton(
-                                                    onPressed: () async {
-                                                      await DeletFromCart(
-                                                          controllerPro
-                                                                  .saveMyMyCart[i]
-                                                              ["product"]["id"],
-                                                          context);
-                                                      MyCart();
-                                                    },
-                                                    icon: Icon(
-                                                      Icons.delete,
-                                                      color: Colors.white,
-                                                    )),
-                                              ),
-                                              Row(
+                                              controllerPro.saveMyMyCart[i]
+                                                          ["size"] !=
+                                                      null
+                                                  ? Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              12.0),
+                                                      child: Row(
+                                                        children: [
+                                                          Text("Sizes : ".tr),
+                                                          const SizedBox(
+                                                            width: 10,
+                                                          ),
+                                                          Text(controllerPro
+                                                              .saveMyMyCart[i]
+                                                                  ["size"]
+                                                              .toString()),
+                                                        ],
+                                                      ),
+                                                    )
+                                                  : Container(),
+                                              controllerPro.saveMyMyCart[i]
+                                                          ["color"] !=
+                                                      null
+                                                  ? Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              12.0),
+                                                      child: Row(
+                                                        children: [
+                                                          Text("Colors : ".tr),
+                                                          const SizedBox(
+                                                            width: 7,
+                                                          ),
+                                                          CircleAvatar(
+                                                              radius: 20,
+                                                              backgroundColor: Color(
+                                                                  int.parse(controllerPro
+                                                                      .saveMyMyCart[
+                                                                          i][
+                                                                          "color"]
+                                                                      .replaceAll(
+                                                                          "#",
+                                                                          "0xff")))),
+                                                        ],
+                                                      ),
+                                                    )
+                                                  : Container(),
+                                              Center(
+                                                  child: Row(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                    MainAxisAlignment
+                                                        .spaceAround,
                                                 children: [
                                                   CircleAvatar(
-                                                    backgroundColor:
-                                                        MyColors.new4,
+                                                    radius: 20,
+                                                    backgroundColor: Colors.red,
                                                     child: IconButton(
                                                         onPressed: () async {
-                                                          await UpdatFromCart(
+                                                          await DeletFromCart(
                                                               controllerPro
-                                                                  .saveMyMyCart[
-                                                                      i][
-                                                                      "product"]
-                                                                      ["id"]
-                                                                  .toString(),
-                                                              (int.parse(controllerPro
-                                                                              .saveMyMyCart[i]
-                                                                          [
-                                                                          "quantity"]) +
-                                                                      1)
-                                                                  .toString());
-                                                          await MyCart();
-                                                        },
-                                                        icon: Icon(
-                                                          Icons.add_box,
-                                                          color: Colors.white,
-                                                        )),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 7,
-                                                  ),
-                                                  Text(
-                                                      controllerPro
-                                                          .saveMyMyCart[i]
-                                                              ["quantity"]
-                                                          .toString(),
-                                                      style: TextStyle(
-                                                          color: MyColors.new3,
-                                                          fontSize: 16)),
-                                                  // FutureBuilder(
-                                                  //     future: MyCart(),
-                                                  //     builder:
-                                                  //         ((context, snapshot) {
-                                                  //       return snapshot.hasData
-                                                  //           ? Text(
-                                                  //               controllerPro
-                                                  //                   .saveMyMyCart[
-                                                  //                       i][
-                                                  //                       "quantity"]
-                                                  //                   .toString(),
-                                                  //               style:
-                                                  //                   TextStyle(
-                                                  //                 color: MyColors
-                                                  //                     .color2,
-                                                  //                 fontSize: 18,
-                                                  //               ))
-                                                  //           : CircularProgressIndicator();
-                                                  //     })),
-                                                  SizedBox(
-                                                    width: 7,
-                                                  ),
-                                                  CircleAvatar(
-                                                    backgroundColor:
-                                                        MyColors.new4,
-                                                    child: IconButton(
-                                                        onPressed: () async {
-                                                          if (int.parse(controllerPro
                                                                       .saveMyMyCart[i]
                                                                   [
-                                                                  "quantity"]) !=
-                                                              1) {
-                                                            await UpdatFromCart(
-                                                                controllerPro
-                                                                    .saveMyMyCart[
-                                                                        i][
-                                                                        "product"]
-                                                                        ["id"]
-                                                                    .toString(),
-                                                                (int.parse(controllerPro.saveMyMyCart[i]
-                                                                            [
-                                                                            "quantity"]) -
-                                                                        1)
-                                                                    .toString());
-                                                            await MyCart();
-                                                          } else {
-                                                            print("cannt");
-                                                          }
+                                                                  "product"]["id"],
+                                                              context);
+                                                          MyCart();
                                                         },
                                                         icon: Icon(
-                                                          Icons.remove,
+                                                          Icons.delete,
                                                           color: Colors.white,
                                                         )),
-                                                  )
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      CircleAvatar(
+                                                        backgroundColor:
+                                                            MyColors.new4,
+                                                        child: IconButton(
+                                                            onPressed:
+                                                                () async {
+                                                              await UpdatFromCart(
+                                                                  controllerPro
+                                                                      .saveMyMyCart[
+                                                                          i][
+                                                                          "product"]
+                                                                          ["id"]
+                                                                      .toString(),
+                                                                  (int.parse(controllerPro.saveMyMyCart[i]
+                                                                              [
+                                                                              "quantity"]) +
+                                                                          1)
+                                                                      .toString());
+                                                              await MyCart();
+                                                            },
+                                                            icon: Icon(
+                                                              Icons.add_box,
+                                                              color:
+                                                                  Colors.white,
+                                                            )),
+                                                      ),
+                                                      SizedBox(
+                                                        width: 7,
+                                                      ),
+                                                      Text(
+                                                          controllerPro
+                                                              .saveMyMyCart[i]
+                                                                  ["quantity"]
+                                                              .toString(),
+                                                          style: TextStyle(
+                                                              color:
+                                                                  MyColors.new3,
+                                                              fontSize: 16)),
+                                                      SizedBox(
+                                                        width: 7,
+                                                      ),
+                                                      CircleAvatar(
+                                                        backgroundColor:
+                                                            MyColors.new4,
+                                                        child: IconButton(
+                                                            onPressed:
+                                                                () async {
+                                                              if (int.parse(controllerPro
+                                                                          .saveMyMyCart[i]
+                                                                      [
+                                                                      "quantity"]) !=
+                                                                  1) {
+                                                                await UpdatFromCart(
+                                                                    controllerPro
+                                                                        .saveMyMyCart[
+                                                                            i][
+                                                                            "product"]
+                                                                            [
+                                                                            "id"]
+                                                                        .toString(),
+                                                                    (int.parse(controllerPro.saveMyMyCart[i]["quantity"]) -
+                                                                            1)
+                                                                        .toString());
+                                                                await MyCart();
+                                                              } else {
+                                                                print("cannt");
+                                                              }
+                                                            },
+                                                            icon: Icon(
+                                                              Icons.remove,
+                                                              color:
+                                                                  Colors.white,
+                                                            )),
+                                                      )
+                                                    ],
+                                                  ),
                                                 ],
-                                              ),
+                                              )),
+                                              SizedBox(
+                                                height: 15,
+                                              )
                                             ],
-                                          )),
+                                          ),
                                         ),
                                       ],
                                       subtitle: Text(
-                                          (int.parse(controllerPro
-                                                          .saveMyMyCart[i]
-                                                      ["product"]["price"]) *
-                                                  int.parse(controllerPro
-                                                          .saveMyMyCart[i]
-                                                      ["quantity"]))
-                                              .toString(),
+                                          (int.parse(controllerPro.saveMyMyCart[
+                                                              i]["product"]
+                                                          ["price"]) *
+                                                      int.parse(controllerPro
+                                                              .saveMyMyCart[i]
+                                                          ["quantity"]))
+                                                  .toString() +
+                                              "JOD \t",
                                           style: TextStyle(
                                             fontSize: 11,
                                             fontFamily: 'Almarai',

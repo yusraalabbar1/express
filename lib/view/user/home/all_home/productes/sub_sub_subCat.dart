@@ -156,7 +156,8 @@ class _sub3catState extends State<sub3cat> {
                                                                               c = 1;
                                                                               controllerPro.saveAllProductCategory[index]["added_to_favourites"] = 1;
                                                                             });
-                                                                            await addFavorite(controllerPro.saveAllProductCategory[index]["id"]);
+                                                                            await addFavorite(context,
+                                                                                controllerPro.saveAllProductCategory[index]["id"]);
                                                                             MyFavorite();
                                                                           } else if (controllerPro.saveAllProductCategory[index]["added_to_favourites"] ==
                                                                               1) {
@@ -192,9 +193,10 @@ class _sub3catState extends State<sub3cat> {
                                                     Expanded(
                                                       child: Container(
                                                         child: Text(
-                                                          controllerPro
-                                                                  .saveAllProductCategory[
-                                                              index]["price"],
+                                                          controllerPro.saveAllProductCategory[
+                                                                      index]
+                                                                  ["price"] +
+                                                              " JOD \t ",
                                                           style: TextStyle(
                                                               color:
                                                                   Colors.black),

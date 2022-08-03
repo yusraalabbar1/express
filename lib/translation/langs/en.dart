@@ -29,7 +29,7 @@ const Map<String, String> en = {
   "desc": "Descending order",
   "New In": "New In",
   "view all": "view all",
-  "Soled by : ": "Soled by : ",
+  "Solde by : ": "Solde by : ",
   "Name : ": "Name : ",
   "price : ": "Price : ",
   "Desctiption : ": "Desctiption : ",
@@ -89,4 +89,7 @@ const Map<String, String> en = {
   "Show more": "Show more",
   "Show less": "Show less",
   "All Orders": "All Orders",
+  "Sizes : ": "Sizes : ",
+  "Colors : ": "Colors : ",
+  "All images": "All images"
 };

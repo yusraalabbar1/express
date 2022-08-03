@@ -28,7 +28,7 @@ const Map<String, String> ar = {
   "desc": "ترتيب حسب السعر تنازليا",
   "New In": "كل جديد",
   "view all": "الكل",
-  "Soled by : ": "صنع بواسطة",
+  "Solde by : ": "صنع بواسطة",
   "Name : ": "الاسم:",
   "price : ": "السعر:",
   "Desctiption : ": "الوصف:",
@@ -89,5 +89,8 @@ const Map<String, String> ar = {
   "Show All Orders": "رؤية كل الطلبات",
   "Show more": "عرض المزيد",
   "Show less": "عرض اقل",
-  "All Orders": "كل الطلبات"
+  "All Orders": "كل الطلبات",
+  "Sizes : ": "المقاسات",
+  "Colors : ": "الألوان",
+  "All images": "كل الصور"
 };

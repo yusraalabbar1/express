@@ -70,7 +70,7 @@ class _signupState extends State<signup> {
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
                           hintText: "Name".tr,
-                          suffixIcon: IconButton(
+                          prefixIcon: IconButton(
                               icon: Icon(Icons.person), onPressed: () {}),
                         ),
                         validator: (text) {
@@ -102,7 +102,8 @@ class _signupState extends State<signup> {
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
                           hintText: "Mobile Number".tr,
-                          suffixIcon: IconButton(
+                          suffix: Text("+962"),
+                          prefixIcon: IconButton(
                               icon: Icon(Icons.mobile_friendly_outlined),
                               onPressed: () {}),
                         ),
@@ -133,7 +134,7 @@ class _signupState extends State<signup> {
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
                           hintText: "City".tr,
-                          suffixIcon: IconButton(
+                          prefixIcon: IconButton(
                               icon: Icon(Icons.location_city),
                               onPressed: () {}),
                         ),
@@ -166,7 +167,7 @@ class _signupState extends State<signup> {
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
                           hintText: "Area".tr,
-                          suffixIcon: IconButton(
+                          prefixIcon: IconButton(
                               icon: Icon(Icons.home), onPressed: () {}),
                         ),
                         validator: (text) {
@@ -209,7 +210,7 @@ class _signupState extends State<signup> {
                         obscureText: _isObscure,
                         decoration: InputDecoration(
                           hintText: "PassWord".tr,
-                          suffixIcon: IconButton(
+                          prefixIcon: IconButton(
                               icon: Icon(_isObscure
                                   ? Icons.visibility_off
                                   : Icons.visibility),
@@ -253,7 +254,7 @@ class _signupState extends State<signup> {
                       obscureText: _isObscure,
                       decoration: InputDecoration(
                         hintText: "Confirme PassWord".tr,
-                        suffixIcon: IconButton(
+                        prefixIcon: IconButton(
                             icon: Icon(_isObscure
                                 ? Icons.visibility_off
                                 : Icons.visibility),

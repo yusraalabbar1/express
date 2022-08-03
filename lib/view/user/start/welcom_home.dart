@@ -40,17 +40,27 @@ class _welcomHomeState extends State<welcomHome>
     controller.SaveProfilephotoProfile(preferences.getString('photoProfile'));
     controller.SaveProfiledefaultAddress(preferences.getString('city'));
     controller.SaveProfiledefaultAddressarea(preferences.getString('area'));
-    latestProduct();
-    sitting();
-    banner();
-    AllProduct(1);
-    populer();
-    AllCategories(lang);
-    // SubCategories(30);
-    MyFavorite();
-    MyCart();
-    notificationApi(1);
-    MyOrder(1);
+    if (preferences.getString("sendMen") == "guest") {
+      print("guest");
+      banner();
+      AllCategories(lang);
+      AllProduct(1);
+      latestProduct();
+      populer();
+    } else {
+      print("user");
+      latestProduct();
+      sitting();
+      banner();
+      AllProduct(1);
+      populer();
+      AllCategories(lang);
+      // SubCategories(30);
+      MyFavorite();
+      MyCart();
+      notificationApi(1);
+      MyOrder(1);
+    }
   }
 
   Timer? searchOnStoppedTyping;
