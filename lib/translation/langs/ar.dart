@@ -28,7 +28,7 @@ const Map<String, String> ar = {
   "desc": "ترتيب حسب السعر تنازليا",
   "New In": "كل جديد",
   "view all": "الكل",
-  "Solde by : ": "صنع بواسطة",
+  "Sold by : ": "صنع بواسطة",
   "Name : ": "الاسم:",
   "price : ": "السعر:",
   "Desctiption : ": "الوصف:",
@@ -72,10 +72,10 @@ const Map<String, String> ar = {
   "Yes": "نعم",
   "No": "لا",
   "status: ": "الحالة: ",
-  "English": "انكليزي",
+  "English": "English",
   "Arabic": "عربي",
   "Change Language": "اختر اللغة",
-  "all": "الرئيسية",
+  "All": "الرئيسية",
   "Profile": "البروفايل",
   "My Orders": "الطلبات",
   "Likes": "المفضلة",
@@ -92,5 +92,8 @@ const Map<String, String> ar = {
   "All Orders": "كل الطلبات",
   "Sizes : ": "المقاسات",
   "Colors : ": "الألوان",
-  "All images": "كل الصور"
+  "All images": "كل الصور",
+  "No products found": "لا توجد منتجات حاليا",
+  "New price : ": "السعر الجديد: ",
+  "Discount : ": "الخصم : "
 };

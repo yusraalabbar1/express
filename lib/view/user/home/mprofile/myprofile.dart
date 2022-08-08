@@ -161,23 +161,31 @@ class _myProfileState extends State<myProfile> {
                                       backgroundColor: MyColors.new4,
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(50),
-                                        child: imageFile == null
-                                            ? Image.network(
-                                                controller
-                                                    .saveProfilephotoProfile,
-                                                width: 44,
-                                                height: 44,
-                                                fit: BoxFit.fill,
-                                              )
-                                            : Image.file(
-                                                File(imageFile!.path),
-                                                errorBuilder: (context,
-                                                        exception,
-                                                        stackTrack) =>
-                                                    Icon(
-                                                  Icons.error,
-                                                ),
-                                              ),
+                                        child:
+                                            controller.saveTypeUser != "guest"
+                                                ? imageFile == null
+                                                    ? Image.network(
+                                                        controller
+                                                            .saveProfilephotoProfile,
+                                                        width: 44,
+                                                        height: 44,
+                                                        fit: BoxFit.fill,
+                                                      )
+                                                    : Image.file(
+                                                        File(imageFile!.path),
+                                                        errorBuilder: (context,
+                                                                exception,
+                                                                stackTrack) =>
+                                                            Icon(
+                                                          Icons.error,
+                                                        ),
+                                                      )
+                                                : Image.network(
+                                                    "https://simg.nicepng.com/png/small/128-1280406_view-user-icon-png-user-circle-icon-png.png",
+                                                    width: 44,
+                                                    height: 44,
+                                                    fit: BoxFit.fill,
+                                                  ),
                                       ),
                                     ),
                                   )
@@ -242,8 +250,10 @@ class _myProfileState extends State<myProfile> {
                                     alignment: Alignment.topLeft,
                                     margin: EdgeInsets.all(30),
                                     child: Text(
-                                        controller.saveProfileName != null
-                                            ? controller.saveProfileName
+                                        controller.saveTypeUser != "guest"
+                                            ? controller.saveProfileName != null
+                                                ? controller.saveProfileName
+                                                : ""
                                             : "",
                                         style: TextStyle(
                                             color: MyColors.color1,
@@ -286,8 +296,11 @@ class _myProfileState extends State<myProfile> {
                                     margin: EdgeInsets.all(30),
                                     alignment: Alignment.topLeft,
                                     child: Text(
-                                        controller.saveProfilemobile != null
-                                            ? controller.saveProfilemobile
+                                        controller.saveTypeUser != "guest"
+                                            ? controller.saveProfilemobile !=
+                                                    null
+                                                ? controller.saveProfilemobile
+                                                : ""
                                             : "",
                                         style: TextStyle(
                                             color: MyColors.color1,
@@ -330,10 +343,12 @@ class _myProfileState extends State<myProfile> {
                                     margin: EdgeInsets.all(30),
                                     alignment: Alignment.topLeft,
                                     child: Text(
-                                        controller.saveProfiledefaultAddress !=
-                                                null
-                                            ? controller
-                                                .saveProfiledefaultAddress
+                                        controller.saveTypeUser != "guest"
+                                            ? controller.saveProfiledefaultAddress !=
+                                                    null
+                                                ? controller
+                                                    .saveProfiledefaultAddress
+                                                : ""
                                             : "",
                                         style: TextStyle(
                                             color: MyColors.color1,
@@ -376,10 +391,12 @@ class _myProfileState extends State<myProfile> {
                                     margin: EdgeInsets.all(30),
                                     alignment: Alignment.topLeft,
                                     child: Text(
-                                        controller.saveProfiledefaultAddressarea !=
-                                                null
-                                            ? controller
-                                                .saveProfiledefaultAddressarea
+                                        controller.saveTypeUser != "guest"
+                                            ? controller.saveProfiledefaultAddressarea !=
+                                                    null
+                                                ? controller
+                                                    .saveProfiledefaultAddressarea
+                                                : ""
                                             : "",
                                         style: TextStyle(
                                             color: MyColors.color1,
@@ -393,64 +410,69 @@ class _myProfileState extends State<myProfile> {
                           SizedBox(
                             height: 30,
                           ),
-                          Container(
-                            width: 150,
-                            height: 37,
-                            child: RaisedButton.icon(
-                              onPressed: () {
-                                print('Button Clicked.');
-                                showLoading(context);
-                              },
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(25.0))),
-                              label: Text(
-                                "Edit information".tr,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 11,
-                                    fontFamily: 'Almarai'),
-                              ),
-                              icon: Icon(
-                                Icons.edit,
-                                color: Colors.white,
-                              ),
-                              textColor: Colors.white,
-                              splashColor: Colors.white,
-                              color: MyColors.new4,
-                            ),
-                          ),
+                          controller.saveTypeUser != "guest"
+                              ? Container(
+                                  width: 150,
+                                  height: 37,
+                                  child: RaisedButton.icon(
+                                    onPressed: () {
+                                      print('Button Clicked.');
+                                      showLoading(context);
+                                    },
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(25.0))),
+                                    label: Text(
+                                      "Edit information".tr,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 11,
+                                          fontFamily: 'Almarai'),
+                                    ),
+                                    icon: Icon(
+                                      Icons.edit,
+                                      color: Colors.white,
+                                    ),
+                                    textColor: Colors.white,
+                                    splashColor: Colors.white,
+                                    color: MyColors.new4,
+                                  ),
+                                )
+                              : Container(),
                           SizedBox(
                             height: 30,
                           ),
-                          Container(
-                            width: 150,
-                            height: 37,
-                            child: RaisedButton.icon(
-                              onPressed: () {
-                                print('Button Clicked.');
-                                // showLoading(context);
-                                Navigator.of(context).pushNamed("editPassword");
-                              },
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(25.0))),
-                              label: Text(
-                                "Edit password".tr,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 11,
-                                    fontFamily: 'Almarai'),
-                              ),
-                              icon: Icon(
-                                Icons.edit,
-                                color: Colors.white,
-                              ),
-                              textColor: Colors.white,
-                              splashColor: Colors.white,
-                              color: MyColors.new4,
-                            ),
-                          ),
+                          controller.saveTypeUser != "guest"
+                              ? Container(
+                                  width: 150,
+                                  height: 37,
+                                  child: RaisedButton.icon(
+                                    onPressed: () {
+                                      print('Button Clicked.');
+                                      // showLoading(context);
+                                      Navigator.of(context)
+                                          .pushNamed("editPassword");
+                                    },
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(25.0))),
+                                    label: Text(
+                                      "Edit password".tr,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 11,
+                                          fontFamily: 'Almarai'),
+                                    ),
+                                    icon: Icon(
+                                      Icons.edit,
+                                      color: Colors.white,
+                                    ),
+                                    textColor: Colors.white,
+                                    splashColor: Colors.white,
+                                    color: MyColors.new4,
+                                  ),
+                                )
+                              : Container(),
                         ],
                       );
                     })),

@@ -105,7 +105,7 @@ Widget slider(context, images, pagePosition, active) {
       curve: Curves.easeInOutCubic,
       margin: EdgeInsets.all(margin),
       decoration: BoxDecoration(
-          color: MyColors.new4,
+          color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(20)),
           image: DecorationImage(
             image: CachedNetworkImageProvider(images[pagePosition]["image"]),

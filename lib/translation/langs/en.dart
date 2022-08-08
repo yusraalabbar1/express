@@ -29,7 +29,7 @@ const Map<String, String> en = {
   "desc": "Descending order",
   "New In": "New In",
   "view all": "view all",
-  "Solde by : ": "Solde by : ",
+  "Sold by : ": "Sold by : ",
   "Name : ": "Name : ",
   "price : ": "Price : ",
   "Desctiption : ": "Desctiption : ",
@@ -77,7 +77,7 @@ const Map<String, String> en = {
   "English": "English",
   "Arabic": "Arabic",
   "Change Language": "Change Language",
-  "all": "all",
+  "All": "All",
   "Are you sure you want to log out?": "Are you sure you want to log out?",
   "Change password": "Change password",
   "current password": "current password",
@@ -91,5 +91,8 @@ const Map<String, String> en = {
   "All Orders": "All Orders",
   "Sizes : ": "Sizes : ",
   "Colors : ": "Colors : ",
-  "All images": "All images"
+  "All images": "All images",
+  "No products found": "No products found",
+  "New price : ": "New price : ",
+  "Discount : ": "Discount : "
 };

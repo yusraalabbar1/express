@@ -16,7 +16,7 @@ AllCategories(lang) async {
   List<Map<dynamic, dynamic>> all = [
     {
       "id": 0,
-      "name": "all".tr,
+      "name": "All".tr,
       "image":
           "https://myexpress.aqdeveloper.tech/core/public/storage/categories/8/QAkzOJ8dcGQaxaHEPxMOAaqkvjdv4m14MjjCq3rL.jpg"
     }

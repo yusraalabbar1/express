@@ -76,20 +76,30 @@ class _newProductState extends State<newProduct> {
                                           .toString()),
                                   fit: BoxFit.cover,
                                 ),
-                                color: MyColors.new4,
+                                color: Colors.white,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20))),
                             // child: Text(
                             //     controllerPro.saveNewProduct[index]["name"].toString())
                           ),
                           Positioned(
-                              child: IconButton(
+                              child: Stack(
+                            children: [
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.favorite_border,
+                                  color: Colors.black,
+                                  size: 23,
+                                ),
+                              ),
+                              IconButton(
                                   icon: Icon(
                                     Icons.favorite_sharp,
                                     color: controllerPro.saveNewProduct[index]
                                                 ["added_to_favourites"] ==
                                             1
-                                        ? Colors.red
+                                        ? Colors.black
                                         : Colors.white,
                                     size: 20,
                                   ),
@@ -143,7 +153,9 @@ class _newProductState extends State<newProduct> {
                                         MyFavorite();
                                       }
                                     }
-                                  }))
+                                  }),
+                            ],
+                          ))
                         ],
                       ));
                 },

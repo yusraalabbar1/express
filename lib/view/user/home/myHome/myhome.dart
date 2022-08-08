@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:express/control/controllerProduct.dart';
+import 'package:express/model/api/categories/productCategory.dart';
 import 'package:express/model/api/categories/subCat.dart';
 import 'package:express/model/api/products/all_product.dart';
 import 'package:express/model/api/setting/setting.dart';
@@ -114,19 +115,18 @@ class _myHomeState extends State<myHome> with SingleTickerProviderStateMixin {
                           });
                         },
                         child: Center(
-                            child: Container(
-                          width: 70,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color:
+                          child: Chip(
+                            // elevation: 20,
+                            padding: EdgeInsets.all(8),
+                            backgroundColor:
                                 i == index ? MyColors.color2 : MyColors.color3,
-                          ),
-                          child: Center(
-                            child: Text(controllerPro.saveAllCateg[index]
+                            shadowColor: Colors.black,
+
+                            label: Text(controllerPro.saveAllCateg[index]
                                     ["name"]
-                                .toString()),
+                                .toString()), //Text
                           ),
-                        )),
+                        ),
                       ),
                     ),
                   ));
@@ -156,10 +156,32 @@ class _myHomeState extends State<myHome> with SingleTickerProviderStateMixin {
                                         return InkWell(
                                           onTap: () async {
                                             print("object");
-                                            await SubSubCategories(controllerPro
-                                                .saveSubCateg[index]["id"]);
-                                            Navigator.of(context)
-                                                .pushNamed("subSubCat");
+                                            print(controllerPro
+                                                    .saveSubCateg[index]
+                                                ["has_sub"]);
+                                            if (controllerPro
+                                                        .saveSubCateg[index]
+                                                    ["has_sub"] ==
+                                                1) {
+                                              await SubSubCategories(
+                                                  controllerPro
+                                                          .saveSubCateg[index]
+                                                      ["id"]);
+                                              Navigator.of(context)
+                                                  .pushNamed("subSubCat");
+                                            } else {
+                                              await CategoryProduct(
+                                                  controllerPro
+                                                          .saveSubCateg[index]
+                                                      ["id"],
+                                                  1);
+                                              controllerPro.SaveProCatId(
+                                                  controllerPro
+                                                          .saveSubCateg[index]
+                                                      ["id"]);
+                                              Navigator.of(context)
+                                                  .pushNamed("sub3cat");
+                                            }
                                           },
                                           child: Container(
                                             alignment: Alignment.center,

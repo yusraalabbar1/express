@@ -1,6 +1,8 @@
+import 'package:express/control/controller.dart';
 import 'package:express/utilits/colors.dart';
 import 'package:express/view/widget_style/style_main.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class welcom2 extends StatefulWidget {
@@ -13,6 +15,7 @@ class welcom2 extends StatefulWidget {
 var sendMen;
 
 class _welcom2State extends State<welcom2> with AutomaticKeepAliveClientMixin {
+  homecontroller controller = Get.put(homecontroller());
   @override
   bool get wantKeepAlive => true;
   Future<bool> _onwillPop() async {
@@ -113,6 +116,7 @@ class _welcom2State extends State<welcom2> with AutomaticKeepAliveClientMixin {
                             SharedPreferences preferences =
                                 await SharedPreferences.getInstance();
                             preferences.setString("sendMen", "user");
+                            controller.SaveTypeUser("user");
                             setState(() {
                               sendMen = "user";
                             });
@@ -195,6 +199,7 @@ class _welcom2State extends State<welcom2> with AutomaticKeepAliveClientMixin {
                         SharedPreferences preferences =
                             await SharedPreferences.getInstance();
                         preferences.setString("sendMen", "guest");
+                        controller.SaveTypeUser("guest");
                         setState(() {
                           sendMen = "guest";
                         });
@@ -204,6 +209,7 @@ class _welcom2State extends State<welcom2> with AutomaticKeepAliveClientMixin {
                       child: Text("الدخول كضيف",
                           style: TextStyle(
                               fontSize: 15,
+                              fontWeight: FontWeight.bold,
                               color: Color.fromARGB(255, 67, 67, 69),
                               fontFamily: 'Almarai')),
                     ),

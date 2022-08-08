@@ -31,6 +31,14 @@ class _particularProducteState extends State<particularProducte> {
 
   List sized = ["m", "L", "XL"];
   List colored = [Colors.red, Colors.blue];
+  int? tappedIndex;
+  int? tappedIndexColor;
+  @override
+  void initState() {
+    super.initState();
+    tappedIndex = 0;
+    tappedIndexColor = 0;
+  }
 
   var c;
   var cc;
@@ -157,6 +165,7 @@ class _particularProducteState extends State<particularProducte> {
             height: MediaQuery.of(context).size.height / 2,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
+              color: Color.fromARGB(255, 222, 242, 238),
               image: DecorationImage(
                   image: CachedNetworkImageProvider(controllerPro
                       .saveDetailsProduct["images"][0]["image"]
@@ -175,7 +184,10 @@ class _particularProducteState extends State<particularProducte> {
                   actions: [
                     Row(
                       children: [
-                        Text("All images".tr),
+                        Text(
+                          "All images".tr,
+                          style: TextStyle(color: Colors.black),
+                        ),
                         IconButton(
                           onPressed: () {
                             images = [];
@@ -246,6 +258,8 @@ class _particularProducteState extends State<particularProducte> {
                                         ),
                                       ),
                                       child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
                                         children: [
                                           const SizedBox(
                                             height: 60,
@@ -255,50 +269,19 @@ class _particularProducteState extends State<particularProducte> {
                                             child: Row(
                                               children: [
                                                 Text(
-                                                  "Solde by : ".tr,
-                                                  style: const TextStyle(
-                                                      backgroundColor:
-                                                          Color.fromARGB(255,
-                                                              192, 230, 233),
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 20,
-                                                      fontFamily:
-                                                          'BAHNSCHRIFT'),
-                                                ),
-                                                Text(
-                                                    controllerPro.saveDetailsProduct[
-                                                            "vendor_2"]
-                                                        .toString(),
-                                                    style: const TextStyle(
-                                                        backgroundColor:
-                                                            Color.fromARGB(255,
-                                                                192, 230, 233),
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 20,
-                                                        fontFamily:
-                                                            'BAHNSCHRIFT'))
-                                              ],
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(15.0),
-                                            child: Row(
-                                              children: [
-                                                Text(
-                                                  "Name : ".tr,
+                                                  "Sold by : ".tr,
                                                   style: const TextStyle(
                                                       fontWeight:
                                                           FontWeight.bold,
-                                                      fontSize: 20,
+                                                      fontSize: 18,
                                                       fontFamily:
                                                           'BAHNSCHRIFT'),
                                                 ),
                                                 Text(
                                                     controllerPro
-                                                            .saveDetailsProduct[
-                                                        "name"],
+                                                        .saveDetailsProduct[
+                                                            "vendor_2"]
+                                                        .toString(),
                                                     style: const TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -315,49 +298,172 @@ class _particularProducteState extends State<particularProducte> {
                                                 Text(
                                                   "price : ".tr,
                                                   style: const TextStyle(
-                                                      color: Color.fromARGB(
-                                                          255, 177, 14, 90),
                                                       fontWeight:
                                                           FontWeight.bold,
-                                                      fontSize: 20,
+                                                      fontSize: 17,
+                                                      fontFamily:
+                                                          'BAHNSCHRIFT'),
+                                                ),
+                                                controllerPro.saveDetailsProduct[
+                                                            "discount"] !=
+                                                        null
+                                                    ? Text(
+                                                        controllerPro
+                                                                .saveDetailsProduct[
+                                                            "price"],
+                                                        style: const TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            decoration:
+                                                                TextDecoration
+                                                                    .lineThrough,
+                                                            fontSize: 17,
+                                                            fontFamily:
+                                                                'BAHNSCHRIFT'))
+                                                    : Text(
+                                                        controllerPro
+                                                                .saveDetailsProduct[
+                                                            "price"],
+                                                        style: const TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 17,
+                                                            fontFamily:
+                                                                'BAHNSCHRIFT')),
+                                              ],
+                                            ),
+                                          ),
+                                          controllerPro.saveDetailsProduct[
+                                                      "discount"] !=
+                                                  null
+                                              ? Padding(
+                                                  padding: const EdgeInsets.all(
+                                                      15.0),
+                                                  child: Row(
+                                                    children: [
+                                                      Expanded(
+                                                        child: Text(
+                                                          "Discount : ".tr,
+                                                          style: const TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 17,
+                                                              fontFamily:
+                                                                  'BAHNSCHRIFT'),
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: Text(
+                                                            controllerPro
+                                                                .saveDetailsProduct[
+                                                                    "discount"]
+                                                                .toString(),
+                                                            style: const TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 17,
+                                                                fontFamily:
+                                                                    'BAHNSCHRIFT')),
+                                                      ),
+                                                      Expanded(
+                                                        child: Text(
+                                                          "New price : ".tr,
+                                                          style: const TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 17,
+                                                              fontFamily:
+                                                                  'BAHNSCHRIFT'),
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: Text(
+                                                            (int.parse(controllerPro
+                                                                        .saveDetailsProduct[
+                                                                            "price"]
+                                                                        .toString()) -
+                                                                    int.parse(controllerPro
+                                                                        .saveDetailsProduct[
+                                                                            "discount"]
+                                                                        .toString()))
+                                                                .toString(),
+                                                            style: const TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 17,
+                                                                fontFamily:
+                                                                    'BAHNSCHRIFT')),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
+                                              : Container(),
+                                          Padding(
+                                            padding: const EdgeInsets.all(15.0),
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  "Name : ".tr,
+                                                  style: const TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 15,
                                                       fontFamily:
                                                           'BAHNSCHRIFT'),
                                                 ),
                                                 Text(
                                                     controllerPro
-                                                                .saveDetailsProduct[
-                                                            "price"] +
-                                                        " JOD \t ",
+                                                            .saveDetailsProduct[
+                                                        "name"],
                                                     style: const TextStyle(
-                                                        color: Color.fromARGB(
-                                                            255, 177, 14, 90),
                                                         fontWeight:
                                                             FontWeight.bold,
-                                                        fontSize: 20,
+                                                        fontSize: 15,
                                                         fontFamily:
                                                             'BAHNSCHRIFT'))
                                               ],
                                             ),
                                           ),
+                                          Divider(
+                                            color: MyColors.color2,
+                                            height:
+                                                5, //height spacing of divider
+                                            thickness:
+                                                3, //thickness of divier line
+                                            indent:
+                                                25, //spacing at the start of divider
+                                            endIndent:
+                                                25, //spacing at the end of divider
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
                                           controllerPro.saveDetailsProduct[
                                                           "sizes"]
                                                       .toString() !=
                                                   "[]"
-                                              ? Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 15, right: 15),
-                                                  child: Container(
-                                                    child: Text(
-                                                      "Sizes : ".tr,
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 14,
-                                                          fontFamily:
-                                                              'Almarai'),
-                                                    ),
-                                                  ),
+                                              ? Row(
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 15,
+                                                              right: 15),
+                                                      child: Text(
+                                                        "Sizes : ".tr,
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 15,
+                                                            fontFamily:
+                                                                'Almarai'),
+                                                      ),
+                                                    )
+                                                  ],
                                                 )
                                               : Container(),
                                           controllerPro.saveDetailsProduct[
@@ -387,32 +493,53 @@ class _particularProducteState extends State<particularProducte> {
                                                           child: InkWell(
                                                             onTap: () {
                                                               setState(() {
+                                                                tappedIndex = i;
                                                                 size = controllerPro
                                                                             .saveDetailsProduct[
                                                                         "sizes"]
                                                                     [i]["size"];
                                                               });
-                                                              ScaffoldMessenger
-                                                                      .of(
-                                                                          context)
-                                                                  .showSnackBar(
-                                                                      SnackBar(
-                                                                content: Text(controllerPro
-                                                                            .saveDetailsProduct[
-                                                                        "sizes"]
-                                                                    [
-                                                                    i]["size"]),
-                                                              ));
                                                             },
-                                                            child: CircleAvatar(
-                                                              radius: 20,
-                                                              backgroundColor:
-                                                                  MyColors
-                                                                      .color2,
-                                                              child: Text(controllerPro
-                                                                          .saveDetailsProduct[
-                                                                      "sizes"]
-                                                                  [i]["size"]),
+                                                            child: Container(
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                                border:
+                                                                    Border.all(
+                                                                  color: tappedIndex ==
+                                                                          i
+                                                                      ? Colors
+                                                                          .grey
+                                                                      : Colors
+                                                                          .black,
+                                                                  width: 2.0,
+                                                                ),
+                                                              ),
+                                                              child:
+                                                                  CircleAvatar(
+                                                                radius: 20,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .white,
+                                                                child: Text(
+                                                                  controllerPro
+                                                                              .saveDetailsProduct[
+                                                                          "sizes"]
+                                                                      [
+                                                                      i]["size"],
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontSize:
+                                                                          15,
+                                                                      fontFamily:
+                                                                          'Almarai'),
+                                                                ),
+                                                              ),
                                                             ),
                                                           ),
                                                         );
@@ -423,21 +550,27 @@ class _particularProducteState extends State<particularProducte> {
                                                           "colors"]
                                                       .toString() !=
                                                   "[]"
-                                              ? Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 15, right: 15),
-                                                  child: Container(
-                                                    child: Text(
-                                                      "Colors : ".tr,
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 14,
-                                                          fontFamily:
-                                                              'Almarai'),
-                                                    ),
-                                                  ),
+                                              ? Row(
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 15,
+                                                              right: 15),
+                                                      child: Container(
+                                                        child: Text(
+                                                          "Colors : ".tr,
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 15,
+                                                              fontFamily:
+                                                                  'Almarai'),
+                                                        ),
+                                                      ),
+                                                    )
+                                                  ],
                                                 )
                                               : Container(),
                                           controllerPro.saveDetailsProduct[
@@ -467,6 +600,8 @@ class _particularProducteState extends State<particularProducte> {
                                                           child: InkWell(
                                                             onTap: () {
                                                               setState(() {
+                                                                tappedIndexColor =
+                                                                    i;
                                                                 color = controllerPro
                                                                             .saveDetailsProduct[
                                                                         "colors"]
@@ -478,6 +613,10 @@ class _particularProducteState extends State<particularProducte> {
                                                                           context)
                                                                   .showSnackBar(
                                                                       SnackBar(
+                                                                duration:
+                                                                    const Duration(
+                                                                        seconds:
+                                                                            1),
                                                                 content: CircleAvatar(
                                                                     radius: 20,
                                                                     backgroundColor: Color(int.parse(controllerPro
@@ -490,33 +629,55 @@ class _particularProducteState extends State<particularProducte> {
                                                                             "0xff")))),
                                                               ));
                                                             },
-                                                            child: CircleAvatar(
-                                                                radius: 20,
-                                                                backgroundColor: Color(int.parse(controllerPro
-                                                                    .saveDetailsProduct[
-                                                                        "colors"]
-                                                                        [i][
-                                                                        "color"]
-                                                                    .replaceAll(
-                                                                        "#",
-                                                                        "0xff")))),
+                                                            child: Container(
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                                border:
+                                                                    Border.all(
+                                                                  color: tappedIndexColor ==
+                                                                          i
+                                                                      ? Colors
+                                                                          .grey
+                                                                      : Colors
+                                                                          .black,
+                                                                  width: 2.0,
+                                                                ),
+                                                              ),
+                                                              child: CircleAvatar(
+                                                                  radius: 20,
+                                                                  backgroundColor: Color(int.parse(controllerPro
+                                                                      .saveDetailsProduct[
+                                                                          "colors"]
+                                                                          [i][
+                                                                          "color"]
+                                                                      .replaceAll(
+                                                                          "#",
+                                                                          "0xff")))),
+                                                            ),
                                                           ),
                                                         );
                                                       }),
                                                 )
                                               : Container(),
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 15, right: 15),
-                                            child: Container(
-                                              child: Text(
-                                                "Desctiption : ".tr,
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 14,
-                                                    fontFamily: 'Almarai'),
+                                          Row(
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 15, right: 15),
+                                                child: Container(
+                                                  child: Text(
+                                                    "Desctiption : ".tr,
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 15,
+                                                        fontFamily: 'Almarai'),
+                                                  ),
+                                                ),
                                               ),
-                                            ),
+                                            ],
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.all(15.0),
@@ -534,8 +695,6 @@ class _particularProducteState extends State<particularProducte> {
                                                       .body!
                                                       .text,
                                                   style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
                                                       height: 1.5,
                                                       fontSize: 14,
                                                       fontFamily: 'Almarai')),
@@ -549,29 +708,6 @@ class _particularProducteState extends State<particularProducte> {
                               ),
                             ],
                           ),
-                          Positioned(
-                            // left: 46,
-                            top: 0.0,
-                            left: (MediaQuery.of(context).size.width) / 2 - 31,
-
-                            // (background container size) - (circle height / 2)
-                            child: Center(
-                              child: Container(
-                                child: InkWell(
-                                  child: Image.asset(
-                                    "assets/images/logo.png",
-                                    height: 84.0,
-                                    width: 84.0,
-                                  ),
-                                ),
-                                height: 84.0,
-                                width: 84.0,
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Color.fromARGB(255, 192, 230, 233)),
-                              ),
-                            ),
-                          )
                         ],
                       )
                     ],
@@ -584,21 +720,4 @@ class _particularProducteState extends State<particularProducte> {
       ),
     );
   }
-}
-
-Widget buildSliverAppBar() {
-  return SliverAppBar(
-    actions: [],
-    expandedHeight: 350,
-    elevation: 0.0,
-    flexibleSpace: FlexibleSpaceBar(
-      centerTitle: true,
-      background: Hero(
-        tag: 1,
-        child: Container(
-          color: Colors.transparent,
-        ),
-      ),
-    ),
-  );
 }

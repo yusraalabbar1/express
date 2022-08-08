@@ -14,9 +14,8 @@ AllProduct(page) async {
   homecontroller controller = Get.put(homecontroller());
 
   var headers = {
-    'Accept': 'application/json'
-    // ,
-    // 'Authorization': 'Bearer ${controller.saveProfileaccessToken}'
+    'Accept': 'application/json',
+    'Authorization': 'Bearer ${controller.saveProfileaccessToken}'
   };
   var request =
       http.Request('GET', Uri.parse(Base + '/products/?lang=$lang&page=$page'));

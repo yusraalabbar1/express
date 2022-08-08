@@ -55,9 +55,9 @@ class _welcomHomeState extends State<welcomHome>
       AllProduct(1);
       populer();
       AllCategories(lang);
-      // SubCategories(30);
+      // // SubCategories(30);
       MyFavorite();
-      MyCart();
+      // MyCart();
       notificationApi(1);
       MyOrder(1);
     }

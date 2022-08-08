@@ -1,3 +1,4 @@
+import 'package:express/control/controller.dart';
 import 'package:express/model/api/categories/categories.dart';
 import 'package:express/model/api/general/banner.dart';
 import 'package:express/model/api/products/all_product.dart';
@@ -29,6 +30,8 @@ class homePage extends StatefulWidget {
 class _homePageState extends State<homePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   var _currentIndex = 0;
+  homecontroller controller = Get.put(homecontroller());
+
   final List<Widget> widgetOptions = <Widget>[
     myHome(),
     myProfile(),
