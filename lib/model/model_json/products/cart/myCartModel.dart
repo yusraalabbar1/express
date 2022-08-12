@@ -87,6 +87,7 @@ class Product {
     this.name,
     this.desctiption,
     this.price,
+    this.new_price,
     this.discount,
     this.vendor2,
     this.images,
@@ -100,8 +101,9 @@ class Product {
   int? id;
   String? name;
   String? desctiption;
-  String? price;
-  dynamic? discount;
+  int? price;
+  int? new_price;
+  int? discount;
   String? vendor2;
   List<Image>? images;
   List<Color>? sizes;
@@ -115,6 +117,7 @@ class Product {
         name: json["name"],
         desctiption: json["desctiption"],
         price: json["price"],
+        new_price: json["new_price"],
         discount: json["discount"],
         vendor2: json["vendor_2"],
         images: List<Image>.from(json["images"].map((x) => Image.fromJson(x))),
@@ -130,6 +133,7 @@ class Product {
         "name": name,
         "desctiption": desctiption,
         "price": price,
+        "new_price": new_price,
         "discount": discount,
         "vendor_2": vendor2,
         "images": List<dynamic>.from(images!.map((x) => x.toJson())),

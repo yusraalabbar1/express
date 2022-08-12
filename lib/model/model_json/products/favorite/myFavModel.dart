@@ -75,8 +75,8 @@ class Product {
   int? id;
   String? name;
   String? desctiption;
-  String? price;
-  String? discount;
+  int? price;
+  int? discount;
   List<Image>? images;
   int? addedToCart;
   int? quantityCart;

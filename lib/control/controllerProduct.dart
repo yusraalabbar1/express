@@ -1,19 +1,24 @@
+import 'package:express/model/model_json/products/allProductModel.dart';
+import 'package:express/model/model_json/products/searchModel.dart';
 import 'package:get/get.dart';
 
 class controllerProduct extends GetxController {
+  Map<dynamic, dynamic> saveDetailsProduct = {};
+
   List<Map<dynamic, dynamic>> saveAllProduct = [];
   List<Map<dynamic, dynamic>> saveAllProductCategory = [];
   List<Map<dynamic, dynamic>> saveMyFavprite = [];
   List<Map<dynamic, dynamic>> saveMyMyCart = [];
   List<Map<dynamic, dynamic>> saveAllCateg = [];
-  List<Map<dynamic, dynamic>> saveSearchCateg = [];
+  List<Pass> saveSearchCateg = [];
+  List<Map<dynamic, dynamic>> saveSearchCateg1 = [];
   List<Map<dynamic, dynamic>> saveSubCateg = [];
   List<Map<dynamic, dynamic>> saveSubSubCateg = [];
   List<Map<dynamic, dynamic>> saveSubSubSubCateg = [];
   List<Map<dynamic, dynamic>> savepopulerProduct = [];
   List<Map<dynamic, dynamic>> saveNewProduct = [];
   Map<String, dynamic> saveAllSetting = {};
-  Map<dynamic, dynamic> saveDetailsProduct = {};
+
   Map<String, dynamic> saveImageDetails = {};
   var savedeliveryFees;
   var savecartTotal;
@@ -22,6 +27,18 @@ class controllerProduct extends GetxController {
   var listValue, listKey;
   var i;
   var saveProCatId;
+  var saveDetailsProductSize;
+  var saveDetailsProductColor;
+  SaveDetailsProductSize(string) {
+    saveDetailsProductSize = string;
+    update();
+  }
+
+  SaveDetailsProductColor(string) {
+    saveDetailsProductColor = string;
+    update();
+  }
+
   SaveProCatId(string) {
     saveProCatId = string;
     update();
@@ -88,7 +105,7 @@ class controllerProduct extends GetxController {
   }
 
   SaveSearchCateg(v) {
-    saveSearchCateg = v;
+    saveSearchCateg1 = v;
     update();
   }
 

@@ -8,6 +8,16 @@
 
 import 'dart:convert';
 
+// AllProductModel allProductModelFromJson(String str) =>
+//     AllProductModel.fromJson(json.decode(str));
+
+// String allProductModelToJson(AllProductModel data) => json.encode(data.toJson());
+
+AllProductModel passengersDataFromJson(String str) =>
+    AllProductModel.fromJson(json.decode(str));
+
+String passengersDataToJson(AllProductModel data) => json.encode(data.toJson());
+
 class AllProductModel {
   AllProductModel({
     this.status,
@@ -20,7 +30,7 @@ class AllProductModel {
   bool? status;
   String? code;
   String? message;
-  List<Datum>? data;
+  List<Pass>? data;
   Meta? meta;
 
   factory AllProductModel.fromJson(Map<String, dynamic> json) =>
@@ -28,8 +38,8 @@ class AllProductModel {
         status: json["status"],
         code: json["code"],
         message: json["message"],
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
-        meta: Meta.fromJson(json["meta"]),
+        data: List<Pass>.from(json["data"].map((x) => Pass.fromJson(x))),
+        meta: json["meta"] != null ? Meta.fromJson(json["meta"]) : null,
       );
 
   Map<String, dynamic> toJson() => {
@@ -41,8 +51,8 @@ class AllProductModel {
       };
 }
 
-class Datum {
-  Datum({
+class Pass {
+  Pass({
     this.id,
     this.name,
     this.desctiption,
@@ -61,7 +71,7 @@ class Datum {
   int? id;
   String? name;
   String? desctiption;
-  String? price;
+  int? price;
   dynamic discount;
   int? newPrice;
   String? vendor2;
@@ -72,7 +82,7 @@ class Datum {
   int? quantityCart;
   int? addedToFavourites;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory Pass.fromJson(Map<String, dynamic> json) => Pass(
         id: json["id"],
         name: json["name"],
         desctiption: json["desctiption"],
@@ -84,7 +94,7 @@ class Datum {
         sizes: List<Color>.from(json["sizes"].map((x) => Color.fromJson(x))),
         colors: List<Color>.from(json["colors"].map((x) => Color.fromJson(x))),
         addedToCart: json["added_to_cart"],
-        quantityCart: json["quantity_cart"],
+        quantityCart: int.parse(json["quantity_cart"].toString()),
         addedToFavourites: json["added_to_favourites"],
       );
 

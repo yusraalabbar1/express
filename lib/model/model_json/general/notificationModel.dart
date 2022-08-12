@@ -5,10 +5,15 @@
 
 import 'dart:convert';
 
-notificationModel welcomeFromJson(String str) =>
+// notificationModel notificationPassFromJson(String str) =>
+//     notificationModel.fromJson(json.decode(str));
+
+// String welcomeToJson(notificationModel data) => json.encode(data.toJson());
+notificationModel notificationPassFromJson(String str) =>
     notificationModel.fromJson(json.decode(str));
 
-String welcomeToJson(notificationModel data) => json.encode(data.toJson());
+String notificationPassDataToJson(notificationModel data) =>
+    json.encode(data.toJson());
 
 class notificationModel {
   notificationModel({
@@ -16,19 +21,23 @@ class notificationModel {
     this.code,
     this.message,
     this.data,
+    this.meta,
   });
 
   bool? status;
   String? code;
   String? message;
-  List<Datum>? data;
+  List<NotificationPass>? data;
+  MetaNotif? meta;
 
   factory notificationModel.fromJson(Map<String, dynamic> json) =>
       notificationModel(
         status: json["status"],
         code: json["code"],
         message: json["message"],
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        data: List<NotificationPass>.from(
+            json["data"].map((x) => NotificationPass.fromJson(x))),
+        meta: json["meta"] != null ? MetaNotif.fromJson(json["meta"]) : null,
       );
 
   Map<String, dynamic> toJson() => {
@@ -36,11 +45,12 @@ class notificationModel {
         "code": code,
         "message": message,
         "data": List<dynamic>.from(data!.map((x) => x.toJson())),
+        "meta": meta!.toJson(),
       };
 }
 
-class Datum {
-  Datum({
+class NotificationPass {
+  NotificationPass({
     this.id,
     this.title,
     this.body,
@@ -58,7 +68,8 @@ class Datum {
   DateTime? createdAt;
   DateTime? updatedAt;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory NotificationPass.fromJson(Map<String, dynamic> json) =>
+      NotificationPass(
         id: json["id"],
         title: json["title"],
         body: json["body"],
@@ -76,5 +87,37 @@ class Datum {
         "data": data,
         "created_at": createdAt!.toIso8601String(),
         "updated_at": updatedAt!.toIso8601String(),
+      };
+}
+
+class MetaNotif {
+  MetaNotif({
+    this.total,
+    this.count,
+    this.perPage,
+    this.currentPage,
+    this.totalPages,
+  });
+
+  int? total;
+  int? count;
+  int? perPage;
+  int? currentPage;
+  int? totalPages;
+
+  factory MetaNotif.fromJson(Map<String, dynamic> json) => MetaNotif(
+        total: json["total"],
+        count: json["count"],
+        perPage: json["per_page"],
+        currentPage: json["current_page"],
+        totalPages: json["total_pages"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "total": total,
+        "count": count,
+        "per_page": perPage,
+        "current_page": currentPage,
+        "total_pages": totalPages,
       };
 }

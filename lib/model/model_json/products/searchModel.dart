@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 
-SearchModel welcomeFromJson(String str) =>
+SearchModel SearchModelwelcomeFromJson(String str) =>
     SearchModel.fromJson(json.decode(str));
 
 String welcomeToJson(SearchModel data) => json.encode(data.toJson());
@@ -15,20 +15,24 @@ class SearchModel {
     this.code,
     this.message,
     this.data,
+    this.meta,
   });
 
   bool? status;
   String? code;
   String? message;
-  List<Datum>? data;
+  List<searchProu>? data;
+  MetaSearch? meta;
 
   factory SearchModel.fromJson(Map<String, dynamic> json) => SearchModel(
         status: json["status"],
         code: json["code"],
         message: json["message"],
         data: json["data"] != null
-            ? List<Datum>.from(json["data"].map((x) => Datum.fromJson(x)))
+            ? List<searchProu>.from(
+                json["data"].map((x) => searchProu.fromJson(x)))
             : null,
+        meta: json["meta"] != null ? MetaSearch.fromJson(json["meta"]) : null,
       );
 
   Map<String, dynamic> toJson() => {
@@ -36,16 +40,18 @@ class SearchModel {
         "code": code,
         "message": message,
         "data": List<dynamic>.from(data!.map((x) => x.toJson())),
+        "meta": meta!.toJson(),
       };
 }
 
-class Datum {
-  Datum({
+class searchProu {
+  searchProu({
     this.id,
     this.name,
     this.desctiption,
     this.price,
     this.discount,
+    this.new_price,
     this.images,
     this.addedToCart,
     this.quantityCart,
@@ -55,19 +61,21 @@ class Datum {
   int? id;
   String? name;
   String? desctiption;
-  String? price;
-  String? discount;
+  int? price;
+  int? discount;
+  int? new_price;
   List<Image>? images;
   int? addedToCart;
   int? quantityCart;
   int? addedToFavourites;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory searchProu.fromJson(Map<String, dynamic> json) => searchProu(
         id: json["id"],
         name: json["name"],
         desctiption: json["desctiption"],
         price: json["price"],
         discount: json["discount"],
+        new_price: json["new_price"],
         images: List<Image>.from(json["images"].map((x) => Image.fromJson(x))),
         addedToCart: json["added_to_cart"] == "" ? 0 : json["added_to_cart"],
         quantityCart: json["quantity_cart"] == ""
@@ -83,6 +91,7 @@ class Datum {
         "desctiption": desctiption,
         "price": price,
         "discount": discount,
+        "new_price": new_price,
         "images": List<dynamic>.from(images!.map((x) => x.toJson())),
         "added_to_cart": addedToCart,
         "quantity_cart": quantityCart,
@@ -107,5 +116,37 @@ class Image {
   Map<String, dynamic> toJson() => {
         "id": id,
         "image": image,
+      };
+}
+
+class MetaSearch {
+  MetaSearch({
+    this.total,
+    this.count,
+    this.perPage,
+    this.currentPage,
+    this.totalPages,
+  });
+
+  int? total;
+  int? count;
+  int? perPage;
+  int? currentPage;
+  int? totalPages;
+
+  factory MetaSearch.fromJson(Map<String, dynamic> json) => MetaSearch(
+        total: json["total"],
+        count: json["count"],
+        perPage: json["per_page"],
+        currentPage: json["current_page"],
+        totalPages: json["total_pages"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "total": total,
+        "count": count,
+        "per_page": perPage,
+        "current_page": currentPage,
+        "total_pages": totalPages,
       };
 }

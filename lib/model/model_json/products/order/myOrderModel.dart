@@ -1,9 +1,14 @@
 import 'dart:convert';
 
-MyOrderModel welcomeFromJson(String str) =>
+// MyOrderModel passOrderFromJson(String str) =>
+//     MyOrderModel.fromJson(json.decode(str));
+
+// String welcomeToJson(MyOrderModel data) => json.encode(data.toJson());
+
+MyOrderModel passOrderFromJson(String str) =>
     MyOrderModel.fromJson(json.decode(str));
 
-String welcomeToJson(MyOrderModel data) => json.encode(data.toJson());
+String passOrdersDataToJson(MyOrderModel data) => json.encode(data.toJson());
 
 class MyOrderModel {
   MyOrderModel({
@@ -11,20 +16,24 @@ class MyOrderModel {
     this.code,
     this.message,
     this.data,
+    this.meta,
   });
 
   bool? status;
   String? code;
   String? message;
-  List<Datum>? data;
+  List<passOrder>? data;
+  MetaOrder? meta;
 
   factory MyOrderModel.fromJson(Map<String, dynamic> json) => MyOrderModel(
         status: json["status"],
         code: json["code"],
         message: json["message"],
         data: json["data"] != null
-            ? List<Datum>.from(json["data"].map((x) => Datum.fromJson(x)))
+            ? List<passOrder>.from(
+                json["data"].map((x) => passOrder.fromJson(x)))
             : null,
+        meta: json["meta"] != null ? MetaOrder.fromJson(json["meta"]) : null,
       );
 
   Map<String, dynamic> toJson() => {
@@ -32,11 +41,12 @@ class MyOrderModel {
         "code": code,
         "message": message,
         "data": List<dynamic>.from(data!.map((x) => x.toJson())),
+        "meta": meta!.toJson(),
       };
 }
 
-class Datum {
-  Datum({
+class passOrder {
+  passOrder({
     this.id,
     this.total,
     this.deliveryCost,
@@ -55,7 +65,7 @@ class Datum {
   List<Item>? items;
   DateTime? createdAt;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory passOrder.fromJson(Map<String, dynamic> json) => passOrder(
         id: json["id"],
         total: json["total"],
         deliveryCost: json["delivery_cost"],
@@ -125,8 +135,8 @@ class Product {
   int? id;
   String? name;
   String? desctiption;
-  String? price;
-  String? discount;
+  int? price;
+  int? discount;
   List<Image>? images;
   int? addedToCart;
   int? quantityCart;
@@ -174,5 +184,37 @@ class Image {
   Map<String, dynamic> toJson() => {
         "id": id,
         "image": image,
+      };
+}
+
+class MetaOrder {
+  MetaOrder({
+    this.total,
+    this.count,
+    this.perPage,
+    this.currentPage,
+    this.totalPages,
+  });
+
+  int? total;
+  int? count;
+  int? perPage;
+  int? currentPage;
+  int? totalPages;
+
+  factory MetaOrder.fromJson(Map<String, dynamic> json) => MetaOrder(
+        total: json["total"],
+        count: json["count"],
+        perPage: json["per_page"],
+        currentPage: json["current_page"],
+        totalPages: json["total_pages"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "total": total,
+        "count": count,
+        "per_page": perPage,
+        "current_page": currentPage,
+        "total_pages": totalPages,
       };
 }

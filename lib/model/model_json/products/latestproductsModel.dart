@@ -57,8 +57,8 @@ class Datum {
   int? id;
   String? name;
   String? desctiption;
-  String? price;
-  String? discount;
+  int? price;
+  int? discount;
   List<Image>? images;
   int? addedToCart;
   int? quantityCart;
@@ -68,7 +68,8 @@ class Datum {
         id: json["id"],
         name: json["name"],
         desctiption: json["desctiption"],
-        price: json["price"],
+        /////
+        price: int.parse(json["price"].toString()),
         discount: json["discount"] == null ? null : json["discount"],
         images: List<Image>.from(json["images"].map((x) => Image.fromJson(x))),
         addedToCart: json["added_to_cart"] == ""

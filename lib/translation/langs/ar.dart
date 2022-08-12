@@ -23,7 +23,7 @@ const Map<String, String> ar = {
   "Area": "المنطقة",
   "Creat Account": "انشاء حساب",
   "Already have an account ? Login": "هل تملك حساب؟ تسجيل الدخول",
-  "All Productes": "كل المنتجات",
+  "All Products": "كل المنتجات",
   "asc": "ترتيب حسب السعر تصاعديا",
   "desc": "ترتيب حسب السعر تنازليا",
   "New In": "كل جديد",
@@ -95,5 +95,8 @@ const Map<String, String> ar = {
   "All images": "كل الصور",
   "No products found": "لا توجد منتجات حاليا",
   "New price : ": "السعر الجديد: ",
-  "Discount : ": "الخصم : "
+  "Discount : ": "الخصم : ",
+  "You did not specify the size": "لم تحدد الحجم",
+  "You did not specify the color": "لم تحدد اللون",
+  "You did not specify the requierd item": "لم تحدد جميع الأشياء المطلوبة"
 };

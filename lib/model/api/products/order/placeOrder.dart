@@ -39,6 +39,6 @@ PlaceOrder(context, city) async {
       print(c.message);
     }
   } else {
-    print("not response");
+    print(c.message);
   }
 }

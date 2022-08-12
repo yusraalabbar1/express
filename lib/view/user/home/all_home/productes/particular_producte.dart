@@ -8,6 +8,7 @@ import 'package:express/model/api/products/favorite/add_fav.dart';
 import 'package:express/model/api/products/favorite/del_fav.dart';
 import 'package:express/model/api/products/favorite/my_fav.dart';
 import 'package:express/utilits/colors.dart';
+import 'package:express/view/user/home/all_home/productes/dialog.dart';
 import 'package:express/view/user/home/all_home/productes/dialogImage.dart';
 import 'package:express/view/user/home/all_home/productes/pageview_images.dart';
 import 'package:flutter/material.dart';
@@ -28,22 +29,21 @@ List images = [];
 class _particularProducteState extends State<particularProducte> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   controllerProduct controllerPro = Get.put(controllerProduct());
-
-  List sized = ["m", "L", "XL"];
-  List colored = [Colors.red, Colors.blue];
+  controllerProduct? geek;
   int? tappedIndex;
   int? tappedIndexColor;
   @override
   void initState() {
     super.initState();
-    tappedIndex = 0;
-    tappedIndexColor = 0;
+    // tappedIndex = 0;
+    // tappedIndexColor = 0;
   }
 
   var c;
   var cc;
   String color = "";
   String size = "";
+  // var size = geek!.saveDetailsProduct["sizes"][0]["size"];
   @override
   Widget build(BuildContext context) {
     var nameFake;
@@ -63,29 +63,75 @@ class _particularProducteState extends State<particularProducte> {
               SharedPreferences preferences =
                   await SharedPreferences.getInstance();
               if (preferences.getString("sendMen") == "guest") {
-                AwesomeDialog(
-                        context: context,
-                        animType: AnimType.RIGHSLIDE,
-                        dialogType: DialogType.INFO,
-                        headerAnimationLoop: true,
-                        btnOkOnPress: () {},
-                        body: Text("لم تقم بتسجيل الدخول",
-                            style: TextStyle(
-                                color: MyColors.color2,
-                                fontSize: 14,
-                                fontFamily: 'Almarai')),
-                        dialogBackgroundColor: MyColors.color3,
-                        btnOkColor: MyColors.color1)
-                    .show();
+                dialog(context, "لم تقم بتسجيل الدخول");
               } else {
                 if (controllerPro.saveDetailsProduct["added_to_cart"] == 0) {
-                  setState(() {
-                    cc = 1;
-                    controllerPro.saveDetailsProduct["added_to_cart"] = 1;
-                  });
-                  await AddCart(controllerPro.saveDetailsProduct["id"], 1,
-                      context, color, size);
-                  MyCart();
+                  if (controllerPro.saveDetailsProduct["sizes"].toString() ==
+                          "[]" &&
+                      controllerPro.saveDetailsProduct["colors"].toString() ==
+                          "[]") {
+                    setState(() {
+                      cc = 1;
+                      controllerPro.saveDetailsProduct["added_to_cart"] = 1;
+                    });
+                    await AddCart(controllerPro.saveDetailsProduct["id"], 1,
+                        context, "", "");
+                    MyCart();
+                  } else {
+                    if (controllerPro.saveDetailsProduct["sizes"].toString() ==
+                            "[]" &&
+                        controllerPro.saveDetailsProduct["colors"].toString() !=
+                            "[]") {
+                      if (color == "") {
+                        print("select color");
+                        dialog(context, "You did not specify the color".tr);
+                      } else {
+                        setState(() {
+                          cc = 1;
+                          controllerPro.saveDetailsProduct["added_to_cart"] = 1;
+                        });
+                        await AddCart(controllerPro.saveDetailsProduct["id"], 1,
+                            context, color, "");
+                        MyCart();
+                      }
+                    } else if (controllerPro.saveDetailsProduct["sizes"]
+                                .toString() !=
+                            "[]" &&
+                        controllerPro.saveDetailsProduct["colors"].toString() ==
+                            "[]") {
+                      if (size == "") {
+                        print("select size");
+                        dialog(context, "You did not specify the size".tr);
+                      } else {
+                        setState(() {
+                          cc = 1;
+                          controllerPro.saveDetailsProduct["added_to_cart"] = 1;
+                        });
+                        await AddCart(controllerPro.saveDetailsProduct["id"], 1,
+                            context, color, size);
+                        MyCart();
+                      }
+                    } else if (controllerPro.saveDetailsProduct["sizes"]
+                                .toString() !=
+                            "[]" &&
+                        controllerPro.saveDetailsProduct["colors"].toString() !=
+                            "[]") {
+                      if (size == "" || color == "") {
+                        print("select size or color");
+                        dialog(context,
+                            "You did not specify the requierd item".tr);
+                      } else {
+                        setState(() {
+                          cc = 1;
+                          controllerPro.saveDetailsProduct["added_to_cart"] = 1;
+                        });
+                        await AddCart(controllerPro.saveDetailsProduct["id"], 1,
+                            context, color, size);
+                        MyCart();
+                      }
+                    }
+                    print("object");
+                  }
                 } else if (controllerPro.saveDetailsProduct["added_to_cart"] ==
                     1) {
                   setState(() {
@@ -118,20 +164,7 @@ class _particularProducteState extends State<particularProducte> {
             SharedPreferences preferences =
                 await SharedPreferences.getInstance();
             if (preferences.getString("sendMen") == "guest") {
-              AwesomeDialog(
-                      context: context,
-                      animType: AnimType.RIGHSLIDE,
-                      dialogType: DialogType.INFO,
-                      headerAnimationLoop: true,
-                      btnOkOnPress: () {},
-                      body: Text("لم تقم بتسجيل الدخول",
-                          style: TextStyle(
-                              color: MyColors.color2,
-                              fontSize: 14,
-                              fontFamily: 'Almarai')),
-                      dialogBackgroundColor: MyColors.color3,
-                      btnOkColor: MyColors.color1)
-                  .show();
+              dialog(context, "لم تقم بتسجيل الدخول");
             } else {
               if (controllerPro.saveDetailsProduct["added_to_favourites"] ==
                   0) {
@@ -309,8 +342,9 @@ class _particularProducteState extends State<particularProducte> {
                                                         null
                                                     ? Text(
                                                         controllerPro
-                                                                .saveDetailsProduct[
-                                                            "price"],
+                                                            .saveDetailsProduct[
+                                                                "price"]
+                                                            .toString(),
                                                         style: const TextStyle(
                                                             fontWeight:
                                                                 FontWeight.bold,
@@ -322,8 +356,9 @@ class _particularProducteState extends State<particularProducte> {
                                                                 'BAHNSCHRIFT'))
                                                     : Text(
                                                         controllerPro
-                                                                .saveDetailsProduct[
-                                                            "price"],
+                                                            .saveDetailsProduct[
+                                                                "price"]
+                                                            .toString(),
                                                         style: const TextStyle(
                                                             fontWeight:
                                                                 FontWeight.bold,
@@ -498,6 +533,9 @@ class _particularProducteState extends State<particularProducte> {
                                                                             .saveDetailsProduct[
                                                                         "sizes"]
                                                                     [i]["size"];
+                                                                // controllerPro
+                                                                //     .saveDetailsProductSize(
+                                                                //         size);
                                                               });
                                                             },
                                                             child: Container(
@@ -607,27 +645,10 @@ class _particularProducteState extends State<particularProducte> {
                                                                         "colors"]
                                                                     [
                                                                     i]["color"];
+                                                                // controllerPro
+                                                                //     .SaveDetailsProductColor(
+                                                                //         color);
                                                               });
-                                                              ScaffoldMessenger
-                                                                      .of(
-                                                                          context)
-                                                                  .showSnackBar(
-                                                                      SnackBar(
-                                                                duration:
-                                                                    const Duration(
-                                                                        seconds:
-                                                                            1),
-                                                                content: CircleAvatar(
-                                                                    radius: 20,
-                                                                    backgroundColor: Color(int.parse(controllerPro
-                                                                        .saveDetailsProduct[
-                                                                            "colors"]
-                                                                            [i][
-                                                                            "color"]
-                                                                        .replaceAll(
-                                                                            "#",
-                                                                            "0xff")))),
-                                                              ));
                                                             },
                                                             child: Container(
                                                               decoration:

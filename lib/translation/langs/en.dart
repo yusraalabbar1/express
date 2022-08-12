@@ -24,7 +24,7 @@ const Map<String, String> en = {
   "Area": "Area",
   "Creat Account": "Create Account",
   "Already have an account ? Login": "Already have an account ? Login",
-  "All Productes": "All Productes",
+  "All Products": "All Products",
   "asc": "Ascending order",
   "desc": "Descending order",
   "New In": "New In",
@@ -94,5 +94,9 @@ const Map<String, String> en = {
   "All images": "All images",
   "No products found": "No products found",
   "New price : ": "New price : ",
-  "Discount : ": "Discount : "
+  "Discount : ": "Discount : ",
+  "You did not specify the size": "You did not specify the size",
+  "You did not specify the color": "You did not specify the color",
+  "You did not specify the requierd item":
+      "You did not specify the requierd item"
 };

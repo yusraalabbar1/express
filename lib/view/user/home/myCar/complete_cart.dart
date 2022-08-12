@@ -156,19 +156,16 @@ class _completeCartState extends State<completeCart> {
                           var formdata = formstate.currentState;
 
                           formdata!.save();
-                          print(" validddddddddddddddd");
-                          print("========information input==========");
                           print(mobileNumber);
                           print(address);
                           print("========================");
-                          print("not validddddddddddddddd");
                           if (address == "") {
                             await PlaceOrder(
                                 context, controller.saveProfiledefaultAddress);
-                            await MyOrder(1);
+                            // await MyOrder(1);
                           } else {
                             await PlaceOrder(context, address);
-                            await MyOrder(1);
+                            // await MyOrder(1);
                           }
                         },
                         child: Text(

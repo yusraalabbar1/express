@@ -77,9 +77,8 @@ class _myCartState extends State<myCart> {
                                       });
                                       _onSelected(
                                           val!,
-                                          (int.parse(controllerPro
-                                                          .saveMyMyCart[i]
-                                                      ["product"]["price"]) *
+                                          (controllerPro.saveMyMyCart[i]
+                                                      ["product"]["new_price"] *
                                                   int.parse(controllerPro
                                                           .saveMyMyCart[i]
                                                       ["quantity"]))
@@ -281,9 +280,9 @@ class _myCartState extends State<myCart> {
                                         ),
                                       ],
                                       subtitle: Text(
-                                          (int.parse(controllerPro.saveMyMyCart[
-                                                              i]["product"]
-                                                          ["price"]) *
+                                          ((controllerPro.saveMyMyCart[i]
+                                                              ["product"]
+                                                          ["new_price"]) *
                                                       int.parse(controllerPro
                                                               .saveMyMyCart[i]
                                                           ["quantity"]))
@@ -311,19 +310,11 @@ class _myCartState extends State<myCart> {
                           Text("Cart's Total: ".tr,
                               style: TextStyle(
                                   color: Colors.white, fontFamily: "Almarai")),
-                          Text(controllerPro.savecartTotal.toString(),
+                          Text(
+                              controllerPro.savecartTotal.toString() +
+                                  "  JOD \t",
                               style:
                                   TextStyle(color: MyColors.new3, fontSize: 16))
-                          // FutureBuilder(
-                          //     future: MyCart(),
-                          //     builder: ((context, snapshot) {
-                          //       return snapshot.hasData
-                          //           ? Text(
-                          //               controllerPro.savecartTotal.toString(),
-                          //               style: TextStyle(
-                          //                   color: MyColors.new3, fontSize: 16))
-                          //           : CircularProgressIndicator();
-                          //     }))
                         ],
                       ),
                       Row(
@@ -333,7 +324,7 @@ class _myCartState extends State<myCart> {
                                   color: Colors.white, fontFamily: "Almarai")),
                           Text(
                               controllerPro.savecartTotal != 0
-                                  ? controllerPro.savedeliveryFees.toString()
+                                  ? "2  JOD \t"
                                   : "0",
                               style:
                                   TextStyle(color: MyColors.new3, fontSize: 16))
@@ -346,10 +337,10 @@ class _myCartState extends State<myCart> {
                                   color: Colors.white, fontFamily: "Almarai")),
                           Text(
                               controllerPro.savecartTotal != 0
-                                  ? (controllerPro.savedeliveryFees +
-                                          controllerPro.savecartTotal)
-                                      .toString()
-                                  : "0",
+                                  ? (2 + controllerPro.savecartTotal)
+                                          .toString() +
+                                      "  JOD \t"
+                                  : "0 JOD \t",
                               style:
                                   TextStyle(color: MyColors.new3, fontSize: 16))
                         ],

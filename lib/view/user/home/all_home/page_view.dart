@@ -96,8 +96,8 @@ Widget slider(context, images, pagePosition, active) {
         Navigator.of(context).pushNamed("particularProducte");
       } else if (images[pagePosition]["type"] == 'sub_category') {
         // await SubCategories(32);
-        await SubSubCategories(images[pagePosition]["target"]["id"]);
-        Navigator.of(context).pushNamed("subSubCat");
+        // await SubSubCategories(images[pagePosition]["target"]["id"]);
+        // Navigator.of(context).pushNamed("subSubCat");
       }
     },
     child: AnimatedContainer(

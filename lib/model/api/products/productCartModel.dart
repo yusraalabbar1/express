@@ -1,9 +1,14 @@
 import 'dart:convert';
 
-ProductCategoryModel welcomeFromJson(String str) =>
+// ProductCategoryModel welcomeFromJson(String str) =>
+//     ProductCategoryModel.fromJson(json.decode(str));
+
+// String welcomeToJson(ProductCategoryModel data) => json.encode(data.toJson());
+ProductCategoryModel ProductCategoryModelFromJson(String str) =>
     ProductCategoryModel.fromJson(json.decode(str));
 
-String welcomeToJson(ProductCategoryModel data) => json.encode(data.toJson());
+String ProductCategoryModelDataToJson(ProductCategoryModel data) =>
+    json.encode(data.toJson());
 
 class ProductCategoryModel {
   ProductCategoryModel({
@@ -11,12 +16,14 @@ class ProductCategoryModel {
     this.code,
     this.message,
     this.data,
+    this.meta,
   });
 
   bool? status;
   String? code;
   String? message;
-  List<Datum>? data;
+  List<ProdCat>? data;
+  MetaProCat? meta;
 
   factory ProductCategoryModel.fromJson(Map<String, dynamic> json) =>
       ProductCategoryModel(
@@ -24,8 +31,9 @@ class ProductCategoryModel {
         code: json["code"],
         message: json["message"],
         data: json["data"] != null
-            ? List<Datum>.from(json["data"].map((x) => Datum.fromJson(x)))
+            ? List<ProdCat>.from(json["data"].map((x) => ProdCat.fromJson(x)))
             : null,
+        meta: json["meta"] != null ? MetaProCat.fromJson(json["meta"]) : null,
       );
 
   Map<String, dynamic> toJson() => {
@@ -33,11 +41,12 @@ class ProductCategoryModel {
         "code": code,
         "message": message,
         "data": List<dynamic>.from(data!.map((x) => x.toJson())),
+        "meta": meta!.toJson(),
       };
 }
 
-class Datum {
-  Datum({
+class ProdCat {
+  ProdCat({
     this.id,
     this.name,
     this.desctiption,
@@ -52,14 +61,14 @@ class Datum {
   int? id;
   String? name;
   String? desctiption;
-  String? price;
-  String? discount;
+  int? price;
+  int? discount;
   List<Image>? images;
   int? addedToCart;
   int? quantityCart;
   int? addedToFavourites;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory ProdCat.fromJson(Map<String, dynamic> json) => ProdCat(
         id: json["id"],
         name: json["name"],
         desctiption: json["desctiption"],
@@ -104,5 +113,37 @@ class Image {
   Map<String, dynamic> toJson() => {
         "id": id,
         "image": image,
+      };
+}
+
+class MetaProCat {
+  MetaProCat({
+    this.total,
+    this.count,
+    this.perPage,
+    this.currentPage,
+    this.totalPages,
+  });
+
+  int? total;
+  int? count;
+  int? perPage;
+  int? currentPage;
+  int? totalPages;
+
+  factory MetaProCat.fromJson(Map<String, dynamic> json) => MetaProCat(
+        total: json["total"],
+        count: json["count"],
+        perPage: json["per_page"],
+        currentPage: json["current_page"],
+        totalPages: json["total_pages"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "total": total,
+        "count": count,
+        "per_page": perPage,
+        "current_page": currentPage,
+        "total_pages": totalPages,
       };
 }

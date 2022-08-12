@@ -57,7 +57,7 @@ class Data {
   int? id;
   String? name;
   String? desctiption;
-  String? price;
+  int? price;
   dynamic discount;
   dynamic vendor2;
   List<Image>? images;
