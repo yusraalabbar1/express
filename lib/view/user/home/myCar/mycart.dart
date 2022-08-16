@@ -350,6 +350,8 @@ class _myCartState extends State<myCart> {
                         height: 40,
                         child: RaisedButton(
                           onPressed: () {
+                            // controllerPro.SavecartTotal(
+                            //     2 + controllerPro.savecartTotal);
                             print('Button Clicked.');
                             Navigator.of(context).pushNamed("completeCart");
                           },

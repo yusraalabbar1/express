@@ -190,6 +190,7 @@ class Image {
 class MetaOrder {
   MetaOrder({
     this.total,
+    this.final_total,
     this.count,
     this.perPage,
     this.currentPage,
@@ -197,6 +198,7 @@ class MetaOrder {
   });
 
   int? total;
+  int? final_total;
   int? count;
   int? perPage;
   int? currentPage;
@@ -204,6 +206,7 @@ class MetaOrder {
 
   factory MetaOrder.fromJson(Map<String, dynamic> json) => MetaOrder(
         total: json["total"],
+        final_total: json["final_total"],
         count: json["count"],
         perPage: json["per_page"],
         currentPage: json["current_page"],
@@ -212,6 +215,7 @@ class MetaOrder {
 
   Map<String, dynamic> toJson() => {
         "total": total,
+        "final_total": final_total,
         "count": count,
         "per_page": perPage,
         "current_page": currentPage,

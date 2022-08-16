@@ -32,7 +32,7 @@ const Map<String, String> en = {
   "Sold by : ": "Sold by : ",
   "Name : ": "Name : ",
   "price : ": "Price : ",
-  "Desctiption : ": "Desctiption : ",
+  "Description : ": "Description : ",
   "Sub Category": "Sub Category",
   "Product": "Product",
   "Most Popular": "Most Popular",
@@ -61,7 +61,7 @@ const Map<String, String> en = {
   "Delivary Fees: ": "Delivary Fees: ",
   "Continue": "Continue",
   "empty": "empty",
-  "Notifiction": "Notifiction",
+  "Notifications": "Notifications",
   "Tilte": "Tilte",
   "Terms and Conditions": "Terms and Conditions",
   "Privacy policy": "Privacy policy",
@@ -97,6 +97,6 @@ const Map<String, String> en = {
   "Discount : ": "Discount : ",
   "You did not specify the size": "You did not specify the size",
   "You did not specify the color": "You did not specify the color",
-  "You did not specify the requierd item":
-      "You did not specify the requierd item"
+  "You did not specify the required item":
+      "You did not specify the required item"
 };

@@ -24,14 +24,14 @@ const Map<String, String> ar = {
   "Creat Account": "انشاء حساب",
   "Already have an account ? Login": "هل تملك حساب؟ تسجيل الدخول",
   "All Products": "كل المنتجات",
-  "asc": "ترتيب حسب السعر تصاعديا",
-  "desc": "ترتيب حسب السعر تنازليا",
+  "asc": " حسب السعر تصاعديا",
+  "desc": " حسب السعر تنازليا",
   "New In": "كل جديد",
   "view all": "الكل",
   "Sold by : ": "صنع بواسطة",
   "Name : ": "الاسم:",
   "price : ": "السعر:",
-  "Desctiption : ": "الوصف:",
+  "Description : ": "الوصف:",
   "Sub Category": "المنتجات الفرعية",
   "Product": "المنتجات",
   "Most Popular": "الأكثر شعبية",
@@ -59,7 +59,7 @@ const Map<String, String> ar = {
   "Delivary Fees: ": "سعر التوصيل : ",
   "Continue": "استمرار",
   "empty": "فارغ",
-  "Notifiction": "الاشعارات",
+  "Notifications": "الاشعارات",
   "Tilte": "العنوان",
   "Terms and Conditions": "الشروط والأحكام",
   "Privacy policy": "سياسة الخصوصية",
@@ -98,5 +98,5 @@ const Map<String, String> ar = {
   "Discount : ": "الخصم : ",
   "You did not specify the size": "لم تحدد الحجم",
   "You did not specify the color": "لم تحدد اللون",
-  "You did not specify the requierd item": "لم تحدد جميع الأشياء المطلوبة"
+  "You did not specify the required item": "لم تحدد جميع الأشياء المطلوبة"
 };

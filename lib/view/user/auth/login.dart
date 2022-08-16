@@ -70,7 +70,7 @@ class _loginState extends State<login> {
                       style: TextStyle(color: MyColors.color2),
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
-                        suffix: Text("+962"),
+                        // suffix: Text("+962"),
                         prefixIcon: IconButton(
                             icon: Icon(Icons.mobile_friendly_outlined),
                             onPressed: () {}),

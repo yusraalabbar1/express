@@ -173,40 +173,44 @@ class _allProductsState extends State<allProducts> {
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             Text("asc".tr),
-                            IconButton(
-                                icon: Icon(Icons.arrow_circle_down),
-                                onPressed: () async {
-                                  setState(() {
-                                    t = "asc";
-                                    print(t);
-                                    passengers = [];
-                                    currentPage = 1;
-                                  });
-                                  final result =
-                                      await getPassengerData2(isRefresh: true);
-                                  if (result) {
-                                    refreshController.refreshCompleted();
-                                  } else {
-                                    refreshController.refreshFailed();
-                                  }
-                                }),
-                            IconButton(
-                                icon: Icon(Icons.arrow_circle_up),
-                                onPressed: () async {
-                                  setState(() {
-                                    t = "desc";
-                                    passengers = [];
-                                    currentPage = 1;
-                                    print(currentPage);
-                                  });
-                                  final result =
-                                      await getPassengerData2(isRefresh: true);
-                                  if (result) {
-                                    refreshController.refreshCompleted();
-                                  } else {
-                                    refreshController.refreshFailed();
-                                  }
-                                }),
+                            Expanded(
+                              child: IconButton(
+                                  icon: Icon(Icons.arrow_circle_down),
+                                  onPressed: () async {
+                                    setState(() {
+                                      t = "asc";
+                                      print(t);
+                                      passengers = [];
+                                      currentPage = 1;
+                                    });
+                                    final result = await getPassengerData2(
+                                        isRefresh: true);
+                                    if (result) {
+                                      refreshController.refreshCompleted();
+                                    } else {
+                                      refreshController.refreshFailed();
+                                    }
+                                  }),
+                            ),
+                            Expanded(
+                              child: IconButton(
+                                  icon: Icon(Icons.arrow_circle_up),
+                                  onPressed: () async {
+                                    setState(() {
+                                      t = "desc";
+                                      passengers = [];
+                                      currentPage = 1;
+                                      print(currentPage);
+                                    });
+                                    final result = await getPassengerData2(
+                                        isRefresh: true);
+                                    if (result) {
+                                      refreshController.refreshCompleted();
+                                    } else {
+                                      refreshController.refreshFailed();
+                                    }
+                                  }),
+                            ),
                             Text("desc".tr),
                           ],
                         ),

@@ -93,9 +93,14 @@ class Pass {
         images: List<Image>.from(json["images"].map((x) => Image.fromJson(x))),
         sizes: List<Color>.from(json["sizes"].map((x) => Color.fromJson(x))),
         colors: List<Color>.from(json["colors"].map((x) => Color.fromJson(x))),
-        addedToCart: json["added_to_cart"],
-        quantityCart: int.parse(json["quantity_cart"].toString()),
-        addedToFavourites: json["added_to_favourites"],
+        addedToCart: json["added_to_cart"] != ""
+            ? int.parse(json["added_to_cart"].toString())
+            : 0,
+        quantityCart: json["quantity_cart"] != ""
+            ? int.parse(json["quantity_cart"].toString())
+            : 0,
+        addedToFavourites:
+            json["added_to_favourites"] != "" ? json["added_to_favourites"] : 0,
       );
 
   Map<String, dynamic> toJson() => {

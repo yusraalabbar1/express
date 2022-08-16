@@ -132,10 +132,7 @@ class _completeCartState extends State<completeCart> {
                     children: [
                       Text("Total Price: ".tr,
                           style: TextStyle(color: MyColors.new3, fontSize: 18)),
-                      Text(
-                          (controllerPro.savedeliveryFees +
-                                  controllerPro.savecartTotal)
-                              .toString(),
+                      Text((2 + controllerPro.savecartTotal).toString(),
                           style: TextStyle(color: MyColors.new3, fontSize: 16))
                     ],
                   ),

@@ -116,10 +116,16 @@ class _particularProducteState extends State<particularProducte> {
                             "[]" &&
                         controllerPro.saveDetailsProduct["colors"].toString() !=
                             "[]") {
-                      if (size == "" || color == "") {
+                      if (size == "" && color == "") {
                         print("select size or color");
                         dialog(context,
-                            "You did not specify the requierd item".tr);
+                            "You did not specify the required item".tr);
+                      } else if (size == "") {
+                        print("select size or color");
+                        dialog(context, "You did not specify the size".tr);
+                      } else if (color == "") {
+                        print("select size or color");
+                        dialog(context, "You did not specify the color".tr);
                       } else {
                         setState(() {
                           cc = 1;
@@ -548,9 +554,9 @@ class _particularProducteState extends State<particularProducte> {
                                                                   color: tappedIndex ==
                                                                           i
                                                                       ? Colors
-                                                                          .grey
+                                                                          .black
                                                                       : Colors
-                                                                          .black,
+                                                                          .grey,
                                                                   width: 2.0,
                                                                 ),
                                                               ),
@@ -660,9 +666,9 @@ class _particularProducteState extends State<particularProducte> {
                                                                   color: tappedIndexColor ==
                                                                           i
                                                                       ? Colors
-                                                                          .grey
+                                                                          .black
                                                                       : Colors
-                                                                          .black,
+                                                                          .grey,
                                                                   width: 2.0,
                                                                 ),
                                                               ),
@@ -689,7 +695,7 @@ class _particularProducteState extends State<particularProducte> {
                                                     left: 15, right: 15),
                                                 child: Container(
                                                   child: Text(
-                                                    "Desctiption : ".tr,
+                                                    "Description : ".tr,
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,

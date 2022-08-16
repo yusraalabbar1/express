@@ -85,7 +85,7 @@ class _notificationState extends State<notification> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: MyColors.color3,
-          title: Text("Notifiction".tr,
+          title: Text("Notifications".tr,
               style: TextStyle(
                   color: MyColors.color4, fontSize: 14, fontFamily: 'Almarai')),
         ),

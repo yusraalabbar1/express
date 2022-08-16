@@ -46,7 +46,7 @@ class _langPageState extends State<langPage>
                   height: 8,
                 ),
                 Center(
-                  child: Text("Choose The Language of the Applcation",
+                  child: Text("Choose The Language of the Application",
                       style: TextStyle(
                           color: MyColors.color2,
                           fontSize: 15,

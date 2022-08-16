@@ -131,8 +131,8 @@ class _myOrderState extends State<myOrder> {
                                         quarterTurns: -1,
                                         child: Center(
                                           child: Text(
-                                              "Order Date : ${passenger.createdAt}"
-                                                  .substring(0, 23),
+                                              "${passenger.createdAt}"
+                                                  .substring(0, 10),
                                               style: const TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold,
@@ -220,7 +220,9 @@ class _myOrderState extends State<myOrder> {
                                                     style: TextStyle(
                                                         color: Colors.white,
                                                         fontFamily: "Almarai")),
-                                                Text("${passenger.total}",
+                                                Text(
+                                                    (passenger.finalTotal! + 2)
+                                                        .toString(),
                                                     style: TextStyle(
                                                         color: Colors.white)),
                                               ],

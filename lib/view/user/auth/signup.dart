@@ -102,7 +102,7 @@ class _signupState extends State<signup> {
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
                           hintText: "Mobile Number".tr,
-                          suffix: Text("+962"),
+                          // suffix: Text("+962"),
                           prefixIcon: IconButton(
                               icon: Icon(Icons.mobile_friendly_outlined),
                               onPressed: () {}),

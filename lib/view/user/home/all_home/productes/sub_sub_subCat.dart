@@ -30,6 +30,7 @@ class sub3cat extends StatefulWidget {
 class _sub3catState extends State<sub3cat> {
   controllerProduct controllerPro = Get.put(controllerProduct());
   var c, cc;
+  var t;
   int page = 1;
   int currentPage = 1;
 
@@ -63,7 +64,58 @@ class _sub3catState extends State<sub3cat> {
     var request = http.Request(
         'GET',
         Uri.parse(Base +
-            '/categories/${controllerPro.saveProCatId}/products/?lang=$lang&page=$page'));
+            '/categories/${controllerPro.saveProCatId}/products/?lang=$lang&page=$currentPage'));
+
+    request.headers.addAll(headers);
+
+    final response = await request.send();
+    var res = await http.Response.fromStream(response);
+    if (response.statusCode == 200) {
+      final result = ProductCategoryModelFromJson(res.body);
+
+      if (isRefresh) {
+        passengers = result.data!;
+      } else {
+        passengers.addAll(result.data!);
+      }
+
+      currentPage++;
+
+      totalPages = result.meta!.totalPages!;
+
+      print(res.body);
+      setState(() {});
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> getPassengerData2({bool isRefresh = false}) async {
+    if (isRefresh) {
+      currentPage = 1;
+      print("1");
+    } else {
+      print("============================");
+      print(totalPages);
+      print("============================");
+      if (currentPage > totalPages) {
+        print("2");
+        refreshController.loadNoData();
+        return false;
+      }
+    }
+    controllerProduct controllerPro = Get.put(controllerProduct());
+    homecontroller controller = Get.put(homecontroller());
+
+    var headers = {
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ${controller.saveProfileaccessToken}'
+    };
+    var request = http.Request(
+        'GET',
+        Uri.parse(Base +
+            '/categories/${controllerPro.saveProCatId}/products/?lang=$lang&page=$currentPage&filter=$t'));
 
     request.headers.addAll(headers);
 
@@ -118,6 +170,62 @@ class _sub3catState extends State<sub3cat> {
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
                   children: [
+                    Container(
+                      margin: EdgeInsets.all(1),
+                      height: 58,
+                      width: MediaQuery.of(context).size.width,
+                      child: IntrinsicHeight(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Text("asc".tr),
+                            Expanded(
+                              child: IconButton(
+                                  icon: Icon(Icons.arrow_circle_down),
+                                  onPressed: () async {
+                                    setState(() {
+                                      t = "asc";
+                                      print(t);
+                                      passengers = [];
+                                      currentPage = 1;
+                                    });
+                                    final result = await getPassengerData2(
+                                        isRefresh: true);
+                                    if (result) {
+                                      refreshController.refreshCompleted();
+                                    } else {
+                                      refreshController.refreshFailed();
+                                    }
+                                  }),
+                            ),
+                            Expanded(
+                              child: IconButton(
+                                  icon: Icon(Icons.arrow_circle_up),
+                                  onPressed: () async {
+                                    setState(() {
+                                      t = "desc";
+                                      passengers = [];
+                                      currentPage = 1;
+                                      print(currentPage);
+                                    });
+                                    final result = await getPassengerData2(
+                                        isRefresh: true);
+                                    if (result) {
+                                      refreshController.refreshCompleted();
+                                    } else {
+                                      refreshController.refreshFailed();
+                                    }
+                                  }),
+                            ),
+                            Text("desc".tr),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Expanded(
                       child: SmartRefresher(
                           controller: refreshController,
