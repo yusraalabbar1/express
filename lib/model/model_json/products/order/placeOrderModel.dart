@@ -52,9 +52,9 @@ class Data {
   });
 
   int? id;
-  int? total;
+  dynamic? total;
   dynamic? deliveryCost;
-  int? finalTotal;
+  dynamic? finalTotal;
   String? dropAddress;
   dynamic? status;
   List<Item>? items;
@@ -94,7 +94,7 @@ class Item {
   int? id;
   Product? product;
   int? quantity;
-  int? total;
+  dynamic? total;
 
   factory Item.fromJson(Map<String, dynamic> json) => Item(
         id: json["id"],
@@ -127,12 +127,12 @@ class Product {
   int? id;
   String? name;
   String? desctiption;
-  int? price;
-  int? discount;
+  dynamic? price;
+  dynamic? discount;
   List<Image>? images;
-  int? addedToCart;
-  int? quantityCart;
-  int? addedToFavourites;
+  dynamic? addedToCart;
+  dynamic? quantityCart;
+  dynamic? addedToFavourites;
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
         id: json["id"],

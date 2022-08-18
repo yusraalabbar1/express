@@ -57,27 +57,23 @@ class Datum {
   int? id;
   String? name;
   String? desctiption;
-  int? price;
-  int? discount;
+  dynamic? price;
+  dynamic? discount;
   List<Image>? images;
-  int? addedToCart;
-  int? quantityCart;
-  int? addedToFavourites;
+  dynamic? addedToCart;
+  dynamic? quantityCart;
+  dynamic? addedToFavourites;
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
         id: json["id"],
         name: json["name"],
         desctiption: json["desctiption"],
         /////
-        price: int.parse(json["price"].toString()),
+        price: json["price"],
         discount: json["discount"] == null ? null : json["discount"],
         images: List<Image>.from(json["images"].map((x) => Image.fromJson(x))),
-        addedToCart: json["added_to_cart"] == ""
-            ? 0
-            : int.parse(json["added_to_cart"].toString()),
-        quantityCart: json["quantity_cart"] == ""
-            ? 0
-            : int.parse(json["quantity_cart"].toString()),
+        addedToCart: json["added_to_cart"] == "" ? 0 : json["added_to_cart"],
+        quantityCart: json["quantity_cart"] == "" ? 0 : json["quantity_cart"],
         addedToFavourites:
             json["added_to_favourites"] == "" ? 0 : json["added_to_favourites"],
       );

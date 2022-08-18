@@ -51,9 +51,9 @@ class Data {
   });
 
   int? id;
-  int? total;
-  int? deliveryCost;
-  int? finalTotal;
+  dynamic? total;
+  dynamic? deliveryCost;
+  dynamic? finalTotal;
   String? dropAddress;
   String? status;
   String? createdat;

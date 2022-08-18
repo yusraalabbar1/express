@@ -19,8 +19,8 @@ class MyCartModel {
   String? code;
   String? message;
   List<Datum>? data;
-  int? cartTotal;
-  int? deliveryFees;
+  dynamic? cartTotal;
+  dynamic? deliveryFees;
 
   factory MyCartModel.fromJson(Map<String, dynamic> json) => MyCartModel(
         status: json["status"],
@@ -101,9 +101,9 @@ class Product {
   int? id;
   String? name;
   String? desctiption;
-  int? price;
-  int? new_price;
-  int? discount;
+  dynamic? price;
+  dynamic? new_price;
+  dynamic? discount;
   String? vendor2;
   List<Image>? images;
   List<Color>? sizes;

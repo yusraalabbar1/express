@@ -61,8 +61,8 @@ class ProdCat {
   int? id;
   String? name;
   String? desctiption;
-  int? price;
-  int? discount;
+  dynamic? price;
+  dynamic? discount;
   List<Image>? images;
   int? addedToCart;
   int? quantityCart;

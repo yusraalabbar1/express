@@ -57,15 +57,15 @@ class Data {
   int? id;
   String? name;
   String? desctiption;
-  int? price;
+  dynamic? price;
   dynamic discount;
   dynamic vendor2;
   List<Image>? images;
   List<Color>? sizes;
   List<Color>? colors;
-  int? addedToCart;
-  int? quantityCart;
-  int? addedToFavourites;
+  dynamic? addedToCart;
+  dynamic? quantityCart;
+  dynamic? addedToFavourites;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         id: json["id"],

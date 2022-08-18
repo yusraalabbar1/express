@@ -61,13 +61,13 @@ class searchProu {
   int? id;
   String? name;
   String? desctiption;
-  int? price;
-  int? discount;
-  int? new_price;
+  dynamic? price;
+  dynamic? discount;
+  dynamic? new_price;
   List<Image>? images;
-  int? addedToCart;
-  int? quantityCart;
-  int? addedToFavourites;
+  dynamic? addedToCart;
+  dynamic? quantityCart;
+  dynamic? addedToFavourites;
 
   factory searchProu.fromJson(Map<String, dynamic> json) => searchProu(
         id: json["id"],
@@ -78,9 +78,7 @@ class searchProu {
         new_price: json["new_price"],
         images: List<Image>.from(json["images"].map((x) => Image.fromJson(x))),
         addedToCart: json["added_to_cart"] == "" ? 0 : json["added_to_cart"],
-        quantityCart: json["quantity_cart"] == ""
-            ? 0
-            : int.parse(json["quantity_cart"].toString()),
+        quantityCart: json["quantity_cart"] == "" ? 0 : json["quantity_cart"],
         addedToFavourites:
             json["added_to_favourites"] == "" ? 0 : json["added_to_favourites"],
       );

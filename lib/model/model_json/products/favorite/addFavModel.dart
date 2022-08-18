@@ -73,12 +73,12 @@ class Product {
   int? id;
   String? name;
   String? desctiption;
-  int? price;
-  int? discount;
+  dynamic? price;
+  dynamic? discount;
   List<Image>? images;
-  int? addedToCart;
-  int? quantityCart;
-  int? addedToFavourites;
+  dynamic? addedToCart;
+  dynamic? quantityCart;
+  dynamic? addedToFavourites;
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
         id: json["id"],
@@ -88,7 +88,7 @@ class Product {
         discount: json["discount"],
         images: List<Image>.from(json["images"].map((x) => Image.fromJson(x))),
         addedToCart: json["added_to_cart"],
-        quantityCart: int.parse(json["quantity_cart"].toString()),
+        quantityCart: json["quantity_cart"].toString(),
         addedToFavourites: json["added_to_favourites"],
       );
 

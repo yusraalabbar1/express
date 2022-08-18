@@ -85,12 +85,12 @@ class Product {
   int? id;
   String? name;
   String? desctiption;
-  int? price;
-  int? discount;
+  dynamic? price;
+  dynamic? discount;
   List<Image>? images;
   int? addedToCart;
   String? quantityCart;
-  int? addedToFavourites;
+  dynamic? addedToFavourites;
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
         id: json["id"],

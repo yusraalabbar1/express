@@ -71,16 +71,16 @@ class Pass {
   int? id;
   String? name;
   String? desctiption;
-  int? price;
+  dynamic? price;
   dynamic discount;
-  int? newPrice;
+  dynamic? newPrice;
   String? vendor2;
   List<Image>? images;
   List<Color>? sizes;
   List<Color>? colors;
-  int? addedToCart;
-  int? quantityCart;
-  int? addedToFavourites;
+  dynamic? addedToCart;
+  dynamic? quantityCart;
+  dynamic? addedToFavourites;
 
   factory Pass.fromJson(Map<String, dynamic> json) => Pass(
         id: json["id"],
@@ -96,9 +96,7 @@ class Pass {
         addedToCart: json["added_to_cart"] != ""
             ? int.parse(json["added_to_cart"].toString())
             : 0,
-        quantityCart: json["quantity_cart"] != ""
-            ? int.parse(json["quantity_cart"].toString())
-            : 0,
+        quantityCart: json["quantity_cart"] != "" ? json["quantity_cart"] : 0,
         addedToFavourites:
             json["added_to_favourites"] != "" ? json["added_to_favourites"] : 0,
       );
