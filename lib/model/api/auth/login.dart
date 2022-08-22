@@ -65,6 +65,8 @@ loginApi(context, mobile, pass) async {
       ///////////////////////////////////////////////
       preferences.setString("name", c.data!.user!.name.toString());
       controller.SaveProfileName(preferences.getString('name'));
+      preferences.setString("pass", pass);
+      controller.SaveProfilePass(preferences.getString('pass'));
       preferences.setString("mobile", c.data!.user!.mobile.toString());
       controller.SaveProfilemobile(preferences.getString('mobile'));
       preferences.setString(

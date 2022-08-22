@@ -98,5 +98,7 @@ const Map<String, String> ar = {
   "Discount : ": "الخصم : ",
   "You did not specify the size": "لم تحدد الحجم",
   "You did not specify the color": "لم تحدد اللون",
-  "You did not specify the required item": "لم تحدد جميع الأشياء المطلوبة"
+  "You did not specify the required item": "لم تحدد جميع الأشياء المطلوبة",
+  "Delet Account": "حذف الحساب",
+  "Are you sure you want to Delete account?": "هل أنت متأكد من حذف الحساب"
 };

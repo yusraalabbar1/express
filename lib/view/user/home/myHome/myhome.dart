@@ -93,8 +93,8 @@ class _myHomeState extends State<myHome> with SingleTickerProviderStateMixin {
             decoration: boxDecorationMain(),
           ),
           Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
+            // mainAxisSize: MainAxisSize.min,
+            children: [
               Container(
                 height: 50,
                 child: GetBuilder<controllerProduct>(builder: (controllerPro) {
@@ -141,111 +141,121 @@ class _myHomeState extends State<myHome> with SingleTickerProviderStateMixin {
                             ? GetBuilder<controllerProduct>(
                                 builder: (controllerPro) {
                                 return (Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: GridView.builder(
-                                      shrinkWrap: true,
-                                      gridDelegate:
-                                          const SliverGridDelegateWithMaxCrossAxisExtent(
-                                              maxCrossAxisExtent: 200,
-                                              childAspectRatio: 3 / 2,
-                                              crossAxisSpacing: 20,
-                                              mainAxisSpacing: 20),
-                                      itemCount:
-                                          controllerPro.saveSubCateg.length,
-                                      itemBuilder: (BuildContext ctx, index) {
-                                        return InkWell(
-                                          onTap: () async {
-                                            print("object");
-                                            print(controllerPro
-                                                    .saveSubCateg[index]
-                                                ["has_sub"]);
-                                            if (controllerPro
-                                                        .saveSubCateg[index]
-                                                    ["has_sub"] ==
-                                                1) {
-                                              await SubSubCategories(
-                                                  controllerPro
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: SizedBox(
+                                    height: MediaQuery.of(context).size.height -
+                                        214,
+                                    child: GridView.builder(
+                                        // shrinkWrap: true,
+                                        gridDelegate:
+                                            const SliverGridDelegateWithMaxCrossAxisExtent(
+                                                maxCrossAxisExtent: 200,
+                                                childAspectRatio: 3 / 2,
+                                                crossAxisSpacing: 20,
+                                                mainAxisSpacing: 20),
+                                        itemCount:
+                                            controllerPro.saveSubCateg.length,
+                                        itemBuilder: (BuildContext ctx, index) {
+                                          return InkWell(
+                                            onTap: () async {
+                                              print("object");
+                                              print(controllerPro
+                                                      .saveSubCateg[index]
+                                                  ["has_sub"]);
+                                              if (controllerPro
                                                           .saveSubCateg[index]
-                                                      ["id"]);
-                                              Navigator.of(context)
-                                                  .pushNamed("subSubCat");
-                                            } else {
-                                              await CategoryProduct(
-                                                  controllerPro
-                                                          .saveSubCateg[index]
-                                                      ["id"],
-                                                  1);
-                                              controllerPro.SaveProCatId(
-                                                  controllerPro
-                                                          .saveSubCateg[index]
-                                                      ["id"]);
-                                              Navigator.of(context)
-                                                  .pushNamed("sub3cat");
-                                            }
-                                          },
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            child: Column(
-                                              children: [
-                                                Expanded(
-                                                    flex: 4,
-                                                    child: Container(
-                                                      color: Colors.transparent,
-                                                    )),
-                                                Expanded(
-                                                  flex: 1,
-                                                  child: Center(
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                          color: Colors
-                                                              .transparent
-                                                              .withOpacity(0.6),
-                                                          borderRadius:
-                                                              BorderRadius.only(
-                                                            bottomLeft:
-                                                                Radius.circular(
-                                                                    15),
-                                                            bottomRight:
-                                                                Radius.circular(
-                                                                    15),
-                                                          )),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                              .size
-                                                              .width,
-                                                      child: Text(
-                                                        controllerPro
-                                                                .saveSubCateg[
-                                                            index]["name"],
-                                                        style: TextStyle(
-                                                            color: Colors.white,
-                                                            fontFamily:
-                                                                'Almarai'),
+                                                      ["has_sub"] ==
+                                                  1) {
+                                                await SubSubCategories(
+                                                    controllerPro
+                                                            .saveSubCateg[index]
+                                                        ["id"]);
+                                                Navigator.of(context)
+                                                    .pushNamed("subSubCat");
+                                              } else {
+                                                await CategoryProduct(
+                                                    controllerPro
+                                                            .saveSubCateg[index]
+                                                        ["id"],
+                                                    1);
+                                                controllerPro.SaveProCatId(
+                                                    controllerPro
+                                                            .saveSubCateg[index]
+                                                        ["id"]);
+                                                Navigator.of(context)
+                                                    .pushNamed("sub3cat");
+                                              }
+                                            },
+                                            child: Container(
+                                              alignment: Alignment.center,
+                                              child: Column(
+                                                children: [
+                                                  Expanded(
+                                                      flex: 4,
+                                                      child: Container(
+                                                        color:
+                                                            Colors.transparent,
+                                                      )),
+                                                  Expanded(
+                                                    flex: 1,
+                                                    child: Center(
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                                color: Colors
+                                                                    .transparent
+                                                                    .withOpacity(
+                                                                        0.6),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .only(
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          15),
+                                                                  bottomRight: Radius
+                                                                      .circular(
+                                                                          15),
+                                                                )),
+                                                        alignment:
+                                                            Alignment.center,
+                                                        width: MediaQuery.of(
+                                                                context)
+                                                            .size
+                                                            .width,
+                                                        child: Text(
+                                                          controllerPro
+                                                                  .saveSubCateg[
+                                                              index]["name"],
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontFamily:
+                                                                  'Almarai'),
+                                                        ),
                                                       ),
                                                     ),
+                                                  )
+                                                ],
+                                              ),
+                                              decoration: BoxDecoration(
+                                                  color: MyColors.color2,
+                                                  image: DecorationImage(
+                                                    image:
+                                                        CachedNetworkImageProvider(
+                                                            controllerPro
+                                                                .saveSubCateg[
+                                                                    index]
+                                                                    ["image"]
+                                                                .toString()),
+                                                    fit: BoxFit.cover,
                                                   ),
-                                                )
-                                              ],
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15)),
                                             ),
-                                            decoration: BoxDecoration(
-                                                color: MyColors.color2,
-                                                image: DecorationImage(
-                                                  image:
-                                                      CachedNetworkImageProvider(
-                                                          controllerPro
-                                                              .saveSubCateg[
-                                                                  index]
-                                                                  ["image"]
-                                                              .toString()),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(15)),
-                                          ),
-                                        );
-                                      }),
+                                          );
+                                        }),
+                                  ),
                                 ));
                               })
                             : CircularProgressIndicator(

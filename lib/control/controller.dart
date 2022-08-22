@@ -72,6 +72,12 @@ class homecontroller extends GetxController {
     update();
   }
 
+  var pass;
+  SaveProfilePass(v) {
+    pass = v;
+    update();
+  }
+
   SaveProfilephotoProfile(v) {
     if (v == "" ||
         v == " " ||

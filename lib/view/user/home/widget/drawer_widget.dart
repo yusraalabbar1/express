@@ -1,5 +1,6 @@
 import 'package:express/utilits/colors.dart';
 import 'package:express/view/user/home/widget/chane_lang.dart';
+import 'package:express/view/user/home/widget/delet_account.dart';
 import 'package:express/view/user/home/widget/logoutWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -162,6 +163,29 @@ Widget drawerMain(context) {
                 ),
                 Container(
                     child: Text("Log out".tr,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontFamily: 'Almarai')))
+              ],
+            ),
+          ),
+          InkWell(
+            onTap: () async {
+              showLoadingDelet(context);
+            },
+            child: Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.all(10),
+                  child: Icon(
+                    Icons.delete_forever,
+                    size: 20,
+                    color: Colors.white,
+                  ),
+                ),
+                Container(
+                    child: Text("Delet Account".tr,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 14,
