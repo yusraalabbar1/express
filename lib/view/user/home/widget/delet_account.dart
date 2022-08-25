@@ -46,10 +46,10 @@ showLoadingDelet(context) async {
                               await SharedPreferences.getInstance();
                           preferences.setInt("islogin", 0);
                           // Navigator.of(context).pushReplacementNamed("welcom");
-                          SystemNavigator.pop();
 
                           var pass = preferences.getString("pass");
                           deletAccount(context, pass);
+                          SystemNavigator.pop();
                         },
                       ),
                       SizedBox(
