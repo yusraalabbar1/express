@@ -185,7 +185,7 @@ Widget drawerMain(context) {
                   ),
                 ),
                 Container(
-                    child: Text("Delet Account".tr,
+                    child: Text("Delete Account".tr,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 14,

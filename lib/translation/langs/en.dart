@@ -99,7 +99,7 @@ const Map<String, String> en = {
   "You did not specify the color": "You did not specify the color",
   "You did not specify the required item":
       "You did not specify the required item",
-  "Delet Account": "Delet Account",
+  "Delete Account": "Delete Account",
   "Are you sure you want to Delete account?":
       "Are you sure you want to Delete account?"
 };
