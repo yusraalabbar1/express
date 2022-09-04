@@ -347,10 +347,10 @@ class _particularProducteState extends State<particularProducte> {
                                                             "discount"] !=
                                                         null
                                                     ? Text(
-                                                        controllerPro
-                                                            .saveDetailsProduct[
-                                                                "price"]
-                                                            .toString(),
+                                                        controllerPro.saveDetailsProduct[
+                                                                    "price"]
+                                                                .toString() +
+                                                            " JOD \t",
                                                         style: const TextStyle(
                                                             fontWeight:
                                                                 FontWeight.bold,
@@ -397,9 +397,10 @@ class _particularProducteState extends State<particularProducte> {
                                                       Expanded(
                                                         child: Text(
                                                             controllerPro
-                                                                .saveDetailsProduct[
-                                                                    "discount"]
-                                                                .toString(),
+                                                                    .saveDetailsProduct[
+                                                                        "discount"]
+                                                                    .toString() +
+                                                                " JOD \t",
                                                             style: const TextStyle(
                                                                 fontWeight:
                                                                     FontWeight
@@ -423,14 +424,15 @@ class _particularProducteState extends State<particularProducte> {
                                                       Expanded(
                                                         child: Text(
                                                             (int.parse(controllerPro
-                                                                        .saveDetailsProduct[
-                                                                            "price"]
-                                                                        .toString()) -
-                                                                    int.parse(controllerPro
-                                                                        .saveDetailsProduct[
-                                                                            "discount"]
-                                                                        .toString()))
-                                                                .toString(),
+                                                                            .saveDetailsProduct[
+                                                                                "price"]
+                                                                            .toString()) -
+                                                                        int.parse(controllerPro
+                                                                            .saveDetailsProduct[
+                                                                                "discount"]
+                                                                            .toString()))
+                                                                    .toString() +
+                                                                " JOD \t",
                                                             style: const TextStyle(
                                                                 fontWeight:
                                                                     FontWeight
@@ -693,16 +695,23 @@ class _particularProducteState extends State<particularProducte> {
                                               Padding(
                                                 padding: const EdgeInsets.only(
                                                     left: 15, right: 15),
-                                                child: Container(
-                                                  child: Text(
-                                                    "Description : ".tr,
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 15,
-                                                        fontFamily: 'Almarai'),
-                                                  ),
-                                                ),
+                                                child: controllerPro
+                                                                .saveDetailsProduct[
+                                                            "desctiption"] !=
+                                                        null
+                                                    ? Container(
+                                                        child: Text(
+                                                          "Description : ".tr,
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 15,
+                                                              fontFamily:
+                                                                  'Almarai'),
+                                                        ),
+                                                      )
+                                                    : Container(),
                                               ),
                                             ],
                                           ),
@@ -715,16 +724,23 @@ class _particularProducteState extends State<particularProducte> {
                                               width: MediaQuery.of(context)
                                                   .size
                                                   .width,
-                                              child: Text(
-                                                  parse(controllerPro
+                                              child: controllerPro
                                                               .saveDetailsProduct[
-                                                          "desctiption"])
-                                                      .body!
-                                                      .text,
-                                                  style: TextStyle(
-                                                      height: 1.5,
-                                                      fontSize: 14,
-                                                      fontFamily: 'Almarai')),
+                                                          "desctiption"] !=
+                                                      null
+                                                  ? Text(
+                                                      parse(controllerPro
+                                                              .saveDetailsProduct[
+                                                                  "desctiption"]
+                                                              .toString())
+                                                          .body!
+                                                          .text,
+                                                      style: TextStyle(
+                                                          height: 1.5,
+                                                          fontSize: 14,
+                                                          fontFamily:
+                                                              'Almarai'))
+                                                  : Container(),
                                             ),
                                           ),
                                         ],
