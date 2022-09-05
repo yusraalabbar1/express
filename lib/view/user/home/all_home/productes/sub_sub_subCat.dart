@@ -266,18 +266,21 @@ class _sub3catState extends State<sub3cat> {
                                 final passenger = passengers[index];
                                 return InkWell(
                                     onTap: () async {
-                                      await detailsProducts(controllerPro
-                                          .saveAllProductCategory[index]["id"]);
-                                      print(controllerPro.saveDetailsProduct);
-                                      if (controllerPro.saveDetailsProduct !=
-                                          {}) {
-                                        if (controllerPro
-                                                .saveDetailsProduct["name"] !=
-                                            null) {
-                                          Navigator.of(context)
-                                              .pushNamed("particularProducte");
-                                        }
-                                      }
+                                      await detailsProducts(passenger.id);
+                                      Navigator.of(context)
+                                          .pushNamed("particularProducte");
+                                      // await detailsProducts(controllerPro
+                                      //     .saveAllProductCategory[index]["id"]);
+                                      // print(controllerPro.saveDetailsProduct);
+                                      // if (controllerPro.saveDetailsProduct !=
+                                      //     {}) {
+                                      //   if (controllerPro
+                                      //           .saveDetailsProduct["name"] !=
+                                      //       null) {
+                                      //     Navigator.of(context)
+                                      //         .pushNamed("particularProducte");
+                                      //   }
+                                      // }
                                     },
                                     child: Container(
                                         alignment: Alignment.center,

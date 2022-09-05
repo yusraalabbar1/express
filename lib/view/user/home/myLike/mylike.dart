@@ -66,20 +66,27 @@ class _myLikeState extends State<myLike> {
                                     Container(
                                         margin: EdgeInsets.only(
                                             top: 10, bottom: 10),
-                                        child: Text(
-                                            parse(controllerPro
-                                                        .saveMyFavprite[index]
-                                                    ["product"]["desctiption"])
-                                                .body!
-                                                .text,
-                                            // controllerPro.saveMyFavprite[index]
-                                            //     ["product"]["desctiption"],
-                                            style: const TextStyle(
-                                                color: Colors.white,
-                                                overflow: TextOverflow.ellipsis,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 13,
-                                                fontFamily: 'Almarai'))),
+                                        child: controllerPro.saveMyFavprite[index]
+                                                        ["product"]
+                                                    ["desctiption"] !=
+                                                null
+                                            ? Text(
+                                                parse(controllerPro
+                                                                .saveMyFavprite[
+                                                            index]["product"]
+                                                        ["desctiption"])
+                                                    .body!
+                                                    .text,
+                                                // controllerPro.saveMyFavprite[index]
+                                                //     ["product"]["desctiption"],
+                                                style: const TextStyle(
+                                                    color: Colors.white,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 13,
+                                                    fontFamily: 'Almarai'))
+                                            : Text("")),
                                     Container(
                                         child: Row(
                                       children: [
