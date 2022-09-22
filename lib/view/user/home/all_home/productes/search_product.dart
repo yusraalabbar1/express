@@ -378,6 +378,8 @@ class _searchProductState extends State<searchProduct> {
                                             child: Text(
                                               passenger.name.toString(),
                                               style: const TextStyle(
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                   color: Colors.black),
                                             ),
                                           ),

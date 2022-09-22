@@ -381,6 +381,8 @@ class _allProductsState extends State<allProducts> {
                                                 child: Text(
                                                   passenger.name!,
                                                   style: TextStyle(
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
                                                       color: Colors.black),
                                                 ),
                                               ),

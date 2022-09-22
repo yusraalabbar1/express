@@ -97,122 +97,150 @@ class _welcom2State extends State<welcom2> with AutomaticKeepAliveClientMixin {
                         fontFamily: 'Almarai'),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        height: 55,
-                        child: RaisedButton(
-                          color: MyColors.color1,
-                          elevation: 10,
-                          splashColor: MyColors.color1,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25),
-                              side:
-                                  BorderSide(color: MyColors.color1, width: 2)),
-                          onPressed: () async {
-                            SharedPreferences preferences =
-                                await SharedPreferences.getInstance();
-                            preferences.setString("sendMen", "user");
-                            controller.SaveTypeUser("user");
-                            setState(() {
-                              sendMen = "user";
-                            });
-                            Navigator.of(context)
-                                .pushReplacementNamed("langPage");
-                          },
-                          child: Text(
-                            "مستخدم",
-                            style: TextStyle(
-                                fontSize: 15,
-                                color: MyColors.color3,
-                                fontFamily: 'Almarai'),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: 55,
-                        child: RaisedButton(
-                          color: MyColors.color1,
-                          elevation: 10,
-                          splashColor: MyColors.color1,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25),
-                              side:
-                                  BorderSide(color: MyColors.color1, width: 2)),
-                          onPressed: () async {
-                            SharedPreferences preferences =
-                                await SharedPreferences.getInstance();
-                            preferences.setString("sendMen", "driver");
-                            setState(() {
-                              sendMen = "driver";
-                            });
-                            Navigator.of(context).pushNamed("loginDriver");
-                          },
-                          child: Text(
-                            "سائق",
-                            style: TextStyle(
-                                fontSize: 15,
-                                color: MyColors.color3,
-                                fontFamily: 'Almarai'),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: 55,
-                        child: RaisedButton(
-                          color: MyColors.color1,
-                          elevation: 10,
-                          splashColor: MyColors.color1,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25),
-                              side:
-                                  BorderSide(color: MyColors.color1, width: 2)),
-                          onPressed: () async {
-                            SharedPreferences preferences =
-                                await SharedPreferences.getInstance();
-                            preferences.setString("sendMen", "vendor");
-                            setState(() {
-                              sendMen = "vendor";
-                            });
-                            Navigator.of(context).pushNamed("loginVendor");
-                          },
-                          child: Text(
-                            "تاجر",
-                            style: TextStyle(
-                                fontSize: 15,
-                                color: MyColors.color3,
-                                fontFamily: 'Almarai'),
-                          ),
-                        ),
-                      )
-                    ],
+                Container(
+                  height: 55,
+                  width: 200,
+                  child: RaisedButton(
+                    color: MyColors.color1,
+                    elevation: 10,
+                    splashColor: MyColors.color1,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        side: BorderSide(color: MyColors.color1, width: 2)),
+                    onPressed: () async {
+                      SharedPreferences preferences =
+                          await SharedPreferences.getInstance();
+                      preferences.setString("sendMen", "user");
+                      controller.SaveTypeUser("user");
+                      setState(() {
+                        sendMen = "user";
+                      });
+                      Navigator.of(context).pushReplacementNamed("langPage");
+                    },
+                    child: Text(
+                      "مستخدم",
+                      style: TextStyle(
+                          fontSize: 15,
+                          color: MyColors.color3,
+                          fontFamily: 'Almarai'),
+                    ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 30),
-                  child: Center(
-                    child: InkWell(
-                      onTap: () async {
-                        SharedPreferences preferences =
-                            await SharedPreferences.getInstance();
-                        preferences.setString("sendMen", "guest");
-                        controller.SaveTypeUser("guest");
-                        setState(() {
-                          sendMen = "guest";
-                        });
-                        Navigator.of(context)
-                            .pushReplacementNamed("welcomHome");
-                      },
-                      child: Text("الدخول كضيف",
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 67, 67, 69),
-                              fontFamily: 'Almarai')),
+                SizedBox(
+                  height: 20,
+                ),
+                Center(
+                  child: InkWell(
+                    onTap: () async {
+                      SharedPreferences preferences =
+                          await SharedPreferences.getInstance();
+                      preferences.setString("sendMen", "guest");
+                      controller.SaveTypeUser("guest");
+                      setState(() {
+                        sendMen = "guest";
+                      });
+                      Navigator.of(context).pushReplacementNamed("welcomHome");
+                    },
+                    child: Text("الدخول كضيف",
+                        style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 67, 67, 69),
+                            fontFamily: 'Almarai')),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  height: 55,
+                  width: 200,
+                  child: RaisedButton(
+                    color: MyColors.color1,
+                    elevation: 10,
+                    splashColor: MyColors.color1,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        side: BorderSide(color: MyColors.color1, width: 2)),
+                    onPressed: () async {
+                      SharedPreferences preferences =
+                          await SharedPreferences.getInstance();
+                      preferences.setString("sendMen", "driver");
+                      setState(() {
+                        sendMen = "driver";
+                      });
+                      Navigator.of(context).pushNamed("loginDriver");
+                    },
+                    child: Text(
+                      "سائق",
+                      style: TextStyle(
+                          fontSize: 15,
+                          color: MyColors.color3,
+                          fontFamily: 'Almarai'),
                     ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Center(
+                  child: InkWell(
+                    onTap: () async {
+                      Navigator.of(context).pushReplacementNamed("gestDriver");
+                    },
+                    child: Text("  الدخول كضيف لصفحة السائق",
+                        style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 67, 67, 69),
+                            fontFamily: 'Almarai')),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  height: 55,
+                  width: 200,
+                  child: RaisedButton(
+                    color: MyColors.color1,
+                    elevation: 10,
+                    splashColor: MyColors.color1,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        side: BorderSide(color: MyColors.color1, width: 2)),
+                    onPressed: () async {
+                      SharedPreferences preferences =
+                          await SharedPreferences.getInstance();
+                      preferences.setString("sendMen", "vendor");
+                      setState(() {
+                        sendMen = "vendor";
+                      });
+                      Navigator.of(context).pushNamed("loginVendor");
+                    },
+                    child: Text(
+                      "تاجر",
+                      style: TextStyle(
+                          fontSize: 15,
+                          color: MyColors.color3,
+                          fontFamily: 'Almarai'),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Center(
+                  child: InkWell(
+                    onTap: () async {
+                      Navigator.of(context).pushReplacementNamed("guestVendor");
+                    },
+                    child: Text("  الدخول كضيف لصفحة التاجر",
+                        style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 67, 67, 69),
+                            fontFamily: 'Almarai')),
                   ),
                 )
               ],

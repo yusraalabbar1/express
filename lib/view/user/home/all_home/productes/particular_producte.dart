@@ -283,7 +283,8 @@ class _particularProducteState extends State<particularProducte> {
                                   children: [
                                     Container(
                                       height:
-                                          MediaQuery.of(context).size.height,
+                                          MediaQuery.of(context).size.height *
+                                              2,
                                       width: MediaQuery.of(context).size.width,
                                       decoration: const BoxDecoration(
                                         borderRadius: BorderRadius.only(
@@ -458,16 +459,18 @@ class _particularProducteState extends State<particularProducte> {
                                                       fontFamily:
                                                           'BAHNSCHRIFT'),
                                                 ),
-                                                Text(
-                                                    controllerPro
-                                                            .saveDetailsProduct[
-                                                        "name"],
-                                                    style: const TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 15,
-                                                        fontFamily:
-                                                            'BAHNSCHRIFT'))
+                                                Container(
+                                                  child: Text(
+                                                      controllerPro
+                                                              .saveDetailsProduct[
+                                                          "name"],
+                                                      style: const TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 15,
+                                                          fontFamily:
+                                                              'BAHNSCHRIFT')),
+                                                )
                                               ],
                                             ),
                                           ),

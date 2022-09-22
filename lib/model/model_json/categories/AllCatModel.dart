@@ -22,7 +22,9 @@ class AllCatModel {
         status: json["status"],
         code: json["code"],
         message: json["message"],
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        data: json["data"] != null
+            ? List<Datum>.from(json["data"].map((x) => Datum.fromJson(x)))
+            : null,
       );
 
   Map<String, dynamic> toJson() => {

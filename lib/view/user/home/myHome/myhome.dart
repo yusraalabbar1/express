@@ -197,7 +197,7 @@ class _myHomeState extends State<myHome> with SingleTickerProviderStateMixin {
                                                             Colors.transparent,
                                                       )),
                                                   Expanded(
-                                                    flex: 1,
+                                                    flex: 2,
                                                     child: Center(
                                                       child: Container(
                                                         decoration:

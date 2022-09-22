@@ -5,10 +5,12 @@ import 'package:express/view/drier_vendor/drier_vendor/auth/driver/d_login.dart'
 import 'package:express/view/drier_vendor/drier_vendor/auth/vendor/v_login.dart';
 import 'package:express/view/drier_vendor/drier_vendor/pages/driver/chat_screen.dart';
 import 'package:express/view/drier_vendor/drier_vendor/pages/driver/details.dart';
+import 'package:express/view/drier_vendor/drier_vendor/pages/driver/guesrt_driver.dart';
 import 'package:express/view/drier_vendor/drier_vendor/pages/driver/home_pageD.dart';
 import 'package:express/view/drier_vendor/drier_vendor/pages/driver/info.dart';
 import 'package:express/view/drier_vendor/drier_vendor/pages/vendor/chat_vendor.dart';
 import 'package:express/view/drier_vendor/drier_vendor/pages/vendor/details_order_vendor.dart';
+import 'package:express/view/drier_vendor/drier_vendor/pages/vendor/guest_vendor.dart';
 import 'package:express/view/drier_vendor/drier_vendor/pages/vendor/order_vendor.dart';
 import 'package:express/view/drier_vendor/drier_vendor/pages/welcom.dart';
 import 'package:express/view/drier_vendor/drier_vendor/pages/welcom_homeVD.dart';
@@ -91,7 +93,9 @@ class MyApp extends StatelessWidget {
         "ChatScreen": ((context) => ChatScreen()),
         "orderVendor": ((context) => orderVendor()),
         "chatVendor": ((context) => chatVendor()),
+        "guestVendor": ((context) => guestVendor()),
         "detailsOrderVendor": ((context) => detailsOrderVendor()),
+        "gestDriver": ((context) => gestDriver()),
       },
       locale: Locale(lang!),
       translations: Translation(),

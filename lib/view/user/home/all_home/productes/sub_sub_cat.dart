@@ -73,7 +73,7 @@ class _subSubCatState extends State<subSubCat> {
                                   color: Colors.transparent,
                                 )),
                             Expanded(
-                              flex: 1,
+                              flex: 2,
                               child: Center(
                                 child: Container(
                                   decoration: BoxDecoration(
