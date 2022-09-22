@@ -384,7 +384,11 @@ class _sub3catState extends State<sub3cat> {
                                                 Expanded(
                                                   child: Container(
                                                     child: Text(
-                                                      passenger.price
+                                                      (int.parse(passenger.price
+                                                                      .toString()) -
+                                                                  int.parse(passenger
+                                                                      .discount
+                                                                      .toString()))
                                                               .toString() +
                                                           " JOD \t ",
                                                       style: TextStyle(
