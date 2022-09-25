@@ -101,5 +101,6 @@ const Map<String, String> en = {
       "You did not specify the required item",
   "Delete Account": "Delete Account",
   "Are you sure you want to Delete account?":
-      "Are you sure you want to Delete account?"
+      "Are you sure you want to Delete account?",
+  "Guest": "Guest"
 };

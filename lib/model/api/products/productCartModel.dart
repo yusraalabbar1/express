@@ -51,6 +51,7 @@ class ProdCat {
     this.name,
     this.desctiption,
     this.price,
+    this.new_price,
     this.discount,
     this.images,
     this.addedToCart,
@@ -62,7 +63,9 @@ class ProdCat {
   String? name;
   String? desctiption;
   dynamic? price;
+  dynamic? new_price;
   dynamic? discount;
+
   List<Image>? images;
   int? addedToCart;
   int? quantityCart;
@@ -73,6 +76,7 @@ class ProdCat {
         name: json["name"],
         desctiption: json["desctiption"],
         price: json["price"],
+        new_price: json["new_price"],
         discount: json["discount"],
         images: List<Image>.from(json["images"].map((x) => Image.fromJson(x))),
         addedToCart: json["added_to_cart"] == "" ? 0 : json["added_to_cart"],
@@ -88,6 +92,7 @@ class ProdCat {
         "name": name,
         "desctiption": desctiption,
         "price": price,
+        "new_price": new_price,
         "discount": discount,
         "images": List<dynamic>.from(images!.map((x) => x.toJson())),
         "added_to_cart": addedToCart,

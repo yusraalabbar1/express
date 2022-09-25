@@ -1,9 +1,11 @@
 import 'package:express/control/controller.dart';
 import 'package:express/model/api/auth/login.dart';
 import 'package:express/utilits/colors.dart';
+import 'package:express/view/drier_vendor/drier_vendor/pages/welcom.dart';
 import 'package:express/view/widget_style/style_main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class login extends StatefulWidget {
   login({Key? key}) : super(key: key);
@@ -145,6 +147,34 @@ class _loginState extends State<login> {
                         //   );
                         // })
                         ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Center(
+                    child: InkWell(
+                      onTap: () async {
+                        homecontroller controller = Get.put(homecontroller());
+                        SharedPreferences preferences =
+                            await SharedPreferences.getInstance();
+                        preferences.setString("sendMen", "guest");
+                        controller.SaveTypeUser("guest");
+                        setState(() {
+                          sendMen = "guest";
+                        });
+                        Navigator.of(context)
+                            .pushReplacementNamed("welcomHome");
+                      },
+                      child: Text("Guest".tr,
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 67, 67, 69),
+                              fontFamily: 'Almarai')),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                   InkWell(
                     onTap: () {

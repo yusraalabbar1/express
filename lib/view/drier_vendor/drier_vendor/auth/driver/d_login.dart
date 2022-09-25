@@ -159,8 +159,23 @@ class _loginDriverState extends State<loginDriver> {
                   //   ),
                   // ),
                   SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
+                  Center(
+                    child: InkWell(
+                      onTap: () async {
+                        Navigator.of(context)
+                            .pushReplacementNamed("gestDriver");
+                      },
+                      child: Text("  الدخول كضيف لصفحة السائق",
+                          style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 67, 67, 69),
+                              fontFamily: 'Almarai')),
+                    ),
+                  ),
+
                   // Center(
                   //   child: InkWell(
                   //     child: Container(
