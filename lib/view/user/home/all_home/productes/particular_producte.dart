@@ -449,17 +449,24 @@ class _particularProducteState extends State<particularProducte> {
                                           Padding(
                                             padding: const EdgeInsets.all(15.0),
                                             child: Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              // mainAxisAlignment:
+                                              //     MainAxisAlignment
+                                              //         .spaceBetween,
                                               children: [
-                                                Text(
-                                                  "Name : ".tr,
-                                                  style: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 15,
-                                                      fontFamily:
-                                                          'BAHNSCHRIFT'),
+                                                Expanded(
+                                                  child: Text(
+                                                    "Name : ".tr,
+                                                    style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 15,
+                                                        fontFamily:
+                                                            'BAHNSCHRIFT'),
+                                                  ),
                                                 ),
-                                                Container(
+                                                Expanded(
                                                   child: Text(
                                                       controllerPro
                                                               .saveDetailsProduct[
@@ -549,45 +556,29 @@ class _particularProducteState extends State<particularProducte> {
                                                                 //         size);
                                                               });
                                                             },
-                                                            child: Container(
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                shape: BoxShape
-                                                                    .circle,
-                                                                border:
-                                                                    Border.all(
-                                                                  color: tappedIndex ==
+                                                            child: Chip(
+                                                              backgroundColor:
+                                                                  tappedIndex ==
                                                                           i
                                                                       ? Colors
                                                                           .black
                                                                       : Colors
                                                                           .grey,
-                                                                  width: 2.0,
-                                                                ),
-                                                              ),
-                                                              child:
-                                                                  CircleAvatar(
-                                                                radius: 20,
-                                                                backgroundColor:
-                                                                    Colors
+                                                              label: Text(
+                                                                controllerPro
+                                                                            .saveDetailsProduct[
+                                                                        "sizes"]
+                                                                    [i]["size"],
+                                                                style: TextStyle(
+                                                                    color: Colors
                                                                         .white,
-                                                                child: Text(
-                                                                  controllerPro
-                                                                              .saveDetailsProduct[
-                                                                          "sizes"]
-                                                                      [
-                                                                      i]["size"],
-                                                                  style: TextStyle(
-                                                                      color: Colors
-                                                                          .black,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      fontSize:
-                                                                          15,
-                                                                      fontFamily:
-                                                                          'Almarai'),
-                                                                ),
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontSize:
+                                                                        15,
+                                                                    fontFamily:
+                                                                        'Almarai'),
                                                               ),
                                                             ),
                                                           ),
