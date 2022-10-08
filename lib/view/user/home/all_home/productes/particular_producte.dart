@@ -284,7 +284,7 @@ class _particularProducteState extends State<particularProducte> {
                                     Container(
                                       height:
                                           MediaQuery.of(context).size.height *
-                                              2,
+                                              10,
                                       width: MediaQuery.of(context).size.width,
                                       decoration: const BoxDecoration(
                                         borderRadius: BorderRadius.only(
