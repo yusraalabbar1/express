@@ -8,7 +8,8 @@
 
 import 'dart:convert';
 
-OrderModel welcomeFromJson(String str) => OrderModel.fromJson(json.decode(str));
+OrderModel OrderModelFromJson(String str) =>
+    OrderModel.fromJson(json.decode(str));
 
 String welcomeToJson(OrderModel data) => json.encode(data.toJson());
 
@@ -23,14 +24,15 @@ class OrderModel {
   bool? status;
   String? code;
   String? message;
-  List<Datum>? data;
+  List<DatumOrderModel>? data;
 
   factory OrderModel.fromJson(Map<String, dynamic> json) => OrderModel(
         status: json["status"],
         code: json["code"],
         message: json["message"],
         data: json["data"] != null
-            ? List<Datum>.from(json["data"].map((x) => Datum.fromJson(x)))
+            ? List<DatumOrderModel>.from(
+                json["data"].map((x) => DatumOrderModel.fromJson(x)))
             : null,
       );
 
@@ -42,8 +44,8 @@ class OrderModel {
       };
 }
 
-class Datum {
-  Datum({
+class DatumOrderModel {
+  DatumOrderModel({
     this.id,
     this.code,
     this.userName,
@@ -67,7 +69,8 @@ class Datum {
   String? status;
   dynamic? notes;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory DatumOrderModel.fromJson(Map<String, dynamic> json) =>
+      DatumOrderModel(
         id: json["id"],
         code: json["code"],
         userName: json["user_name"],

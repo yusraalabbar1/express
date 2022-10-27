@@ -54,6 +54,7 @@ class _welcomHomeVDState extends State<welcomHomeVD>
     SharedPreferences preferences = await SharedPreferences.getInstance();
     controllerDriver controller = Get.put(controllerDriver());
     String? men = preferences.getString('sendMen');
+    await getInfo();
     if (controller.saveDriverLogin == 2 || isLogin == 2) {
       Navigator.of(context).pushReplacementNamed("home_pageD");
     } else if (controller.saveVendorLogin == 3 || isLogin == 3) {
@@ -63,7 +64,7 @@ class _welcomHomeVDState extends State<welcomHomeVD>
 
   @override
   void initState() {
-    getInfo();
+    // getInfo();
     _onChangeHandler();
     super.initState();
   }

@@ -378,7 +378,10 @@ class _sub3catState extends State<sub3cat> {
                                                   child: Text(
                                                     passenger.name!,
                                                     style: TextStyle(
-                                                        color: Colors.black),
+                                                      color: Colors.black,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                    ),
                                                   ),
                                                 ),
                                                 Expanded(

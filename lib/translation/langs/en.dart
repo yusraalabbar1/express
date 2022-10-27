@@ -102,5 +102,8 @@ const Map<String, String> en = {
   "Delete Account": "Delete Account",
   "Are you sure you want to Delete account?":
       "Are you sure you want to Delete account?",
-  "Guest": "Guest"
+  "Guest": "Guest",
+  "App Orders": "App Orders",
+  "Other Orders": "Other Orders",
+  "Code Order:": "Code Order:"
 };

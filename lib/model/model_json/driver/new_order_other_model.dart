@@ -1,52 +1,50 @@
-//detailsOrderModel
-// To parse this JSON data, do
-//
-//     final welcome = welcomeFromJson(jsonString);
-//detailsOrderModel
 // To parse this JSON data, do
 //
 //     final welcome = welcomeFromJson(jsonString);
 
 import 'dart:convert';
 
-detailsOrderModel detailsOrderModelFromJson(String str) =>
-    detailsOrderModel.fromJson(json.decode(str));
+OrderOtherModel OrderOtherModelFromJson(String str) =>
+    OrderOtherModel.fromJson(json.decode(str));
 
-String welcomeToJson(detailsOrderModel data) => json.encode(data.toJson());
+String welcomeToJson(OrderOtherModel data) => json.encode(data.toJson());
 
-class detailsOrderModel {
-  detailsOrderModel({
+class OrderOtherModel {
+  OrderOtherModel({
     this.status,
     this.code,
     this.message,
     this.data,
+    this.meta,
   });
 
   bool? status;
   String? code;
   String? message;
-  DatadetailsOrderModel? data;
+  List<DatumOrderOtherModel>? data;
+  Meta? meta;
 
-  factory detailsOrderModel.fromJson(Map<String, dynamic> json) =>
-      detailsOrderModel(
+  factory OrderOtherModel.fromJson(Map<String, dynamic> json) =>
+      OrderOtherModel(
         status: json["status"],
         code: json["code"],
         message: json["message"],
-        data: json["data"] != null
-            ? DatadetailsOrderModel.fromJson(json["data"])
-            : null,
+        data: List<DatumOrderOtherModel>.from(
+            json["data"].map((x) => DatumOrderOtherModel.fromJson(x))),
+        meta: Meta.fromJson(json["meta"]),
       );
 
   Map<String, dynamic> toJson() => {
         "status": status,
         "code": code,
         "message": message,
-        "data": data!.toJson(),
+        "data": List<dynamic>.from(data!.map((x) => x.toJson())),
+        "meta": meta!.toJson(),
       };
 }
 
-class DatadetailsOrderModel {
-  DatadetailsOrderModel({
+class DatumOrderOtherModel {
+  DatumOrderOtherModel({
     this.id,
     this.code,
     this.userName,
@@ -57,6 +55,7 @@ class DatadetailsOrderModel {
     this.vendor,
     this.status,
     this.notes,
+    this.created_at,
   });
 
   int? id;
@@ -69,9 +68,10 @@ class DatadetailsOrderModel {
   Delivery? vendor;
   String? status;
   dynamic? notes;
+  dynamic created_at;
 
-  factory DatadetailsOrderModel.fromJson(Map<String, dynamic> json) =>
-      DatadetailsOrderModel(
+  factory DatumOrderOtherModel.fromJson(Map<String, dynamic> json) =>
+      DatumOrderOtherModel(
         id: json["id"],
         code: json["code"],
         userName: json["user_name"],
@@ -82,6 +82,7 @@ class DatadetailsOrderModel {
         vendor: Delivery.fromJson(json["vendor"]),
         status: json["status"],
         notes: json["notes"],
+        created_at: json["created_at"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -95,6 +96,7 @@ class DatadetailsOrderModel {
         "vendor": vendor!.toJson(),
         "status": status,
         "notes": notes,
+        "created_at": created_at,
       };
 }
 
@@ -123,5 +125,37 @@ class Delivery {
         "name": name,
         "mobile": mobile,
         "photo_profile": photoProfile,
+      };
+}
+
+class Meta {
+  Meta({
+    this.total,
+    this.count,
+    this.perPage,
+    this.currentPage,
+    this.totalPages,
+  });
+
+  int? total;
+  int? count;
+  int? perPage;
+  int? currentPage;
+  int? totalPages;
+
+  factory Meta.fromJson(Map<String, dynamic> json) => Meta(
+        total: json["total"],
+        count: json["count"],
+        perPage: json["per_page"],
+        currentPage: json["current_page"],
+        totalPages: json["total_pages"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "total": total,
+        "count": count,
+        "per_page": perPage,
+        "current_page": currentPage,
+        "total_pages": totalPages,
       };
 }

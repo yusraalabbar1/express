@@ -449,11 +449,10 @@ class _particularProducteState extends State<particularProducte> {
                                           Padding(
                                             padding: const EdgeInsets.all(15.0),
                                             child: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              // mainAxisAlignment:
-                                              //     MainAxisAlignment
-                                              //         .spaceBetween,
+                                              // crossAxisAlignment:
+                                              //     CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
                                               children: [
                                                 Expanded(
                                                   child: Text(
@@ -467,6 +466,7 @@ class _particularProducteState extends State<particularProducte> {
                                                   ),
                                                 ),
                                                 Expanded(
+                                                  flex: 6,
                                                   child: Text(
                                                       controllerPro
                                                               .saveDetailsProduct[

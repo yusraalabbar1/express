@@ -88,7 +88,9 @@ class _subSubCatState extends State<subSubCat> {
                                   child: Text(
                                     controllerPro.saveSubSubCateg[index]
                                         ["name"],
-                                    style: TextStyle(color: Colors.white),
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 ),
                               ),

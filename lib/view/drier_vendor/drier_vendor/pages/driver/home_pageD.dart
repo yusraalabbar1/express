@@ -107,6 +107,7 @@ class _home_pageDState extends State<home_pageD>
         body: RefreshIndicator(onRefresh: () async {
           await OrderApi();
         }, child: GetBuilder<controllerDriver>(builder: (controller) {
+          print(controller.allOrder.length);
           return (ListView.builder(
               itemCount: controller.allOrder.length,
               itemBuilder: (BuildContext context, int index) {

@@ -13,7 +13,9 @@ import 'package:express/view/user/home/mprofile/myprofile.dart';
 import 'package:express/view/user/home/myCar/mycart.dart';
 import 'package:express/view/user/home/myHome/myhome.dart';
 import 'package:express/view/user/home/myLike/mylike.dart';
+import 'package:express/view/user/home/myOrder/main_order.dart';
 import 'package:express/view/user/home/myOrder/myorder.dart';
+import 'package:express/view/user/home/myOrder/other_order.dart';
 import 'package:express/view/user/home/widget/appbar_widget.dart';
 import 'package:express/view/user/home/widget/drawer_widget.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +37,9 @@ class _homePageState extends State<homePage> {
   final List<Widget> widgetOptions = <Widget>[
     myHome(),
     myProfile(),
-    myOrder(),
+    // myOrder(),
+    // otherOrder(),
+    mainOrder(),
     myLike(),
     myCart(),
   ];
@@ -86,6 +90,14 @@ class _homePageState extends State<homePage> {
             ),
             selectedColor: MyColors.color1,
           ),
+          // SalomonBottomBarItem(
+          //   icon: Icon(Icons.list_alt),
+          //   title: Text(
+          //     "Other Orders".tr,
+          //     style: TextStyle(fontFamily: 'Almarai'),
+          //   ),
+          //   selectedColor: MyColors.color1,
+          // ),
 
           /// Likes
           SalomonBottomBarItem(
@@ -108,18 +120,8 @@ class _homePageState extends State<homePage> {
           ),
         ],
       ),
-      body: RefreshIndicator(
-        onRefresh: () async {
-          await MyFavorite();
-          await MyCart();
-          await latestProduct();
-          await banner();
-          await AllProduct(1);
-          await populer();
-        },
-        child: Center(
-          child: widgetOptions.elementAt(_currentIndex),
-        ),
+      body: Center(
+        child: widgetOptions.elementAt(_currentIndex),
       ),
     );
   }
